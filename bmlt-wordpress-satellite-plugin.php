@@ -476,6 +476,8 @@ class BMLTWPPlugin extends BMLTPlugin
         
         $head_content .= 'nouveau_map_styles.css" />';
 
+        $head_content .= '<link rel="stylesheet" type="text/css" href="'.$this->get_plugin_path().'/table_styles.php" />';
+
         if ( $root_server_root )
             {
             $additional_css = '.bmlt_container * {margin:0;padding:0;text-align:center }';
