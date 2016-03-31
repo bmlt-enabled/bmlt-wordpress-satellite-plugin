@@ -42,6 +42,11 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 16. Administration Screen, Showing Choice of Initial Search Screens.
 
 == Changelog ==
+= 3.2.4
+
+* TBD
+* Started a new structure, where SVN is used for deployment, but Git is used to manage the plugin.
+
 = 3.2.3
 
 * March 30, 2016
