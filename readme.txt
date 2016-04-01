@@ -3,7 +3,7 @@ Contributors: magblogapi
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Requires at least: 2.6
 Tested up to: 4.5
-Stable tag: 3.2.3
+Stable tag: 3.2.4
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -42,21 +42,20 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 16. Administration Screen, Showing Choice of Initial Search Screens.
 
 == Changelog ==
-= 3.2.4
+= 3.2.4 =
+* April 1, 2016 (Happy April Fools'!)
+* Broke the table styling out into separate files that are all loaded at once. This allows a lot more flexibility when implementing the table display.
+* Tweaked the GNYR style.
+* The JavaScript had a fundamental error that prevented multiple instances of the table. That's been fixed.
 
-* TBD
-* Started a new structure, where SVN is used for deployment, but Git is used to manage the plugin.
-
-= 3.2.3
-
+= 3.2.3 =
 * March 30, 2016
 * Got rid of an undeclared variable warning.
 * Fixed a bug that caused rendering issues with the new table shortcode on Internet Exploder.
 * Fixed a minor style issue, where the selection triangle would flow below the text in large text situations.
 * Changed the styling for the selected header triangle to make the table display a bit more responsive.
 
-= 3.2.2
-
+= 3.2.2 =
 * March 29, 2016
 * Fixed a style problem with the default search, where the map and text might be outdented by 8 pixels.
 * Fixed the "Google Maps included two or more times" warning.
