@@ -8,11 +8,11 @@
 Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://magshare.org/bmlt
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.2.4
+Version: 3.2.5
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
-define ( 'BMLT_CURRENT_VERSION', '3.2.4' );    // This needs to be kept in synch with the version above.
+define ( 'BMLT_CURRENT_VERSION', '3.2.5' );    // This needs to be kept in synch with the version above.
 
 // define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
@@ -399,7 +399,7 @@ class BMLTWPPlugin extends BMLTPlugin
     function standard_head ( )
         {
         $load_head = false;   // This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.
-        $head_content = "<!-- Added by the BMLT plugin 3.0. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
+        $head_content = "<!-- Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
         $load_head = true;
         
         // If you specify the bmlt_mobile custom field in this page (not post), then it can force the browser to redirect to a mobile handler.
@@ -450,33 +450,40 @@ class BMLTWPPlugin extends BMLTPlugin
         
         $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars ( $root_server_root ).'" />';
         
-        $head_content .= '<link rel="stylesheet" type="text/css" href="';
-        
         $url = $this->get_plugin_path();
         
-        $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
-        
-        if ( !defined ('_DEBUG_MODE_' ) )
+        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/themes/'.$options['theme'].'/styles.css' ) )
             {
-            $head_content .= 'style_stripper.php?filename=';
+            $head_content .= '<link rel="stylesheet" type="text/css" href="';
+        
+            $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
+        
+            if ( !defined ('_DEBUG_MODE_' ) )
+                {
+                $head_content .= 'style_stripper.php?filename=';
+                }
+        
+            $head_content .= 'styles.css" />';
             }
         
-        $head_content .= 'styles.css" />';
-        
-        $head_content .= '<link rel="stylesheet" type="text/css" href="';
-        
-        $url = $this->get_plugin_path();
-        
-        $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
-        
-        if ( !defined ('_DEBUG_MODE_' ) )
+        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/themes/'.$options['theme'].'/nouveau_map_styles.css' ) )
             {
-            $head_content .= 'style_stripper.php?filename=';
+            $head_content .= '<link rel="stylesheet" type="text/css" href="';
+        
+            $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
+        
+            if ( !defined ('_DEBUG_MODE_' ) )
+                {
+                $head_content .= 'style_stripper.php?filename=';
+                }
+        
+            $head_content .= 'nouveau_map_styles.css" />';
             }
         
-        $head_content .= 'nouveau_map_styles.css" />';
-
-        $head_content .= '<link rel="stylesheet" type="text/css" href="'.$this->get_plugin_path().'/table_styles.php" />';
+        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/table_styles.php' ) )
+            {
+            $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'/table_styles.php" />';
+            }
 
         if ( $root_server_root )
             {
@@ -571,10 +578,11 @@ class BMLTWPPlugin extends BMLTPlugin
             {
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_map', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'simple_search_list', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_mobile', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_simple', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'simple_search_list', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_changes', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_table', '' );
             }
         
         return $in_the_content;
