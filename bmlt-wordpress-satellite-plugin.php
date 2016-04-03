@@ -482,7 +482,7 @@ class BMLTWPPlugin extends BMLTPlugin
         
         if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/table_styles.php' ) )
             {
-            $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'/table_styles.php" />';
+            $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'table_styles.php" />';
             }
 
         if ( $root_server_root )
