@@ -401,6 +401,7 @@ class BMLTWPPlugin extends BMLTPlugin
         $load_head = false;   // This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.
         $head_content = "<!-- Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
         $load_head = true;
+        $additional_css = '';
         
         // If you specify the bmlt_mobile custom field in this page (not post), then it can force the browser to redirect to a mobile handler.
         // The value of bmlt_mobile must be the settings ID of the server you want to handle the mobile content.
@@ -483,11 +484,13 @@ class BMLTWPPlugin extends BMLTPlugin
         if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/table_styles.php' ) )
             {
             $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'table_styles.php" />';
+            
+            $additional_css .= '#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { margin:0;text-indent:0;padding:0;list-style-type:none;list-style-position:outside; }; ';
             }
 
         if ( $root_server_root )
             {
-            $additional_css = '.bmlt_container * {margin:0;padding:0;text-align:center }';
+            $additional_css .= '.bmlt_container * {margin:0;padding:0;text-align:center }';
             
             if ( $options['additional_css'] )
                 {
