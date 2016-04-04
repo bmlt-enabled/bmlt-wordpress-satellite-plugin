@@ -485,7 +485,7 @@ class BMLTWPPlugin extends BMLTPlugin
             {
             $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'table_styles.php" />';
             
-            $additional_css .= '#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { margin:0;text-indent:0;padding:0;list-style-type:none;list-style-position:outside; }; ';
+            $additional_css .= '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; } #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; } #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } ';
             }
 
         if ( $root_server_root )
