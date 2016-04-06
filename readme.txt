@@ -5,7 +5,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.5
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -45,10 +45,13 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 
 == Changelog ==
 = 3.3.1 =
-* TBD
-* Made the weekday tab overflow hidden for the [[bmlt_table]] shortcode.
-* The format circles now float to the right for the [[bmlt_table]] shortcode.
-* Made the busy throbber stay up a bit longer when loading a new weekday for the [[bmlt_table]] shortcode.
+* April 6, 2016
+* Made the weekday tab overflow hidden.
+* The format circles now float to the right.
+* Added a display for days with no meetings.
+* Fixed a bug in the [[bmlt_table]] shortcode, where the loading throbber would get replaced too quickly when selecting weekday tabs.
+* Corrected a bug that allowed "00:00" times (should be "Midnight").
+* Fixed a bug in the "simple map search" that displayed the info windows offset.
 
 = 3.3.0 =
 * April 4, 2016
