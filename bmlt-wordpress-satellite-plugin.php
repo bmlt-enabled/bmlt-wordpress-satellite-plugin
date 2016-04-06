@@ -6,7 +6,8 @@
 *                                                                                           *
 *   These need to be without the asterisks, as WP parses them.                              *
 Plugin Name: BMLT WordPress Satellite
-Plugin URI: http://magshare.org/bmlt
+Plugin URI: http://bmlt.magshare.net
+Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
 Version: 3.3.1
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
