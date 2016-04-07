@@ -44,6 +44,10 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 16. Administration Screen, Showing Choice of Initial Search Screens.
 
 == Changelog ==
+= 3.3.2 =
+* TBD
+^ Added a "Breaker Div" to the end of the meeting list.
+
 = 3.3.1 =
 * April 6, 2016
 * Made the weekday tab overflow hidden.
