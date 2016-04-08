@@ -46,7 +46,9 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 == Changelog ==
 = 3.3.2 =
 * TBD
-^ Added a "Breaker Div" to the end of the meeting list.
+* Added a "Breaker Div" to the end of the meeting list.
+* Work on improving code quality.
+* Added more style hooks to the [[bmlt_table]] shortcode display.
 
 = 3.3.1 =
 * April 6, 2016
