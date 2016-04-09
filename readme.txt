@@ -5,7 +5,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.5
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -45,10 +45,11 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 
 == Changelog ==
 = 3.3.2 =
-* TBD
+* April 9, 2016
 * Added a "Breaker Div" to the end of the meeting list.
 * Work on improving code quality.
 * Added more style hooks to the [[bmlt_table]] shortcode display.
+* Fixed a minor bug in the [[bmlt_table]] and [[bmlt_simple]] shortcodes, where supplying just a settings ID would be ignored.
 
 = 3.3.1 =
 * April 6, 2016
