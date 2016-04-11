@@ -103,23 +103,6 @@ class BMLTWPPlugin extends BMLTPlugin
         }
     
     /************************************************************************************//**
-    *   \brief Return an HTTP path to the AJAX callback target.                             *
-    *                                                                                       *
-    *   \returns a string, containing the path.                                             *
-    ****************************************************************************************/
-    protected function get_ajax_base_uri()
-        {
-        $port = $_SERVER['SERVER_PORT'] ;
-        // IIS puts "off" in the HTTPS field, so we need to test for that.
-        $https = (!empty ( $_SERVER['HTTPS'] ) && (($_SERVER['HTTPS'] !== 'off') || ($port == 443))); 
-        $server_path = $_SERVER['SERVER_NAME'];
-        $my_path = $_SERVER['PHP_SELF'];
-        $server_path .= trim ( (($https && ($port != 443)) || (!$https && ($port != 80))) ? ':'.$port : '', '/' );
-        $server_path = 'http'.($https ? 's' : '').'://'.$server_path.$my_path;
-        return $server_path;
-        }
-    
-    /************************************************************************************//**
     *   \brief Return an HTTP path to the plugin directory.                                 *
     *                                                                                       *
     *   \returns a string, containing the path.                                             *
