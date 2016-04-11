@@ -44,6 +44,13 @@ Additionally, Version 3.0 of the plugin requires a root server version of 1.10.3
 16. Administration Screen, Showing Choice of Initial Search Screens.
 
 == Changelog ==
+= 3.3.4 =
+* TBD
+
+= 3.3.3 =
+* April 9, 2016
+* Fixed a bug that could bork the [[bmlt_table]] shortcode when there are no parameters specified.
+
 = 3.3.2 =
 * April 9, 2016
 * Added a "Breaker Div" to the end of the meeting list.
