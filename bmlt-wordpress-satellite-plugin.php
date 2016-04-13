@@ -101,152 +101,6 @@ class BMLTWPPlugin extends BMLTPlugin
         {
         return $_SERVER['PHP_SELF'].'?page=bmlt-wordpress-satellite-plugin.php';
         }
-    
-    /************************************************************************************//**
-    *   \brief Return an HTTP path to the plugin directory.                                 *
-    *                                                                                       *
-    *   \returns a string, containing the path.                                             *
-    ****************************************************************************************/
-    protected function get_plugin_path()
-        {
-        $url = '';
-        if ( function_exists ( 'plugins_url' ) )
-            {
-            if ( plugins_url() )
-                {
-                $url = plugins_url()."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
-                }
-            elseif ( defined ('WP_PLUGIN_URL' ) )
-                {
-                $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
-                }
-            else
-                {
-                echo "<!-- BMLTPlugin ERROR (get_plugin_path)! Empty plugins_url() and no WP_PLUGIN_URL! -->";
-                }
-            }
-        elseif ( !function_exists ( 'plugins_url' ) && defined ('WP_PLUGIN_URL' ) )
-            {
-            $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin ERROR (get_plugin_path)! No plugins_url() and no WP_PLUGIN_URL! -->";
-            }
-        
-        return $url;
-        }
-
-    
-    /************************************************************************************//**
-    *   \brief This uses the WordPress text processor (__) to process the given string.     *
-    *                                                                                       *
-    *   This allows easier translation of displayed strings. All strings displayed by the   *
-    *   plugin should go through this function.                                             *
-    *                                                                                       *
-    *   \returns a string, processed by WP.                                                 *
-    ****************************************************************************************/
-    protected function process_text (  $in_string  ///< The string to be processed.
-                                    )
-        {
-        if ( function_exists ( '__' ) )
-            {
-            $in_string = htmlspecialchars ( __( $in_string, 'BMLTPlugin' ) );
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin Warning (process_text): __() does not exist! -->";
-            }
-            
-        return $in_string;
-        }
-        
-    /************************************************************************************//**
-    *   \brief Sets up the admin and handler callbacks.                                     *
-    ****************************************************************************************/
-    protected function set_callbacks ( )
-        {
-        if ( function_exists ( 'add_filter' ) )
-            {
-            add_filter ( 'the_content', array ( self::get_plugin_object(), 'content_filter')  );
-            add_filter ( 'wp_head', array ( self::get_plugin_object(), 'standard_head' ) );
-            add_filter ( 'admin_head', array ( self::get_plugin_object(), 'admin_head' ) );
-			add_filter ( 'plugin_action_links', array ( self::get_plugin_object(), 'filter_plugin_actions' ), 10, 2 );
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_filter()! -->";
-            }
-        
-        if ( function_exists ( 'add_action' ) )
-            {
-            add_action ( 'pre_get_posts', array ( self::get_plugin_object(), 'stop_filter_if_not_main' ) );
-            add_action ( "in_plugin_update_message-".$this->plugin_file_name, array ( self::get_plugin_object(), 'in_plugin_update_message' ) );
-            add_action ( 'admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ) );
-            add_action ( 'admin_menu', array ( self::get_plugin_object(), 'option_menu' ) );
-            add_action ( 'init', array ( self::get_plugin_object(), 'filter_init' ) );
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! -->";
-            }
-        }
-    
-    /************************************************************************************//**
-    *   \brief This gets the admin options from the database (allows CMS abstraction).      *
-    *                                                                                       *
-    *   \returns an associative array, with the option settings.                            *
-    ****************************************************************************************/
-    protected function cms_get_option ( $in_option_key    ///< The name of the option
-                                    )
-        {
-        $ret = $this->geDefaultBMLTOptions();
-        
-        if ( function_exists ( 'get_option' ) )
-            {
-            $ret = get_option ( $in_option_key );
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin ERROR (cms_get_option)! No get_option()! -->";
-            }
-        
-        return $ret;
-        }
-    
-    /************************************************************************************//**
-    *   \brief This gets the admin options from the database (allows CMS abstraction).      *
-    ****************************************************************************************/
-    protected function cms_set_option ( $in_option_key,   ///< The name of the option
-                                        $in_option_value  ///< the values to be set (associative array)
-                                        )
-        {
-        // Added a test, to prevent the creation of multiple empty settings by low-rank users trying SQL injections.
-        if ( function_exists ( 'update_option' ) )
-            {
-            $ret = update_option ( $in_option_key, $in_option_value );
-            }
-        elseif ( trim ($in_option_value) ) 
-            {
-            echo "<!-- BMLTPlugin ERROR (cms_set_option)! No update_option()! -->";
-            }
-        }
-    
-    /************************************************************************************//**
-    *   \brief Deletes a stored option (allows CMS abstraction).                            *
-    ****************************************************************************************/
-    protected function cms_delete_option ( $in_option_key   ///< The name of the option
-                                        )
-        {
-        if ( function_exists ( 'delete_option' ) )
-            {
-            $ret = delete_option ( $in_option_key );
-            }
-        else
-            {
-            echo "<!-- BMLTPlugin ERROR (cms_delete_option)! No delete_option()! -->";
-            }
-        }
 
     /************************************************************************************//**
     *   \brief This gets the page meta for the given page. (allows CMS abstraction).        *
@@ -376,6 +230,143 @@ class BMLTWPPlugin extends BMLTPlugin
             echo "<!-- BMLTPlugin ERROR (option_menu)! No BMLTPlugin Object! -->";
             }
         }
+    
+    /************************************************************************************//**
+    *   \brief Massages the page content.                                                   *
+    *                                                                                       *
+    *   \returns a string, containing the "massaged" content.                               *
+    ****************************************************************************************/
+    function content_filter ( $in_the_content   ///< The content in need of filtering.
+                            )
+        {
+        if ( $this->plugin_is_main )
+            {
+            // Simple searches can be mixed in with other content.
+            $in_the_content = parent::content_filter ( $in_the_content );
+
+            $count = 0;
+
+            $in_the_content = $this->display_popup_search ( $in_the_content, $this->cms_get_post_meta ( get_the_ID(), 'bmlt_simple_searches' ), $count );
+            }
+        else    // If we are not in a page in the main display, we remove the shortcodes.
+            {
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_map', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'simple_search_list', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_mobile', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_simple', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_changes', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_table', '' );
+            }
+        
+        return $in_the_content;
+        }
+        
+    /************************************************************************************//**
+    *   \brief This was cribbed from the W3TC (TotalCache) plugin.                          *
+    *                                                                                       *
+    *   This function will display the current changelist in a plugin's update notification *
+    *   area, which is way kewl.                                                            *
+    ****************************************************************************************/
+    function in_plugin_update_message ( )
+        {
+        $data = bmlt_satellite_controller::call_curl ( $this->plugin_read_me_loc );
+        $ret = '';
+        
+        if ($data)
+            {
+            $matches = null;
+            $regexp = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*=(.*)(=\s*' . preg_quote ( BMLT_CURRENT_VERSION ) . '\s*=|$)~Uis';
+            
+            if ( preg_match ( $regexp, $data, $matches) )
+                {
+                $changelog = (array) preg_split ( '~[\r\n]+~', trim ( $matches[1] ) );
+                
+                $ret = '<div style="color: #c00;font-size: small; margin-top:8px;margin-bottom:8px">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_1 ) ) . '</div>';
+                $ret .= '<div style="font-weight: normal;">';
+                $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_2 ) ) . '</p>';
+                $ul = false;
+                $first = false;
+                
+                foreach ( $changelog as $index => $line )
+                    {
+                    if ( preg_match ( '~^\s*\*\s*~', $line) )
+                        {
+                        if ( !$ul )
+                            {
+                            $ret .= '<ul style="list-style: disc; margin-left: 20px;">';
+                            $ul = true;
+                            $first = true;
+                            }
+                        $line = preg_replace ( '~^\s*\*\s*~', '', $line );
+                        if ( $first )
+                            {
+                            $ret .= '<li style="list-style-type:none;margin-left: -1.5em; font-weight:bold">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_3 ) ) . ' ' . $line . '</li>';
+                            $first = false;
+                            }
+                        else
+                            {
+                            $ret .= '<li>' . $line . '</li>';
+                            }
+                        }
+                    else
+                        {
+                        if ( $ul )
+                            {
+                            $ret .= '</ul><div style="clear: left;"></div>';
+                            $ul = false;
+                            }
+                        $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . $line . '</p>';
+                        }
+                    }
+                
+                if ( $ul )
+                    {
+                    $ret .= '</ul>';
+                    }
+                
+                $ret .= '</div>';
+                }
+            }
+        
+        echo $ret;
+        }
+
+    /************************************************************************************//**
+    *   \brief This was cribbed from the W3TC (TotalCache) plugin.                          *
+    *                                                                                       *
+    *   This function adds a settings link to the plugin listing.                           *
+    ****************************************************************************************/
+    function filter_plugin_actions ( $links,
+                                    $file
+                                    )
+        {
+        static $this_plugin;
+        
+        if ( !$this_plugin && function_exists ( 'plugin_basename' ) )
+            {
+            if ( $file == plugin_basename ( __FILE__ ) )
+                {
+                $settings_link = '<a href="options-general.php?page=' . basename ( __FILE__ ) . '">' . $this->process_text ( $this->plugin_settings_name ) . '</a>';
+                array_unshift ( $links, $settings_link );
+                }
+            }
+
+        return $links;
+        }
+
+    /************************************************************************************//**
+    *   \brief This is called before anything else.                                         *
+    ****************************************************************************************/
+    function filter_init ()
+        {
+        ob_start(); // This prevents themes and plugins from screwing us over.
+        $this->ajax_router();
+        }
+        
+    /************************************************************************************//**
+    *                                BASE CLASS OVERRIDES                                   *
+    ****************************************************************************************/
         
     /************************************************************************************//**
     *   \brief Echoes any necessary head content.                                           *
@@ -548,136 +539,148 @@ class BMLTWPPlugin extends BMLTPlugin
         }
     
     /************************************************************************************//**
-    *   \brief Massages the page content.                                                   *
+    *   \brief This gets the admin options from the database (allows CMS abstraction).      *
     *                                                                                       *
-    *   \returns a string, containing the "massaged" content.                               *
+    *   \returns an associative array, with the option settings.                            *
     ****************************************************************************************/
-    function content_filter ( $in_the_content   ///< The content in need of filtering.
-                            )
-        {
-        if ( $this->plugin_is_main )
-            {
-            // Simple searches can be mixed in with other content.
-            $in_the_content = parent::content_filter ( $in_the_content );
-
-            $count = 0;
-
-            $in_the_content = $this->display_popup_search ( $in_the_content, $this->cms_get_post_meta ( get_the_ID(), 'bmlt_simple_searches' ), $count );
-            }
-        else    // If we are not in a page in the main display, we remove the shortcodes.
-            {
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_map', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'simple_search_list', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_mobile', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_simple', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_changes', '' );
-            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_table', '' );
-            }
-        
-        return $in_the_content;
-        }
-        
-    /************************************************************************************//**
-    *   \brief This was cribbed from the W3TC (TotalCache) plugin.                          *
-    *                                                                                       *
-    *   This function will display the current changelist in a plugin's update notification *
-    *   area, which is way kewl.                                                            *
-    ****************************************************************************************/
-    function in_plugin_update_message ( )
-        {
-        $data = bmlt_satellite_controller::call_curl ( $this->plugin_read_me_loc );
-        $ret = '';
-        
-        if ($data)
-            {
-            $matches = null;
-            $regexp = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*=(.*)(=\s*' . preg_quote ( BMLT_CURRENT_VERSION ) . '\s*=|$)~Uis';
-            
-            if ( preg_match ( $regexp, $data, $matches) )
-                {
-                $changelog = (array) preg_split ( '~[\r\n]+~', trim ( $matches[1] ) );
-                
-                $ret = '<div style="color: #c00;font-size: small; margin-top:8px;margin-bottom:8px">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_1 ) ) . '</div>';
-                $ret .= '<div style="font-weight: normal;">';
-                $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_2 ) ) . '</p>';
-                $ul = false;
-                $first = false;
-                
-                foreach ( $changelog as $index => $line )
-                    {
-                    if ( preg_match ( '~^\s*\*\s*~', $line) )
-                        {
-                        if ( !$ul )
-                            {
-                            $ret .= '<ul style="list-style: disc; margin-left: 20px;">';
-                            $ul = true;
-                            $first = true;
-                            }
-                        $line = preg_replace ( '~^\s*\*\s*~', '', $line );
-                        if ( $first )
-                            {
-                            $ret .= '<li style="list-style-type:none;margin-left: -1.5em; font-weight:bold">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_3 ) ) . ' ' . $line . '</li>';
-                            $first = false;
-                            }
-                        else
-                            {
-                            $ret .= '<li>' . $line . '</li>';
-                            }
-                        }
-                    else
-                        {
-                        if ( $ul )
-                            {
-                            $ret .= '</ul><div style="clear: left;"></div>';
-                            $ul = false;
-                            }
-                        $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . $line . '</p>';
-                        }
-                    }
-                
-                if ( $ul )
-                    {
-                    $ret .= '</ul>';
-                    }
-                
-                $ret .= '</div>';
-                }
-            }
-        
-        echo $ret;
-        }
-
-    /************************************************************************************//**
-    *   \brief This was cribbed from the W3TC (TotalCache) plugin.                          *
-    *                                                                                       *
-    *   This function adds a settings link to the plugin listing.                           *
-    ****************************************************************************************/
-    function filter_plugin_actions ( $links,
-                                    $file
+    protected function cms_get_option ( $in_option_key    ///< The name of the option
                                     )
         {
-        static $this_plugin;
+        $ret = $this->geDefaultBMLTOptions();
         
-        if ( !$this_plugin && function_exists ( 'plugin_basename' ) )
+        if ( function_exists ( 'get_option' ) )
             {
-            if ( $file == plugin_basename ( __FILE__ ) )
+            $ret = get_option ( $in_option_key );
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin ERROR (cms_get_option)! No get_option()! -->";
+            }
+        
+        return $ret;
+        }
+    
+    /************************************************************************************//**
+    *   \brief This gets the admin options from the database (allows CMS abstraction).      *
+    ****************************************************************************************/
+    protected function cms_set_option ( $in_option_key,   ///< The name of the option
+                                        $in_option_value  ///< the values to be set (associative array)
+                                        )
+        {
+        // Added a test, to prevent the creation of multiple empty settings by low-rank users trying SQL injections.
+        if ( function_exists ( 'update_option' ) && is_array ( $in_option_value ) && count ( $in_option_value ) )
+            {
+            $ret = update_option ( $in_option_key, $in_option_value );
+            }
+        elseif ( is_array ( $in_option_value ) && count ( $in_option_value ) ) 
+            {
+            echo "<!-- BMLTPlugin ERROR (cms_set_option)! No update_option()! -->";
+            }
+        }
+    
+    /************************************************************************************//**
+    *   \brief Deletes a stored option (allows CMS abstraction).                            *
+    ****************************************************************************************/
+    protected function cms_delete_option ( $in_option_key   ///< The name of the option
+                                        )
+        {
+        if ( function_exists ( 'delete_option' ) )
+            {
+            $ret = delete_option ( $in_option_key );
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin ERROR (cms_delete_option)! No delete_option()! -->";
+            }
+        }
+    
+    /************************************************************************************//**
+    *   \brief Return an HTTP path to the plugin directory.                                 *
+    *                                                                                       *
+    *   \returns a string, containing the path.                                             *
+    ****************************************************************************************/
+    protected function get_plugin_path()
+        {
+        $url = '';
+        if ( function_exists ( 'plugins_url' ) )
+            {
+            if ( plugins_url() )
                 {
-                $settings_link = '<a href="options-general.php?page=' . basename ( __FILE__ ) . '">' . $this->process_text ( $this->plugin_settings_name ) . '</a>';
-                array_unshift ( $links, $settings_link );
+                $url = plugins_url()."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+                }
+            elseif ( defined ('WP_PLUGIN_URL' ) )
+                {
+                $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+                }
+            else
+                {
+                echo "<!-- BMLTPlugin ERROR (get_plugin_path)! Empty plugins_url() and no WP_PLUGIN_URL! -->";
                 }
             }
-
-        return $links;
+        elseif ( !function_exists ( 'plugins_url' ) && defined ('WP_PLUGIN_URL' ) )
+            {
+            $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin ERROR (get_plugin_path)! No plugins_url() and no WP_PLUGIN_URL! -->";
+            }
+        
+        return $url;
+        }
+        
+    /************************************************************************************//**
+    *   \brief Sets up the admin and handler callbacks.                                     *
+    ****************************************************************************************/
+    protected function set_callbacks ( )
+        {
+        if ( function_exists ( 'add_filter' ) )
+            {
+            add_filter ( 'the_content', array ( self::get_plugin_object(), 'content_filter')  );
+            add_filter ( 'wp_head', array ( self::get_plugin_object(), 'standard_head' ) );
+            add_filter ( 'admin_head', array ( self::get_plugin_object(), 'admin_head' ) );
+            add_filter ( 'plugin_action_links', array ( self::get_plugin_object(), 'filter_plugin_actions' ), 10, 2 );
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_filter()! -->";
+            }
+        
+        if ( function_exists ( 'add_action' ) )
+            {
+            add_action ( 'pre_get_posts', array ( self::get_plugin_object(), 'stop_filter_if_not_main' ) );
+            add_action ( "in_plugin_update_message-".$this->plugin_file_name, array ( self::get_plugin_object(), 'in_plugin_update_message' ) );
+            add_action ( 'admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ) );
+            add_action ( 'admin_menu', array ( self::get_plugin_object(), 'option_menu' ) );
+            add_action ( 'init', array ( self::get_plugin_object(), 'filter_init' ) );
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! -->";
+            }
         }
 
     /************************************************************************************//**
-    *   \brief This is called before anything else.                                         *
+    *   \brief This uses the WordPress text processor (__) to process the given string.     *
+    *                                                                                       *
+    *   This allows easier translation of displayed strings. All strings displayed by the   *
+    *   plugin should go through this function.                                             *
+    *                                                                                       *
+    *   \returns a string, processed by WP.                                                 *
     ****************************************************************************************/
-    function filter_init ()
+    protected function process_text (  $in_string  ///< The string to be processed.
+                                    )
         {
-        ob_start(); // This prevents themes and plugins from screwing us over.
-        $this->ajax_router();
+        if ( function_exists ( '__' ) )
+            {
+            $in_string = htmlspecialchars ( __( $in_string, 'BMLTPlugin' ) );
+            }
+        else
+            {
+            echo "<!-- BMLTPlugin Warning (process_text): __() does not exist! -->";
+            }
+            
+        return $in_string;
         }
 };
 
