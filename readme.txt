@@ -1,4 +1,5 @@
 === BMLT WordPress Plugin ===
+
 Contributors: magblogapi
 Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
@@ -30,6 +31,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 ***Version 3.3.7* ** *- TBD*
 
 - Updated the README to better work with BitBucket (If I decide to store this there).
+- Added [Doxygen](http://doxygen.nl) documentation.
 
 ***Version 3.3.6* ** *- April 20, 2016*
 
