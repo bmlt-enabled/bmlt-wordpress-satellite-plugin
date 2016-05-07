@@ -9,11 +9,9 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://bmlt.magshare.net
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.3.7
+Version: 3.3.8
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
-
-define ( 'BMLT_CURRENT_VERSION', '3.3.7' );    // This needs to be kept in synch with the version above.
 
 // define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
@@ -25,11 +23,6 @@ if ( isset ( $_COOKIE ) && isset ( $_COOKIE['bmlt_lang_selector'] ) && $_COOKIE[
     }
 else
     {
-    if ( function_exists ( 'get_option' ) )
-        {
-        $bmlt_localization = get_option ( 'BMLT_lang_base' );
-        }
-
     if ( !isset ( $bmlt_localization ) || !$bmlt_localization )
         {
         $language = get_locale();
@@ -38,6 +31,10 @@ else
             {
             $bmlt_localization = substr ( $language, 0, 2 );
             }
+        }
+    elseif ( function_exists ( 'get_option' ) )
+        {
+        $bmlt_localization = get_option ( 'BMLT_lang_base' );
         }
     }
     
@@ -260,76 +257,6 @@ class BMLTWPPlugin extends BMLTPlugin
             }
         
         return $in_the_content;
-        }
-        
-    /************************************************************************************//**
-    *   \brief This was cribbed from the W3TC (TotalCache) plugin.                          *
-    *                                                                                       *
-    *   This function will display the current changelist in a plugin's update notification *
-    *   area, which is way kewl.                                                            *
-    ****************************************************************************************/
-    function in_plugin_update_message ( )
-        {
-        $data = bmlt_satellite_controller::call_curl ( $this->plugin_read_me_loc );
-        $ret = '';
-        
-        if ($data)
-            {
-            $matches = null;
-            $regexp = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*=(.*)(=\s*' . preg_quote ( BMLT_CURRENT_VERSION ) . '\s*=|$)~Uis';
-            
-            if ( preg_match ( $regexp, $data, $matches) )
-                {
-                $changelog = (array) preg_split ( '~[\r\n]+~', trim ( $matches[1] ) );
-                
-                $ret = '<div style="color: #c00;font-size: small; margin-top:8px;margin-bottom:8px">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_1 ) ) . '</div>';
-                $ret .= '<div style="font-weight: normal;">';
-                $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_2 ) ) . '</p>';
-                $ul = false;
-                $first = false;
-                
-                foreach ( $changelog as $index => $line )
-                    {
-                    if ( preg_match ( '~^\s*\*\s*~', $line) )
-                        {
-                        if ( !$ul )
-                            {
-                            $ret .= '<ul style="list-style: disc; margin-left: 20px;">';
-                            $ul = true;
-                            $first = true;
-                            }
-                        $line = preg_replace ( '~^\s*\*\s*~', '', $line );
-                        if ( $first )
-                            {
-                            $ret .= '<li style="list-style-type:none;margin-left: -1.5em; font-weight:bold">' . html_entity_decode ( $this->process_text ( $this->plugin_update_message_3 ) ) . ' ' . $line . '</li>';
-                            $first = false;
-                            }
-                        else
-                            {
-                            $ret .= '<li>' . $line . '</li>';
-                            }
-                        }
-                    else
-                        {
-                        if ( $ul )
-                            {
-                            $ret .= '</ul><div style="clear: left;"></div>';
-                            $ul = false;
-                            }
-                        $ret .= '<p style="margin: 5px 0; font-weight:bold; font-size:small">' . $line . '</p>';
-                        }
-                    }
-                
-                if ( $ul )
-                    {
-                    $ret .= '</ul>';
-                    }
-                
-                $ret .= '</div>';
-                }
-            }
-        
-        echo $ret;
         }
 
     /************************************************************************************//**
@@ -649,7 +576,6 @@ class BMLTWPPlugin extends BMLTPlugin
         if ( function_exists ( 'add_action' ) )
             {
             add_action ( 'pre_get_posts', array ( self::get_plugin_object(), 'stop_filter_if_not_main' ) );
-            add_action ( "in_plugin_update_message-".$this->plugin_file_name, array ( self::get_plugin_object(), 'in_plugin_update_message' ) );
             add_action ( 'admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ) );
             add_action ( 'admin_menu', array ( self::get_plugin_object(), 'option_menu' ) );
             add_action ( 'init', array ( self::get_plugin_object(), 'filter_init' ) );
