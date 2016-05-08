@@ -28,6 +28,10 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
+***Version 3.3.9* ** *- TBD*
+
+- Adds the ability to dismiss the details overlay with the escape key.
+
 ***Version 3.3.8* ** *- May 7, 2016*
 
 - Removed the no-longer-useful update notifier.
