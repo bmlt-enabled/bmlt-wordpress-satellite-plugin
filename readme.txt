@@ -31,6 +31,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 ***Version 3.3.9* ** *- TBD*
 
 - Adds the ability to dismiss the details overlay with the escape key.
+- The mobile JS file was importing a non-HTTPS Google Maps API. I changed this to use the HTTPS version.
 
 ***Version 3.3.8* ** *- May 7, 2016*
 
