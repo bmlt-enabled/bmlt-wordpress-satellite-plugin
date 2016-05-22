@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.5.1
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -28,9 +28,9 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.3.9* ** *- TBD*
+***Version 3.3.9* ** *-May 22, 2016*
 
-- Adds the ability to dismiss the details overlay with the escape key.
+- Now detect escape key to close meeting details overlay.
 - The mobile JS file was importing a non-HTTPS Google Maps API. I changed this to use the HTTPS version.
 
 ***Version 3.3.8* ** *- May 7, 2016*
