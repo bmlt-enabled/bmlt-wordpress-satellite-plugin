@@ -429,7 +429,9 @@ class BMLTWPPlugin extends BMLTPlugin
         {
         $this->standard_head ( );   // We start with the standard stuff.
         
-        $head_content = '<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>';  // Load the Google Maps stuff for our map.
+        $options = $this->getBMLTOptions_by_id ( 1 );   // All options have the same API key.
+        // Include the Google Maps API V3 files.
+        $head_content = '<script type="text/javascript" src="https://maps.google.com/maps/api/js?key='.$options['google_api_key'].'"></script>';  // Load the Google Maps stuff for our map.
         
         if ( function_exists ( 'plugins_url' ) )
             {
