@@ -5,8 +5,8 @@ Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
-Tested up to: 4.5.1
-Stable tag: 3.3.9
+Tested up to: 4.6.1
+Stable tag: 3.4.0
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -30,7 +30,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 ***Version 3.4.0* ** *-October 16, 2016*
 
-- Reintroduced support for the Google API Key.
+- Reintroduced support for the Google API Key. WARNING: Google API Keys are now *REQUIRED*.
 
 ***Version 3.3.9* ** *-May 22, 2016*
 
