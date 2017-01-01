@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.6.1
-Stable tag: 3.4.1
+Stable tag: 3.4.3
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,12 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.4.3* ** *- January 1, 2017*
+
+- Added the "GNYR2" theme.
+- Fixed a bug in the fast table display, where venue names were not being displayed.
+- Couple of minor tweaks in the Google API includes. Probably makes no difference.
 
 ***Version 3.4.1* ** *- November 6, 2016*
 
