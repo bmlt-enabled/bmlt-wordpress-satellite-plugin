@@ -5,7 +5,7 @@ Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: 3.4.3
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
