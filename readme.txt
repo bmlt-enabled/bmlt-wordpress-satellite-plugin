@@ -5,8 +5,8 @@ Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
-Tested up to: 4.7
-Stable tag: 3.4.3
+Tested up to: 4.7.3
+Stable tag: 3.4.4
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,10 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.4.4* ** *- March 12, 2017*
+
+- Added a fix to the [[BMLT_TABLE]] shortcode that ensures that empty columns in the table get non-breaking spaces if the value is empty.
 
 ***Version 3.4.3* ** *- January 1, 2017*
 
