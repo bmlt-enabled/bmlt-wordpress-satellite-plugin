@@ -28,9 +28,11 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.5.0* ** *- TBD*
+***Version 3.5.0* ** *- September 10, 2017*
 
-- Implemented a per-setting fixed localization. This requires that localized installation explicitly set their languages.
+- Added the capability to have different localizations apply to different settings.
+- Rearranged the order of fields in the Admin Page to group localization functions better.
+- Fixed a couple of minor issues with the [[simple_search_list]] shortcode.
 
 ***Version 3.4.7* ** *- June 17, 2017*
 
