@@ -13,7 +13,7 @@ Version: 3.5.1
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
-define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
+// define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
 global $bmlt_localization;  ///< Use this to control the localization.
 
@@ -216,7 +216,7 @@ class BMLTWPPlugin extends BMLTPlugin
         {
         if ( function_exists ( 'add_options_page' ) && (self::get_plugin_object() instanceof BMLTPlugin) )
             {
-            add_options_page ( self::$local_options_title, self::$local_menu_string, 9, basename ( __FILE__ ), array ( self::get_plugin_object(), 'admin_page' ) );
+            add_options_page ( $this->local_options_title, $this->local_menu_string, 9, basename ( __FILE__ ), array ( self::get_plugin_object(), 'admin_page' ) );
             }
         elseif ( !function_exists ( 'add_options_page' ) )
             {
