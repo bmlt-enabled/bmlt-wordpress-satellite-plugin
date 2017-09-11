@@ -214,9 +214,15 @@ class BMLTWPPlugin extends BMLTPlugin
     ****************************************************************************************/
     function option_menu ( )
         {
+        global $bmlt_localization;
+        
+        $this->adapt_to_lang($bmlt_localization);
         if ( function_exists ( 'add_options_page' ) && (self::get_plugin_object() instanceof BMLTPlugin) )
             {
-            add_options_page ( $this->local_options_title, $this->local_menu_string, 9, basename ( __FILE__ ), array ( self::get_plugin_object(), 'admin_page' ) );
+            $options_title = $this->my_current_language->local_options_title;
+            $menu_string = $this->my_current_language->local_menu_string;
+            
+            add_options_page ( $options_title, $menu_string, 9, basename ( __FILE__ ), array ( self::get_plugin_object(), 'admin_page' ) );
             }
         elseif ( !function_exists ( 'add_options_page' ) )
             {
