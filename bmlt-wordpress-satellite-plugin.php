@@ -9,7 +9,7 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://bmlt.magshare.net
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.5.1
+Version: 3.5.2
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -367,11 +367,6 @@ class BMLTWPPlugin extends BMLTPlugin
         
             $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
         
-            if ( !defined ('_DEBUG_MODE_' ) )
-                {
-                $head_content .= 'style_stripper.php?filename=';
-                }
-        
             $head_content .= 'styles.css" />';
             }
         
@@ -381,23 +376,35 @@ class BMLTWPPlugin extends BMLTPlugin
         
             $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
         
-            if ( !defined ('_DEBUG_MODE_' ) )
-                {
-                $head_content .= 'style_stripper.php?filename=';
-                }
-        
             $head_content .= 'nouveau_map_styles.css" />';
             }
+
+        $head_content .= "\n".'<style type="text/css">'."\n";
+    
+        $head_content .= "\t".$this->loadTable_StyleFile ( "" ) . "\n";
         
-        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/table_styles.php' ) )
+        $dirname = dirname ( __FILE__ ) . '/BMLT-Satellite-Base-Class/themes';
+        $dir = new DirectoryIterator ( $dirname );
+
+        foreach ( $dir as $fileinfo )
             {
-            $head_content .= '<link rel="stylesheet" type="text/css" href="'.$url.'table_styles.php" />';
-            
-            $additional_css = '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }';
-            $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }';
-            $additional_css .= ' #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } ';
-            $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } ';
+            if ( !$fileinfo->isDot () )
+                {
+                $fName = $fileinfo->getFilename ();
+                $temp = $this->loadTable_StyleFile ( "themes/$fName/" );
+                if ( $temp )
+                    {
+                    $head_content .= "\t$temp\n";
+                    }
+                }
             }
+        
+        $head_content .= "</style>\n";
+        
+        $additional_css = '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }';
+        $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }';
+        $additional_css .= ' #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } ';
+        $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } ';
 
         if ( $root_server_root )
             {
@@ -418,14 +425,28 @@ class BMLTWPPlugin extends BMLTPlugin
         
         $head_content .= htmlspecialchars ( $url );
         
-        if ( !defined ('_DEBUG_MODE_' ) )
-            {
-            $head_content .= 'js_stripper.php?filename=';
-            }
-        
         $head_content .= 'javascript.js"></script>';
 
         echo $head_content;
+        }
+        
+    /************************************************************************************//**
+    *   This will strip the cruft out of the CSS files.                                     *
+    *   \returns a string, with the stripped CSS.                                           *
+    ****************************************************************************************/
+    function loadTable_StyleFile ( $in_theme_dirname    ///< The dirname of the theme to use. It should include the "themes" prefix dir.
+                                    )
+        {
+        $pathname = dirname ( __FILE__ )."/BMLT-Satellite-Base-Class/$in_theme_dirname"."table_styles.css";
+        if ( file_exists ( $pathname ) )
+            {
+            $opt = file_get_contents ( $pathname );
+            $opt = preg_replace( "|\/\*.*?\*\/|s", "", $opt );
+            $opt = preg_replace( "|\s+|s", " ", $opt );
+            return $opt;
+            }
+            
+        return "";
         }
         
     /************************************************************************************//**
@@ -449,21 +470,11 @@ class BMLTWPPlugin extends BMLTPlugin
             
             $head_content .= htmlspecialchars ( $url );
             
-            if ( !defined ('_DEBUG_MODE_' ) )
-                {
-                $head_content .= 'style_stripper.php?filename=';
-                }
-            
             $head_content .= 'admin_styles.css" />';
             
             $head_content .= '<script type="text/javascript" src="';
             
             $head_content .= htmlspecialchars ( $url );
-            
-            if ( !defined ('_DEBUG_MODE_' ) )
-                {
-                $head_content .= 'js_stripper.php?filename=';
-                }
             
             $head_content .= 'admin_javascript.js"></script>';
             }
