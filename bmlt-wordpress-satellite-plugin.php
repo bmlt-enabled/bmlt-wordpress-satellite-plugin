@@ -246,7 +246,6 @@ class BMLTWPPlugin extends BMLTPlugin
             {
             // Simple searches can be mixed in with other content.
             $in_the_content = parent::content_filter ( $in_the_content );
-
             $count = 0;
 
             $in_the_content = $this->display_popup_search ( $in_the_content, $this->cms_get_post_meta ( get_the_ID(), 'bmlt_simple_searches' ), $count );
@@ -259,6 +258,7 @@ class BMLTWPPlugin extends BMLTPlugin
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_mobile', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_simple', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_changes', '' );
+            $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_quicksearch', '' );
             $in_the_content = self::replace_shortcode ( $in_the_content, 'bmlt_table', '' );
             }
         
@@ -381,7 +381,8 @@ class BMLTWPPlugin extends BMLTPlugin
 
         $head_content .= "\n".'<style type="text/css">'."\n";
     
-        $head_content .= "\t".$this->loadTable_StyleFile ( "" ) . "\n";
+        $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
+        $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
         
         $dirname = dirname ( __FILE__ ) . '/BMLT-Satellite-Base-Class/themes';
         $dir = new DirectoryIterator ( $dirname );
@@ -391,15 +392,18 @@ class BMLTWPPlugin extends BMLTPlugin
             if ( !$fileinfo->isDot () )
                 {
                 $fName = $fileinfo->getFilename ();
-                $temp = $this->loadTable_StyleFile ( "themes/$fName/" );
+                $temp = self::stripFile ( "table_styles.css", $fName );
+                if ( $temp )
+                    {
+                    $head_content .= "\t$temp\n";
+                    }
+                $temp = self::stripFile ( "quicksearch.css", $fName );
                 if ( $temp )
                     {
                     $head_content .= "\t$temp\n";
                     }
                 }
             }
-        
-        $head_content .= "</style>\n";
         
         $additional_css = '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }';
         $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }';
@@ -417,9 +421,11 @@ class BMLTWPPlugin extends BMLTPlugin
             
             if ( $additional_css )
                 {
-                $head_content .= '<style type="text/css">'.preg_replace ( "|\s+|", " ", $additional_css ).'</style>';
+                $head_content .= $additional_css;
                 }
             }
+        
+        $head_content .= "\n</style>\n";
         
         $head_content .= '<script type="text/javascript" src="';
         
@@ -428,25 +434,6 @@ class BMLTWPPlugin extends BMLTPlugin
         $head_content .= 'javascript.js"></script>';
 
         echo $head_content;
-        }
-        
-    /************************************************************************************//**
-    *   This will strip the cruft out of the CSS files.                                     *
-    *   \returns a string, with the stripped CSS.                                           *
-    ****************************************************************************************/
-    function loadTable_StyleFile ( $in_theme_dirname    ///< The dirname of the theme to use. It should include the "themes" prefix dir.
-                                    )
-        {
-        $pathname = dirname ( __FILE__ )."/BMLT-Satellite-Base-Class/$in_theme_dirname"."table_styles.css";
-        if ( file_exists ( $pathname ) )
-            {
-            $opt = file_get_contents ( $pathname );
-            $opt = preg_replace( "|\/\*.*?\*\/|s", "", $opt );
-            $opt = preg_replace( "|\s+|s", " ", $opt );
-            return $opt;
-            }
-            
-        return "";
         }
         
     /************************************************************************************//**
