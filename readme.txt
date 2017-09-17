@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.8.1
-Stable tag: 3.5.2
+Stable tag: 3.6.0
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,11 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.6.0* ** *- September 17, 2017*
+
+- Added the [[BMLT_QUICKSEARCH]] shortcode.
+- Optimized the styles and Javascript.
 
 ***Version 3.5.2* ** *- September 11, 2017*
 
