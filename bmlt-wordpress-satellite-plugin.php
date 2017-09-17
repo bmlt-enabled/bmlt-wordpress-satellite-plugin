@@ -416,6 +416,8 @@ class BMLTWPPlugin extends BMLTPlugin
         $head_content .= '<script type="text/javascript">';
         
         $head_content .= self::stripFile ( 'javascript.js' );
+        $head_content .= self::stripFile ( 'map_search.js' );
+        $head_content .= self::stripFile ( 'fast_mobile_lookup.js' );
         
         $head_content .= '</script>';
         $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
