@@ -28,7 +28,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.6.0* ** *- September 17, 2017*
+***Version 3.6.0* ** *- September 18, 2017*
 
 - Added the [[BMLT_QUICKSEARCH]] shortcode.
 - Optimized the styles and Javascript.
