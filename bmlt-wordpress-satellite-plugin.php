@@ -13,7 +13,7 @@ Version: 3.5.2
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
-define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
+// define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
 global $bmlt_localization;  ///< Use this to control the localization.
 
@@ -359,28 +359,9 @@ class BMLTWPPlugin extends BMLTPlugin
         
         $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars ( $root_server_root ).'" />';
         
-        $url = $this->get_plugin_path();
-        
-        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/themes/'.$options['theme'].'/styles.css' ) )
-            {
-            $head_content .= '<link rel="stylesheet" type="text/css" href="';
-        
-            $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
-        
-            $head_content .= 'styles.css" />';
-            }
-        
-        if ( file_exists ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/themes/'.$options['theme'].'/nouveau_map_styles.css' ) )
-            {
-            $head_content .= '<link rel="stylesheet" type="text/css" href="';
-        
-            $head_content .= htmlspecialchars ( $url.'themes/'.$options['theme'].'/' );
-        
-            $head_content .= 'nouveau_map_styles.css" />';
-            }
-
         $head_content .= "\n".'<style type="text/css">'."\n";
-    
+        $head_content .= self::stripFile ( 'styles.css', $options['theme'] ) . "\n";
+        $head_content .= self::stripFile ( 'nouveau_map_styles.css', $options['theme'] ) . "\n";
         $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
         $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
         
@@ -392,6 +373,11 @@ class BMLTWPPlugin extends BMLTPlugin
             if ( !$fileinfo->isDot () )
                 {
                 $fName = $fileinfo->getFilename ();
+                $temp = self::stripFile ( "styles.css", $fName );
+                if ( $temp )
+                    {
+                    $head_content .= "\t$temp\n";
+                    }
                 $temp = self::stripFile ( "table_styles.css", $fName );
                 if ( $temp )
                     {
@@ -427,12 +413,13 @@ class BMLTWPPlugin extends BMLTPlugin
         
         $head_content .= "\n</style>\n";
         
-        $head_content .= '<script type="text/javascript" src="';
+        $head_content .= '<script type="text/javascript">';
         
-        $head_content .= htmlspecialchars ( $url );
+        $head_content .= self::stripFile ( 'javascript.js' );
         
-        $head_content .= 'javascript.js"></script>';
-
+        $head_content .= '</script>';
+        $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
+        
         echo $head_content;
         }
         
@@ -443,11 +430,12 @@ class BMLTWPPlugin extends BMLTPlugin
         {
         $this->standard_head ( );   // We start with the standard stuff.
         
+        $head_content = "<!-- Also Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
         $options = $this->getBMLTOptions(1);    // All options contain the admin key.
         $key = $options['google_api_key'];
         
         // Include the Google Maps API V3 files.
-        $head_content = '<script type="text/javascript" src="https://maps.google.com/maps/api/js?key='.$key.'"></script>';  // Load the Google Maps stuff for our map.
+        $head_content .= '<script type="text/javascript" src="https://maps.google.com/maps/api/js?key='.$key.'"></script>';  // Load the Google Maps stuff for our map.
         
         if ( function_exists ( 'plugins_url' ) )
             {
@@ -470,6 +458,7 @@ class BMLTWPPlugin extends BMLTPlugin
             echo "<!-- BMLTPlugin ERROR (head)! No plugins_url()! -->";
             }
             
+        $head_content .= "\n<!-- End Also Added by the BMLT plugin 3.X. -->\n";
         echo $head_content;
         }
     
