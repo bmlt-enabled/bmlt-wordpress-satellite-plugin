@@ -373,16 +373,15 @@ class BMLTWPPlugin extends BMLTPlugin
             if ( !$fileinfo->isDot () )
                 {
                 $fName = $fileinfo->getFilename ();
-                $temp = self::stripFile ( "styles.css", $fName );
-                if ( $temp )
-                    {
-                    $head_content .= "\t$temp\n";
-                    }
+
                 $temp = self::stripFile ( "table_styles.css", $fName );
                 if ( $temp )
                     {
+                    $image_dir_path = $this->get_plugin_path() . '/themes/' . $fName . '/images/';
+                    $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
                     $head_content .= "\t$temp\n";
                     }
+                    
                 $temp = self::stripFile ( "quicksearch.css", $fName );
                 if ( $temp )
                     {
