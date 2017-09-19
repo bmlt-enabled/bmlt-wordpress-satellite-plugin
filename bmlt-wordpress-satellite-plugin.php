@@ -9,7 +9,7 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://bmlt.magshare.net
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.6.0
+Version: 3.6.1
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -360,8 +360,20 @@ class BMLTWPPlugin extends BMLTPlugin
         $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars ( $root_server_root ).'" />';
         
         $head_content .= "\n".'<style type="text/css">'."\n";
-        $head_content .= self::stripFile ( 'styles.css', $options['theme'] ) . "\n";
-        $head_content .= self::stripFile ( 'nouveau_map_styles.css', $options['theme'] ) . "\n";
+        $temp = self::stripFile ( 'styles.css', $options['theme'] );
+        if ( $temp )
+            {
+            $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
+            $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
+            $head_content .= "\t$temp\n";
+            }
+        $temp = self::stripFile ( 'nouveau_map_styles.css', $options['theme'] );
+        if ( $temp )
+            {
+            $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
+            $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
+            $head_content .= "\t$temp\n";
+            }
         $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
         $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
         
