@@ -9,7 +9,7 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://bmlt.magshare.net
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.6.1
+Version: 3.6.2
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -304,10 +304,11 @@ class BMLTWPPlugin extends BMLTPlugin
     /************************************************************************************//**
     *   \brief Echoes any necessary head content.                                           *
     ****************************************************************************************/
-    function standard_head ( )
+    function standard_head ( $from_admin = false    ///< True, if this was called from the admin.
+                        )
         {
         $load_head = false;   // This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.
-        $head_content = "<!-- Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
+        $head_content = "";
         $load_head = true;
         $additional_css = '';
         
@@ -346,94 +347,117 @@ class BMLTWPPlugin extends BMLTPlugin
             die ( );
             }
         
-        if ( !$this->get_shortcode ( $page->post_content, 'bmlt' ) )
+        if (    $from_admin
+            ||  !$page
+            ||  $support_mobile
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_mobile' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_map' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_table' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_quicksearch' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_simple' )
+            ||  $this->get_shortcode ( $page->post_content, 'bmlt_changes' )
+            ||  $this->get_shortcode ( $page->post_content, 'simple_search_list' )
+            )
             {
-            $load_head = false;
-            }
-        
-        $this->my_http_vars['start_view'] = $options['bmlt_initial_view'];
-        
-        $this->load_params ( );
-        
-        $root_server_root = $options['root_server'];
-        
-        $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars ( $root_server_root ).'" />';
-        
-        $head_content .= "\n".'<style type="text/css">'."\n";
-        $temp = self::stripFile ( 'styles.css', $options['theme'] );
-        if ( $temp )
-            {
-            $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
-            $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
-            $head_content .= "\t$temp\n";
-            }
-        $temp = self::stripFile ( 'nouveau_map_styles.css', $options['theme'] );
-        if ( $temp )
-            {
-            $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
-            $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
-            $head_content .= "\t$temp\n";
-            }
-        $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
-        $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
-        
-        $dirname = dirname ( __FILE__ ) . '/BMLT-Satellite-Base-Class/themes';
-        $dir = new DirectoryIterator ( $dirname );
-
-        foreach ( $dir as $fileinfo )
-            {
-            if ( !$fileinfo->isDot () )
+            $head_content = "<!-- Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
+            if ( !$this->get_shortcode ( $page->post_content, 'bmlt' ) )
                 {
-                $fName = $fileinfo->getFilename ();
+                $load_head = false;
+                }
+        
+            $this->my_http_vars['start_view'] = $options['bmlt_initial_view'];
+        
+            $this->load_params ( );
+        
+            $root_server_root = $options['root_server'];
+        
+            $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars ( $root_server_root ).'" />';
+        
+            $head_content .= "\n".'<style type="text/css">'."\n";
+            $temp = self::stripFile ( 'styles.css', $options['theme'] );
+            if ( $temp )
+                {
+                $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
+                $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
+                $head_content .= "\t$temp\n";
+                }
+            $temp = self::stripFile ( 'nouveau_map_styles.css', $options['theme'] );
+            if ( $temp )
+                {
+                $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
+                $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
+                $head_content .= "\t$temp\n";
+                }
+            $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
+            $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
+        
+            $dirname = dirname ( __FILE__ ) . '/BMLT-Satellite-Base-Class/themes';
+            $dir = new DirectoryIterator ( $dirname );
 
-                $temp = self::stripFile ( "table_styles.css", $fName );
-                if ( $temp )
+            foreach ( $dir as $fileinfo )
+                {
+                if ( !$fileinfo->isDot () )
                     {
-                    $image_dir_path = $this->get_plugin_path() . '/themes/' . $fName . '/images/';
-                    $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
-                    $head_content .= "\t$temp\n";
-                    }
+                    $fName = $fileinfo->getFilename ();
+
+                    $temp = self::stripFile ( "table_styles.css", $fName );
+                    if ( $temp )
+                        {
+                        $image_dir_path = $this->get_plugin_path() . '/themes/' . $fName . '/images/';
+                        $temp = str_replace ( '##-IMAGEDIR-##', $image_dir_path, $temp );
+                        $head_content .= "\t$temp\n";
+                        }
                     
-                $temp = self::stripFile ( "quicksearch.css", $fName );
-                if ( $temp )
-                    {
-                    $head_content .= "\t$temp\n";
+                    $temp = self::stripFile ( "quicksearch.css", $fName );
+                    if ( $temp )
+                        {
+                        $head_content .= "\t$temp\n";
+                        }
                     }
                 }
-            }
         
-        $additional_css = '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }';
-        $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }';
-        $additional_css .= ' #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } ';
-        $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } ';
+            $additional_css = '#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }';
+            $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }';
+            $additional_css .= ' #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } ';
+            $additional_css .= ' #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } ';
 
-        if ( $root_server_root )
-            {
-            $additional_css .= '.bmlt_container * {margin:0;padding:0;text-align:center }';
-            
-            if ( $options['additional_css'] )
+            if ( $root_server_root )
                 {
-                $additional_css .= $options['additional_css'];
+                $additional_css .= '.bmlt_container * {margin:0;padding:0;text-align:center }';
+            
+                if ( $options['additional_css'] )
+                    {
+                    $additional_css .= $options['additional_css'];
+                    }
+            
+                if ( $additional_css )
+                    {
+                    $head_content .= $additional_css;
+                    }
                 }
+        
+            $head_content .= "\n</style>\n";
+        
+            $head_content .= '<script type="text/javascript">';
+        
+            $head_content .= self::stripFile ( 'javascript.js' );
+            $head_content .= self::stripFile ( 'map_search.js' );
+            $head_content .= self::stripFile ( 'fast_mobile_lookup.js' );
+        
+            $head_content .= '</script>';
+        
+            $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
             
-            if ( $additional_css )
+            if ( !$from_admin )
                 {
-                $head_content .= $additional_css;
+                echo $head_content;
+                }
+            else
+                {
+                return $head_content;
                 }
             }
-        
-        $head_content .= "\n</style>\n";
-        
-        $head_content .= '<script type="text/javascript">';
-        
-        $head_content .= self::stripFile ( 'javascript.js' );
-        $head_content .= self::stripFile ( 'map_search.js' );
-        $head_content .= self::stripFile ( 'fast_mobile_lookup.js' );
-        
-        $head_content .= '</script>';
-        $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
-        
-        echo $head_content;
         }
         
     /************************************************************************************//**
@@ -441,9 +465,9 @@ class BMLTWPPlugin extends BMLTPlugin
     ****************************************************************************************/
     function admin_head ( )
         {
-        $this->standard_head ( );   // We start with the standard stuff.
+        $head_content = $this->standard_head ( true )."\n";   // We start with the standard stuff.
         
-        $head_content = "<!-- Also Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
+        $head_content .= "<!-- Also Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
         $options = $this->getBMLTOptions(1);    // All options contain the admin key.
         $key = $options['google_api_key'];
         
