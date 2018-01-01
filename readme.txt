@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.9
-Stable tag: 3.8.4
+Stable tag: 3.9.0
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -28,7 +28,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.8.4* ** *- December 30, 2017*
+***Version 3.9.0 ** *- December 31, 2017*
 
 - Fixed a minor style issue in the GreenAndGold theme.
 - Added the ability to select an "Auto Radius" density. This is for the map search, and affects how many meetings are determined to be enough to satisfy an "auto radius" search.
