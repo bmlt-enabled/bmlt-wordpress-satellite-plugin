@@ -5,8 +5,8 @@ Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
-Tested up to: 4.9
-Stable tag: 3.9.0
+Tested up to: 4.9.1
+Stable tag: 3.9.1
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,12 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.9.1 ** *- January 4, 2018*
+
+- Fixed an issue where some translated versions had bad settings in the BMLT options initial map type.
+- New Italian Translation.
+- Fixed a bug in the admin screen where it was possible to cause problems with translated strings containing apostrophes.
 
 ***Version 3.9.0 ** *- December 31, 2017*
 
