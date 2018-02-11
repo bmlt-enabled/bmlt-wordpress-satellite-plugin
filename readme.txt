@@ -28,6 +28,13 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
+***Version 3.9.2* ** *- February 11, 2018*
+
+- Minor adjustments to the Swedish localization.
+- Added a new "Supermax" option to the auto-radius settings.
+- Moved the Quicksearch JavaScript into the header.
+- Doing a better job of filtering out unnecessary header JavaScript.
+
 ***Version 3.9.1 ** *- January 4, 2018*
 
 - Fixed an issue where some translated versions had bad settings in the BMLT options initial map type.

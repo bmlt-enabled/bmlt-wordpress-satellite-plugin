@@ -9,7 +9,7 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: http://bmlt.magshare.net
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.9.1
+Version: 3.9.2
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -444,9 +444,22 @@ class BMLTWPPlugin extends BMLTPlugin
             $head_content .= '<script type="text/javascript">';
         
             $head_content .= self::stripFile ( 'javascript.js' );
-            $head_content .= self::stripFile ( 'map_search.js' );
-            $head_content .= self::stripFile ( 'fast_mobile_lookup.js' );
+
+            if ( $this->get_shortcode ( $page->post_content, 'bmlt_quicksearch' ) )
+                {
+                $head_content .= self::stripFile ( 'quicksearch.js' ) . (defined ( '_DEBUG_MODE_' ) ? "\n" : '');
+                }
         
+            if ( $this->get_shortcode ( $page->post_content, 'bmlt_map' ) )
+                {
+                $head_content .= self::stripFile ( 'map_search.js' );
+                }
+        
+            if ( $this->get_shortcode ( $page->post_content, 'bmlt_mobile' ) )
+                {
+                $head_content .= self::stripFile ( 'fast_mobile_lookup.js' );
+                }
+    
             $head_content .= '</script>';
         
             $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
