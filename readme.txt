@@ -28,6 +28,10 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
+***Version 3.9.3* ** *- TBD*
+
+- Added code to allow server admins to do an "end run" around misconfigured SSL servers.
+
 ***Version 3.9.2* ** *- February 11, 2018*
 
 - Minor adjustments to the Swedish localization.
