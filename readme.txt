@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 2.6
 Tested up to: 4.9.4
-Stable tag: 3.9.2
+Stable tag: 3.9.3
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -28,9 +28,12 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.9.3* ** *- TBD*
+***Version 3.9.3* ** *- July 31, 2018*
 
-- Added code to allow server admins to do an "end run" around misconfigured SSL servers.
+- Minor warning fix for missing lang.
+- Added a line to the AJAX URI calculator to allow the server admin to "hardcode" an HTTPS port, in case the server is misconfigured.
+- Added fix for possible XSS hijack in the fast mobile form.
+
 
 ***Version 3.9.2* ** *- February 11, 2018*
 
