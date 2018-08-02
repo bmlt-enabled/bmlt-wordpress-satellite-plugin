@@ -28,6 +28,10 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
+***Version 3.9.4* ** *- TBD*
+
+- Moved the home Git repo to GitHub.
+
 ***Version 3.9.3* ** *- July 31, 2018*
 
 - Minor warning fix for missing lang.
