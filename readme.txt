@@ -1,12 +1,12 @@
 === BMLT WordPress Plugin ===
 
-Contributors: magblogapi
+Contributors: magblogapi, radius314
 Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 4.0
-Tested up to: 4.9.4
-Stable tag: 3.9.3
+Tested up to: 5.0.0
+Stable tag: 3.9.4
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -33,6 +33,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 - Moved the home Git repo to GitHub.
 - Added the BlackWhiteAndRed theme.
 - Migrated to use composer instead of submodules.
+- Compatability tested for WP 5.0.0.
 
 ***Version 3.9.3* ** *- July 31, 2018*
 
