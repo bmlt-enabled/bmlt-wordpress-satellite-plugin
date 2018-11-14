@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0aa4a3f0e6805715d8fda4f651717b81",
+    "content-hash": "835e46d434813d9aa3df0a06fa701b64",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
-                "reference": "e9e2cc0056aecc008ea313d2caa5f971424848e8"
+                "reference": "dcd70df04817a1d203bbecca09c9c73237fca70a"
             },
             "require": {
                 "bmlt/bmlt-satellite-driver": "dev-master"
@@ -28,7 +28,7 @@
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2018-11-01T01:07:13+00:00"
+            "time": "2018-11-14T05:19:59+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
@@ -54,9 +54,10 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
-        "bmlt/bmlt-satellite-base-class": 20
+        "bmlt/bmlt-satellite-base-class": 20,
+        "bmlt/bmlt-satellite-driver": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

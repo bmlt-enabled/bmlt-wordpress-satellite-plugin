@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
-            "reference": "e9e2cc0056aecc008ea313d2caa5f971424848e8"
+            "reference": "dcd70df04817a1d203bbecca09c9c73237fca70a"
         },
         "require": {
             "bmlt/bmlt-satellite-driver": "dev-master"
         },
-        "time": "2018-11-01T01:07:13+00:00",
+        "time": "2018-11-14T05:19:59+00:00",
         "type": "library",
         "installation-source": "source",
         "license": [

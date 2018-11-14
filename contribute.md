@@ -12,6 +12,8 @@ To get things going in your local environment.
 
 Get your wordpress installation going.  Remember your admin password.  Once it's up, login to admin and activate the "BMLT Satellite PLugin" plugin.
 
-Now you can make edits to the crouton.php file and it will instantly take effect.
+Now you can make edits to the bmlt-wordpress-satellite-plugin.php file and it will instantly take effect.
+
+In order to pull in the necessary updated dependencies run `composer update`
 
 Please make note of the .editorconfig file and adhere to it as this will minimise the amount of formatting errors.  If you are using PHPStorm you will need to install the EditorConfig plugin.

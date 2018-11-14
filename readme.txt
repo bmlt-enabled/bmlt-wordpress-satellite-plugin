@@ -4,7 +4,7 @@ Contributors: magblogapi
 Plugin URI: http://bmlt.magshare.net
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
-Requires at least: 2.6
+Requires at least: 4.0
 Tested up to: 4.9.4
 Stable tag: 3.9.3
 
@@ -32,6 +32,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 - Moved the home Git repo to GitHub.
 - Added the BlackWhiteAndRed theme.
+- Migrated to use composer instead of submodules.
 
 ***Version 3.9.3* ** *- July 31, 2018*
 

@@ -8,10 +8,10 @@
     "email": "cmarshall@mac.com"
   }],
   "repositories": [{
-    "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
+    "url": "https://bitbucket.org/bmlt/bmlt-satellite-base-class",
     "type": "git"
   }, {
-    "url": "https://bitbucket.org/radius314/bmlt-satellite-driver",
+    "url": "https://bitbucket.org/bmlt/bmlt-satellite-driver",
     "type": "git"
   }],
   "require": {
