@@ -1,0 +1,21 @@
+{
+  "name": "bmlt/bmlt-wp",
+  "description": "This is a WordPress plugin of a BMLT satellite client.",
+  "type": "project",
+  "license": "GPL",
+  "authors": [{
+    "name": "Chris Marshall",
+    "email": "cmarshall@mac.com"
+  }],
+  "repositories": [{
+    "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
+    "type": "git"
+  }, {
+    "url": "https://bitbucket.org/radius314/bmlt-satellite-driver",
+    "type": "git"
+  }],
+  "require": {
+    "bmlt/bmlt-satellite-base-class": "dev-master",
+    "bmlt/bmlt-satellite-driver": "dev-master"
+  }
+}

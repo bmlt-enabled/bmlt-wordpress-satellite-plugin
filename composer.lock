@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0aa4a3f0e6805715d8fda4f651717b81",
+    "packages": [
+        {
+            "name": "bmlt/bmlt-satellite-base-class",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
+                "reference": "e9e2cc0056aecc008ea313d2caa5f971424848e8"
+            },
+            "require": {
+                "bmlt/bmlt-satellite-driver": "dev-master"
+            },
+            "type": "library",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Marshall",
+                    "email": "cmarshall@mac.com"
+                }
+            ],
+            "description": "This is a generic CMS plugin class for a BMLT satellite client.",
+            "time": "2018-11-01T01:07:13+00:00"
+        },
+        {
+            "name": "bmlt/bmlt-satellite-driver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/radius314/bmlt-satellite-driver",
+                "reference": "fdb4f517178464b82cf4080018e54eeca7051454"
+            },
+            "type": "library",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Marshall",
+                    "email": "cmarshall@mac.com"
+                }
+            ],
+            "description": "Provides low-level communication to the BMLT Root Server.",
+            "time": "2018-11-01T00:12:44+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "bmlt/bmlt-satellite-base-class": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
