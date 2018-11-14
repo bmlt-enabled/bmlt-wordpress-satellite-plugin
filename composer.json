@@ -4,8 +4,9 @@
   "type": "project",
   "license": "GPL",
   "authors": [{
-    "name": "Chris Marshall",
-    "email": "cmarshall@mac.com"
+    "name": "littlegreenviper"
+  },{
+    "name": "radius314"
   }],
   "repositories": [{
     "url": "https://bitbucket.org/bmlt/bmlt-satellite-base-class",
