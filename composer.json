@@ -1,5 +1,5 @@
 {
-  "name": "bmlt/bmlt-wp",
+  "name": "bmlt/bmlt-wordpress-satellite-plugin",
   "description": "This is a WordPress plugin of a BMLT satellite client.",
   "type": "project",
   "license": "GPL",
@@ -9,10 +9,10 @@
     "name": "radius314"
   }],
   "repositories": [{
-    "url": "https://bitbucket.org/bmlt/bmlt-satellite-base-class",
+    "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
     "type": "git"
   }, {
-    "url": "https://bitbucket.org/bmlt/bmlt-satellite-driver",
+    "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
     "type": "git"
   }],
   "require": {

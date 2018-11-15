@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "835e46d434813d9aa3df0a06fa701b64",
+    "content-hash": "57cf134f0dbba101aabf9a701fbc6d03",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/radius314/bmlt-satellite-base-class",
-                "reference": "dcd70df04817a1d203bbecca09c9c73237fca70a"
+                "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
+                "reference": "0132ef3b0036eb8c99bfca41f04d8af24090bd3f"
             },
             "require": {
                 "bmlt/bmlt-satellite-driver": "dev-master"
@@ -23,20 +23,22 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Marshall",
-                    "email": "cmarshall@mac.com"
+                    "name": "littlegreenviper"
+                },
+                {
+                    "name": "radius314"
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2018-11-14T05:19:59+00:00"
+            "time": "2018-11-15T03:41:47+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/radius314/bmlt-satellite-driver",
-                "reference": "fdb4f517178464b82cf4080018e54eeca7051454"
+                "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
+                "reference": "1fcad76015c0d620cf2a38e9fb77822e15c9fa3c"
             },
             "type": "library",
             "license": [
@@ -44,12 +46,14 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Marshall",
-                    "email": "cmarshall@mac.com"
+                    "name": "littlegreenviper"
+                },
+                {
+                    "name": "radius314"
                 }
             ],
             "description": "Provides low-level communication to the BMLT Root Server.",
-            "time": "2018-11-01T00:12:44+00:00"
+            "time": "2018-11-14T17:09:17+00:00"
         }
     ],
     "packages-dev": [],
