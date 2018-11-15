@@ -12,7 +12,7 @@ This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
 == Description ==
 
-The [Basic Meeting List Toolbox (BMLT)](http://magshare.org/bmlt) is a powerful client/server system for locating NA meetings.
+The [Basic Meeting List Toolbox (BMLT)](https://bmlt.app) is a powerful client/server system for locating NA meetings.
 The "root server" is a standalone Web site, but "satellite servers" are set up to point to the "root." This is a "satellite," set up as a WordPress plugin.
 It is very easy to install and use. It has an administration panel that lets you choose a map center, designate the root, set up the map zoom, and whether or not older browsers are supported.
 
@@ -28,12 +28,12 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.9.4* ** *- TBD*
+***Version 3.9.4* ** *- November 15, 2018*
 
 - Moved the home Git repo to GitHub.
 - Added the BlackWhiteAndRed theme.
 - Migrated to use composer instead of submodules.
-- Compatability tested for WP 5.0.0.
+- Compatibility tested for WP 5.0.0.
 
 ***Version 3.9.3* ** *- July 31, 2018*
 
@@ -592,4 +592,4 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Installing and Administering the Plugin ==
 
-You need to <a href="http://magshare.org/blog/bmlt-administration/">go to this Web page to get very detailed instructions on installing and configuring the plugin.</a>
+You need to <a href="https://bmlt.app/blog/bmlt-administration/">go to this Web page to get very detailed instructions on installing and configuring the plugin.</a>
