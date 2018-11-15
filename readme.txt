@@ -1,12 +1,12 @@
 === BMLT WordPress Plugin ===
 
-Contributors: magblogapi
-Plugin URI: http://bmlt.magshare.net
+Contributors: magblogapi, radius314
+Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
-Requires at least: 2.6
-Tested up to: 4.9.4
-Stable tag: 3.9.3
+Requires at least: 4.0
+Tested up to: 5.0.0
+Stable tag: 3.9.4
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -20,11 +20,11 @@ It is very easy to install and use. It has an administration panel that lets you
 
 This is a standard WordPress plugin. Either use the in-dashboard installer, or move the main directory into the wp-content/plugins/ directory and activate it.
 
-[More information can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/wordpress/)
+[More information can be found here.](https://bmlt.app/satellites/cms-plugins/wordpress/)
 
-[Administration instructions can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/cms-plugin-administration/)
+[Administration instructions can be found here.](https://bmlt.app/satellites/cms-plugins/cms-plugin-administration/)
 
-[Usage instructions for the shortcodes can be found here.](http://bmlt.magshare.net/satellites/cms-plugins/shortcodes/)
+[Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
 
@@ -32,6 +32,8 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 - Moved the home Git repo to GitHub.
 - Added the BlackWhiteAndRed theme.
+- Migrated to use composer instead of submodules.
+- Compatability tested for WP 5.0.0.
 
 ***Version 3.9.3* ** *- July 31, 2018*
 
@@ -162,7 +164,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 - Updated the readme file to reflect the current plugin state.
 - Removed out-of-date screengrabs.
-- Fixed a bug, in which the proper throbber was not being displayed where multiple themes are on the same page for the [bmlt_table](http://bmlt.magshare.net/satellites/the-fast-table-display/) shortcode.
+- Fixed a bug, in which the proper throbber was not being displayed where multiple themes are on the same page for the [bmlt_table](https://bmlt.app/satellites/the-fast-table-display/) shortcode.
 - The standard [[bmlt]] search single meeting results now have a grayed out background, and clicking anywhere outside the details will dismiss the dialog.
 
 ***Version 3.3.3* ** *- April 9, 2016*

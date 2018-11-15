@@ -6,7 +6,7 @@
 *                                                                                           *
 *   These need to be without the asterisks, as WP parses them.                              *
 Plugin Name: BMLT WordPress Satellite
-Plugin URI: http://bmlt.magshare.net
+Plugin URI: https://bmlt.app
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
 Version: 3.9.4
@@ -49,7 +49,8 @@ if ( function_exists ( 'update_option' ) )
     }
 
 // Include the satellite driver class.
-require_once ( dirname ( __FILE__ ).'/BMLT-Satellite-Base-Class/bmlt-cms-satellite-plugin.php' );
+define('ROOTPATH', __DIR__);
+require_once ( ROOTPATH .'/vendor/bmlt/bmlt-satellite-base-class/bmlt-cms-satellite-plugin.php' );
 
 /****************************************************************************************//**
 *   \class BMLTWPPlugin                                                                     *
@@ -392,7 +393,7 @@ class BMLTWPPlugin extends BMLTPlugin
             $head_content .= self::stripFile ( 'table_styles.css' ) . "\n";
             $head_content .= self::stripFile ( 'quicksearch.css' ) . "\n";
         
-            $dirname = dirname ( __FILE__ ) . '/BMLT-Satellite-Base-Class/themes';
+            $dirname = dirname ( __FILE__ ) . '/vendor/bmlt/bmlt-satellite-base-class/themes';
             $dir = new DirectoryIterator ( $dirname );
 
             foreach ( $dir as $fileinfo )
@@ -582,11 +583,11 @@ class BMLTWPPlugin extends BMLTPlugin
             {
             if ( plugins_url() )
                 {
-                $url = plugins_url()."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+                $url = plugins_url()."/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/";
                 }
             elseif ( defined ('WP_PLUGIN_URL' ) )
                 {
-                $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+                $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/";
                 }
             else
                 {
@@ -595,7 +596,7 @@ class BMLTWPPlugin extends BMLTPlugin
             }
         elseif ( !function_exists ( 'plugins_url' ) && defined ('WP_PLUGIN_URL' ) )
             {
-            $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/BMLT-Satellite-Base-Class/";
+            $url = WP_PLUGIN_URL."/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/";
             }
         else
             {

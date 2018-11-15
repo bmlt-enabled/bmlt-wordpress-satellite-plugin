@@ -1,0 +1,55 @@
+[
+    {
+        "name": "bmlt/bmlt-satellite-base-class",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
+            "reference": "0132ef3b0036eb8c99bfca41f04d8af24090bd3f"
+        },
+        "require": {
+            "bmlt/bmlt-satellite-driver": "dev-master"
+        },
+        "time": "2018-11-15T03:41:47+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "license": [
+            "GPL"
+        ],
+        "authors": [
+            {
+                "name": "littlegreenviper"
+            },
+            {
+                "name": "radius314"
+            }
+        ],
+        "description": "This is a generic CMS plugin class for a BMLT satellite client."
+    },
+    {
+        "name": "bmlt/bmlt-satellite-driver",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
+            "reference": "1fcad76015c0d620cf2a38e9fb77822e15c9fa3c"
+        },
+        "time": "2018-11-14T17:09:17+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "license": [
+            "GPL"
+        ],
+        "authors": [
+            {
+                "name": "littlegreenviper"
+            },
+            {
+                "name": "radius314"
+            }
+        ],
+        "description": "Provides low-level communication to the BMLT Root Server."
+    }
+]

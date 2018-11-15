@@ -1,0 +1,70 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "57cf134f0dbba101aabf9a701fbc6d03",
+    "packages": [
+        {
+            "name": "bmlt/bmlt-satellite-base-class",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
+                "reference": "0132ef3b0036eb8c99bfca41f04d8af24090bd3f"
+            },
+            "require": {
+                "bmlt/bmlt-satellite-driver": "dev-master"
+            },
+            "type": "library",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "littlegreenviper"
+                },
+                {
+                    "name": "radius314"
+                }
+            ],
+            "description": "This is a generic CMS plugin class for a BMLT satellite client.",
+            "time": "2018-11-15T03:41:47+00:00"
+        },
+        {
+            "name": "bmlt/bmlt-satellite-driver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
+                "reference": "1fcad76015c0d620cf2a38e9fb77822e15c9fa3c"
+            },
+            "type": "library",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "littlegreenviper"
+                },
+                {
+                    "name": "radius314"
+                }
+            ],
+            "description": "Provides low-level communication to the BMLT Root Server.",
+            "time": "2018-11-14T17:09:17+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "bmlt/bmlt-satellite-base-class": 20,
+        "bmlt/bmlt-satellite-driver": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
