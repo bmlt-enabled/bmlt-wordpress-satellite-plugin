@@ -1,0 +1,14 @@
+{
+  "name": "bmlt/bmlt-satellite-base-class",
+  "description": "This is a generic CMS plugin class for a BMLT satellite client.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [{
+    "name": "littlegreenviper"
+  }, {
+    "name": "radius314"
+  }],
+  "require": {
+    "bmlt/bmlt-satellite-driver": "1.0.19"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "bmlt/bmlt-satellite-driver",
+  "description": "Provides low-level communication to the BMLT Root Server.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [{
+      "name": "littlegreenviper"
+    },
+    {
+      "name": "radius314"
+    }],
+  "require": {}
+}
