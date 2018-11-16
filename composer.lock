@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfa041d9fcdbd35ffb6e337bf641e179",
+    "content-hash": "ee1485ba392cdd843a7156d1c344f1c6",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "dev-master",
+            "version": "3.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad"
+                "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/03925de1a43c3b6c8571dbd692b557f148ccf7ad",
-                "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/ba9304433033af440ef414a81b8cbadd6a8a8ea3",
+                "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3",
                 "shasum": ""
             },
             "require": {
-                "bmlt/bmlt-satellite-driver": "dev-master"
+                "bmlt/bmlt-satellite-driver": "1.0.19"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -37,20 +37,20 @@
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2018-11-16T02:04:28+00:00"
+            "time": "2018-11-16T04:40:04+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
-            "version": "dev-master",
+            "version": "1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver.git",
-                "reference": "2bd692873008a99228f6044111539dea871cf217"
+                "reference": "92389e83b6f3620fe4cc92538e588e2742826c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/2bd692873008a99228f6044111539dea871cf217",
-                "reference": "2bd692873008a99228f6044111539dea871cf217",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/92389e83b6f3620fe4cc92538e588e2742826c83",
+                "reference": "92389e83b6f3620fe4cc92538e588e2742826c83",
                 "shasum": ""
             },
             "type": "library",
@@ -67,16 +67,13 @@
                 }
             ],
             "description": "Provides low-level communication to the BMLT Root Server.",
-            "time": "2018-11-16T01:45:49+00:00"
+            "time": "2018-11-16T04:23:53+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "bmlt/bmlt-satellite-base-class": 20,
-        "bmlt/bmlt-satellite-driver": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

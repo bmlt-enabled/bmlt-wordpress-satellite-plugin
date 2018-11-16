@@ -1,0 +1,8 @@
+.editorconfig export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+contribute.md export-ignore
+readme.txt export-ignore
+docker-compose.yml export-ignore
+Dockerfile export-ignore
+/doc export-ignore

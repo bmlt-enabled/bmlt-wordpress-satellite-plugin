@@ -1,25 +1,25 @@
 [
     {
         "name": "bmlt/bmlt-satellite-base-class",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "3.9.4",
+        "version_normalized": "3.9.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-            "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad"
+            "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/03925de1a43c3b6c8571dbd692b557f148ccf7ad",
-            "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/ba9304433033af440ef414a81b8cbadd6a8a8ea3",
+            "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3",
             "shasum": ""
         },
         "require": {
-            "bmlt/bmlt-satellite-driver": "dev-master"
+            "bmlt/bmlt-satellite-driver": "1.0.19"
         },
-        "time": "2018-11-16T02:04:28+00:00",
+        "time": "2018-11-16T04:40:04+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
@@ -36,22 +36,22 @@
     },
     {
         "name": "bmlt/bmlt-satellite-driver",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "1.0.19",
+        "version_normalized": "1.0.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver.git",
-            "reference": "2bd692873008a99228f6044111539dea871cf217"
+            "reference": "92389e83b6f3620fe4cc92538e588e2742826c83"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/2bd692873008a99228f6044111539dea871cf217",
-            "reference": "2bd692873008a99228f6044111539dea871cf217",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/92389e83b6f3620fe4cc92538e588e2742826c83",
+            "reference": "92389e83b6f3620fe4cc92538e588e2742826c83",
             "shasum": ""
         },
-        "time": "2018-11-16T01:45:49+00:00",
+        "time": "2018-11-16T04:23:53+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
