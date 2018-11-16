@@ -2,21 +2,15 @@
   "name": "bmlt/bmlt-wordpress-satellite-plugin",
   "description": "This is a WordPress plugin of a BMLT satellite client.",
   "type": "project",
-  "license": "GPL",
+  "license": "MIT",
   "authors": [{
     "name": "littlegreenviper"
   },{
     "name": "radius314"
   }],
-  "repositories": [{
-    "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
-    "type": "git"
-  }, {
-    "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
-    "type": "git"
-  }],
   "require": {
     "bmlt/bmlt-satellite-base-class": "dev-master",
     "bmlt/bmlt-satellite-driver": "dev-master"
-  }
+  },
+  "minimum-stability": "dev"
 }

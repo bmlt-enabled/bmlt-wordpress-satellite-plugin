@@ -5,17 +5,24 @@
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class",
-            "reference": "0132ef3b0036eb8c99bfca41f04d8af24090bd3f"
+            "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
+            "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/03925de1a43c3b6c8571dbd692b557f148ccf7ad",
+            "reference": "03925de1a43c3b6c8571dbd692b557f148ccf7ad",
+            "shasum": ""
         },
         "require": {
             "bmlt/bmlt-satellite-driver": "dev-master"
         },
-        "time": "2018-11-15T03:41:47+00:00",
+        "time": "2018-11-16T02:04:28+00:00",
         "type": "library",
         "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL"
+            "MIT"
         ],
         "authors": [
             {
@@ -33,14 +40,21 @@
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver",
-            "reference": "1fcad76015c0d620cf2a38e9fb77822e15c9fa3c"
+            "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver.git",
+            "reference": "2bd692873008a99228f6044111539dea871cf217"
         },
-        "time": "2018-11-14T17:09:17+00:00",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/2bd692873008a99228f6044111539dea871cf217",
+            "reference": "2bd692873008a99228f6044111539dea871cf217",
+            "shasum": ""
+        },
+        "time": "2018-11-16T01:45:49+00:00",
         "type": "library",
         "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL"
+            "MIT"
         ],
         "authors": [
             {
