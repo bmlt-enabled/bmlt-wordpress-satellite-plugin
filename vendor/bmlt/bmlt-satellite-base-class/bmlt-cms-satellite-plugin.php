@@ -3,14 +3,14 @@
 *   \file   bmlt-cms-satellite-plugin.php                                                   *
 *                                                                                           *
 *   \brief  This is a generic CMS plugin class for a BMLT satellite client.                 *
-*   \version 3.9.4                                                                          *
+*   \version 3.9.8                                                                          *
 *                                                                                           *
 *   This file is part of the BMLT Common Satellite Base Class Project. The project GitHub   *
 *   page is available here: https://github.com/MAGSHARE/BMLT-Common-CMS-Plugin-Class        *
 *                                                                                           *
 *   This file is part of the Basic Meeting List Toolbox (BMLT).                             *
 *                                                                                           *
-*   Find out more at: https://bmlt.app                                              *
+*   Find out more at: https://bmlt.app                                                      *
 *                                                                                           *
 *   BMLT is free software: you can redistribute it and/or modify                            *
 *   it under the terms of the GNU General Public License as published by                    *
@@ -29,7 +29,9 @@
 // define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
 // Include the satellite driver class.
-define('ROOTPATH', __DIR__);
+if (!defined('ROOTPATH')) {
+    define('ROOTPATH', __DIR__);
+}
 require_once ( ROOTPATH .'/vendor/bmlt/bmlt-satellite-driver/bmlt_satellite_controller.class.php' );
 
 global $g_lang_keys;
