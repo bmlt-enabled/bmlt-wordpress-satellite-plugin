@@ -1,6 +1,6 @@
 === BMLT WordPress Plugin ===
 
-Contributors: magblogapi, radius314
+Contributors: magblogapi, radius314, pjaudiomv, jbraswell
 Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE

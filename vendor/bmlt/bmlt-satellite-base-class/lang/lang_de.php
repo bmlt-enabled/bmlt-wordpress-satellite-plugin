@@ -4,14 +4,13 @@
 *   \file   lang_de.php                                                                     *
 *                                                                                           *
 *   \brief  This file contains German localizations.                                        *
-*   \version 3.9.4                                                                          *
 *                                                                                           *
 *   This file is part of the BMLT Common Satellite Base Class Project. The project GitHub   *
 *   page is available here: https://github.com/MAGSHARE/BMLT-Common-CMS-Plugin-Class        *
 *                                                                                           *
 *   This file is part of the Basic Meeting List Toolbox (BMLT).                             *
 *                                                                                           *
-*   Find out more at: https://bmlt.app                                              *
+*   Find out more at: https://bmlt.app                                                      *
 *                                                                                           *
 *   BMLT is free software: you can redistribute it and/or modify                            *
 *   it under the terms of the GNU General Public License as published by                    *
@@ -27,12 +26,12 @@
 *   along with this code.  If not, see <http://www.gnu.org/licenses/>.                      *
 ********************************************************************************************/
 
-require_once ( dirname ( __FILE__ ) . '/BMLT_Localized_BaseClass.class.php' );
+require_once(dirname(__FILE__) . '/BMLT_Localized_BaseClass.class.php');
 
 class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
+{
+    function __construct()
     {
-    function __construct ()
-        {
         /************************************************************************************//**
         *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
         ****************************************************************************************/
@@ -79,7 +78,7 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
         $this->local_options_initial_view = array (                           ///< The list of choices for presentation in the popup.
                                                     'map' => 'karte',
                                                     'text' => 'Text',
-                                                    'advanced_map' => 'Erweiterte karte',
+                                                    'advanced_map' => 'Erweiterte Karte',
                                                     'advanced_text' => 'Erweiterter Text'
                                                     );
         $this->local_options_initial_view_prompt = 'Anfänglicher Suchtyp:';    ///< The label for the initial view popup.
@@ -137,20 +136,20 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
         ****************************************************************************************/
     
         /// These are all for the [[bmlt_nouveau]] shortcode.
-        $this->local_nouveau_advanced_button = 'Erweitert';                ///< The button name for the advanced search in the nouveau search.
+        $this->local_nouveau_advanced_button = 'Filtern nach ...';                ///< The button name for the advanced search in the nouveau search.
         $this->local_nouveau_map_button = 'Kartensuche anstatt Textsuche';    ///< The button name for the map search in the nouveau search.
         $this->local_nouveau_text_button = 'Textsuche anstatt Kartensuche';   ///< The button name for the text search in the nouveau search.
         $this->local_nouveau_text_go_button = 'Los';                           ///< The button name for the "GO" button in the text search in the nouveau search.
         $this->local_nouveau_text_item_default_text = 'Text zum Suchen eingeben';    ///< The text that fills an empty text item.
-        $this->local_nouveau_text_location_label_text = 'Dies ist ein Ort oder eine PLZ';         ///< The label text for the location checkbox.
+        $this->local_nouveau_text_location_label_text = 'Umkreissuche';         ///< The label text for the location checkbox.
         $this->local_nouveau_advanced_map_radius_label_1 = 'Zeige Meetings innerhalb von';                ///< The label text for the radius popup.
         $this->local_nouveau_advanced_map_radius_label_2 = 'der Marker-Position.';             ///< The second part of the label.
         $this->local_nouveau_advanced_map_radius_value_auto = 'Ein automatisch gewählter Radius';   ///< The second part of the label, if Miles
         $this->local_nouveau_advanced_map_radius_value_km = 'Km';                                 ///< The second part of the popup value, if Kilometers
         $this->local_nouveau_advanced_map_radius_value_mi = 'Milen';                              ///< The second part of the popup value, if Miles
-        $this->local_nouveau_advanced_weekdays_disclosure_text = 'Gewählte Wochentage';             ///< The text that is used for the weekdays disclosure link.
-        $this->local_nouveau_advanced_formats_disclosure_text = 'Gewählte Formate';               ///< The text that is used for the formats disclosure link.
-        $this->local_nouveau_advanced_service_bodies_disclosure_text = 'Gewählte Service Bodies'; ///< The text that is used for the service bodies disclosure link.
+        $this->local_nouveau_advanced_weekdays_disclosure_text = 'Nach Wochentagen filtern';             ///< The text that is used for the weekdays disclosure link.
+        $this->local_nouveau_advanced_formats_disclosure_text = 'Nach Meetings-Formaten filtern';               ///< The text that is used for the formats disclosure link.
+        $this->local_nouveau_advanced_service_bodies_disclosure_text = 'Nach Gebiet filtern'; ///< The text that is used for the service bodies disclosure link.
         $this->local_nouveau_select_search_spec_text = 'Neue Suche definieren';                    ///< The text that is used for the link that tells you to select the search specification.
         $this->local_nouveau_select_search_results_text = 'Zeige Ergebnisse der letzten Suche';  ///< The text that is used for the link that tells you to select the search results.
         $this->local_nouveau_cant_find_meetings_display = 'Keine Meetings in dieser Suche gefunden';     ///< When the new map search cannot find any meetings.
@@ -344,7 +343,7 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
         $this->local_search_tomorrow = 'Morgen';
     
         /// The search for an address form.
-        $this->local_list_check = 'Wenn Sie Probleme mit der Interaktiven Karte haben oder die Ergebnisse als Liste wünschen, haken Sie diese Box an und geben Sie eine Adresse ein.';
+        $this->local_list_check = 'Wenn Sie Probleme mit der interaktiven Karte haben oder die Ergebnisse als Liste wünschen, haken Sie diese Box an und geben Sie eine Adresse ein.';
         $this->local_search_address_single = 'Suche nach Meetings in der Nähe einer Adresse';
     
         /// Used instead of "near my present location."
@@ -356,7 +355,7 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
     
         /// Error messages.
         $this->local_mobile_fail_no_meetings = 'Keine Meetings gefunden!';
-        $this->local_server_fail = 'Die Meetingssuche war nicht erfolgreich wegen eines Serverfehlers!';
+        $this->local_server_fail = 'Die Meetingssuche war wegen eines Serverfehlers nicht erfolgreich!';
         $this->local_cant_find_address = 'Kann die Position der Adressinformation nicht bestimmen!';
         $this->local_cannot_determine_location = 'Kann Ihre Position nicht bestimmen!';
         $this->local_enter_address_alert = 'Geben Sie eine Adresse ein!';
@@ -382,6 +381,5 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
         ****************************************************************************************/
         $this->local_quicksearch_select_option_0 = 'Suche Überall';
         $this->local_quicksearch_display_too_large = 'Too many results. Please narrow your search.';
-        }
-    };
-?>
+    }
+};

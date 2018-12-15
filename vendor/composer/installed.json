@@ -1,23 +1,23 @@
 [
     {
         "name": "bmlt/bmlt-satellite-base-class",
-        "version": "3.9.4",
-        "version_normalized": "3.9.4.0",
+        "version": "3.9.9",
+        "version_normalized": "3.9.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-            "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3"
+            "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/ba9304433033af440ef414a81b8cbadd6a8a8ea3",
-            "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/8e03ad696fb4f5284142685ae7402dd8182a1a14",
+            "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14",
             "shasum": ""
         },
         "require": {
             "bmlt/bmlt-satellite-driver": "1.0.19"
         },
-        "time": "2018-11-16T04:40:04+00:00",
+        "time": "2018-12-15T02:35:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",

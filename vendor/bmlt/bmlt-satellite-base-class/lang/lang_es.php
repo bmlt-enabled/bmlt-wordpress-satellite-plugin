@@ -4,14 +4,13 @@
 *   \file   lang_es.php                                                                     *
 *                                                                                           *
 *   \brief  This file contains Spanish localizations.                                       *
-*   \version 3.6.3                                                                          *
 *                                                                                           *
 *   This file is part of the BMLT Common Satellite Base Class Project. The project GitHub   *
 *   page is available here: https://github.com/MAGSHARE/BMLT-Common-CMS-Plugin-Class        *
 *                                                                                           *
 *   This file is part of the Basic Meeting List Toolbox (BMLT).                             *
 *                                                                                           *
-*   Find out more at: https://bmlt.app                                              *
+*   Find out more at: https://bmlt.app                                                      *
 *                                                                                           *
 *   BMLT is free software: you can redistribute it and/or modify                            *
 *   it under the terms of the GNU General Public License as published by                    *

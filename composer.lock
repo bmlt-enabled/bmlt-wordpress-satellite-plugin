@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee1485ba392cdd843a7156d1c344f1c6",
+    "content-hash": "003504226c7498c475c676540f4280e3",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.9.4",
+            "version": "3.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3"
+                "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/ba9304433033af440ef414a81b8cbadd6a8a8ea3",
-                "reference": "ba9304433033af440ef414a81b8cbadd6a8a8ea3",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/8e03ad696fb4f5284142685ae7402dd8182a1a14",
+                "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14",
                 "shasum": ""
             },
             "require": {
@@ -37,7 +37,7 @@
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2018-11-16T04:40:04+00:00"
+            "time": "2018-12-15T02:35:21+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
