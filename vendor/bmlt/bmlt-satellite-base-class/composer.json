@@ -10,5 +10,8 @@
   }],
   "require": {
     "bmlt/bmlt-satellite-driver": "1.0.19"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*"
   }
 }

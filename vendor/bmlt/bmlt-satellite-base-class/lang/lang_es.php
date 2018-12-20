@@ -1,5 +1,5 @@
 <?php
-// Español 
+// Español
 /****************************************************************************************//**
 *   \file   lang_es.php                                                                     *
 *                                                                                           *
@@ -26,26 +26,29 @@
 *   along with this code.  If not, see <http://www.gnu.org/licenses/>.                      *
 ********************************************************************************************/
 
-require_once ( dirname ( __FILE__ ) . '/BMLT_Localized_BaseClass.class.php' );
-
+require_once(dirname(__FILE__) . '/BMLT_Localized_BaseClass.class.php');
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 class BMLT_Localized_BaseClass_es extends BMLT_Localized_BaseClass
+// phpcs:enable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
+{
+    public function __construct()
     {
-    function __construct ()
-        {
         /************************************************************************************//**
         *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
         ****************************************************************************************/
     
         /// These are all for the admin pages.
         $this->local_options_lang_prompt = 'Language:';                       ///< The label for the Language Selector.
-        $this->local_options_title = 'Opciones de la Herramienta Básica de Lista de Reuniones.';    	///< This is the title that is displayed over the options.
-        $this->local_menu_string = 'Opciones BMLT.';                            					///< The name of the menu item.
-        $this->local_options_prefix = 'Seleccionar configuración.';                  		    ///< The string displayed before each number in the options popup.
-        $this->local_options_add_new = 'Agregar una Configuración Nueva.';                  	///< The string displayed in the "Add New Option" button.
-        $this->local_options_save = 'Guardar Cambios.';                           			///< The string displayed in the "Save Changes" button.
-        $this->local_options_delete_option = 'Eliminar esta Configuración.';           			///< The string displayed in the "Delete Option" button.<?php
-        $this->local_options_delete_failure = 'La Eliminación de la Configuración Falló.'; 		///< The string displayed upon unsuccessful deletion of an option page.
-        $this->local_options_create_failure = 'La Creación de la Configuración Falló.'; 		///< The string displayed upon unsuccessful creation of an option page.
+        $this->local_options_title = 'Opciones de la Herramienta Básica de Lista de Reuniones.';        ///< This is the title that is displayed over the options.
+        $this->local_menu_string = 'Opciones BMLT.';                                                ///< The name of the menu item.
+        $this->local_options_prefix = 'Seleccionar configuración.';                             ///< The string displayed before each number in the options popup.
+        $this->local_options_add_new = 'Agregar una Configuración Nueva.';                      ///< The string displayed in the "Add New Option" button.
+        $this->local_options_save = 'Guardar Cambios.';                                     ///< The string displayed in the "Save Changes" button.
+        $this->local_options_delete_option = 'Eliminar esta Configuración.';                    ///< The string displayed in the "Delete Option" button.<?php
+        $this->local_options_delete_failure = 'La Eliminación de la Configuración Falló.';      ///< The string displayed upon unsuccessful deletion of an option page.
+        $this->local_options_create_failure = 'La Creación de la Configuración Falló.';         ///< The string displayed upon unsuccessful creation of an option page.
         $this->local_options_delete_option_confirm = 'Está seguro de que desea eliminar esta Configuración?';    ///< The string displayed in the "Are you sure?" confirm.
         $this->local_options_delete_success = 'La Configuración fué Eliminada Satisfactoriamente.';        ///< The string displayed upon successful deletion of an option page.
         $this->local_options_create_success = 'La Configuración fué Creada Satisfactoriamente.';        ///< The string displayed upon successful creation of an option page.
@@ -381,6 +384,5 @@ class BMLT_Localized_BaseClass_es extends BMLT_Localized_BaseClass
         ****************************************************************************************/
         $this->local_quicksearch_select_option_0 = 'Buscar en todos lados';
         $this->local_quicksearch_display_too_large = 'Muchos Resultados, Porfavor filtre su búsqueda.';
-        }
-    };
-?>
+    }
+}

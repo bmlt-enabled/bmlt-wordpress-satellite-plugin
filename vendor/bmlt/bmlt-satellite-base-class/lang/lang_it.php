@@ -26,12 +26,15 @@
 *   along with this code.  If not, see <http://www.gnu.org/licenses/>.                      *
 ********************************************************************************************/
 
-require_once ( dirname ( __FILE__ ) . '/BMLT_Localized_BaseClass.class.php' );
-
+require_once(dirname(__FILE__) . '/BMLT_Localized_BaseClass.class.php');
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 class BMLT_Localized_BaseClass_it extends BMLT_Localized_BaseClass
+// phpcs:enable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
+{
+    public function __construct()
     {
-    function __construct ()
-        {
         /************************************************************************************//**
         *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
         ****************************************************************************************/
@@ -306,7 +309,7 @@ class BMLT_Localized_BaseClass_it extends BMLT_Localized_BaseClass
         $this->local_new_map_all_formats_title = 'Trova riunioni per ogni formato.'; ///< 'Find meetings for every format.'
         $this->local_new_map_js_center_marker_current_radius_1 = 'Il cerchio è circa '; ///< 'The circle is about '
         $this->local_new_map_js_center_marker_current_radius_2_km = ' chilometri di larghezza.'; ///< ' kilometers wide.'
-        $this->local_new_map_js_center_marker_current_radius_2_mi = ' miglia di larghezza.';  
+        $this->local_new_map_js_center_marker_current_radius_2_mi = ' miglia di larghezza.';
         $this->local_new_map_js_diameter_choices = array ( 0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 50.0, 100.0 );
         $this->local_new_map_js_new_search = 'Nuova ricerca'; ///< 'New Search'
         $this->local_new_map_option_loc_label = 'Immetti una località:'; ///< Enter A Location:'
@@ -332,13 +335,13 @@ class BMLT_Localized_BaseClass_it extends BMLT_Localized_BaseClass
    
         /// The page titles.
         $this->local_mobile_results_page_title = 'Risultati della ricerca Vvloce'; ///< 'Quick Meeting Search Results'
-        $this->local_mobile_results_form_title = 'Ricerca veloce delle riunioni vicine'; ///< 'Find Nearby Meetings Quickly'    
+        $this->local_mobile_results_form_title = 'Ricerca veloce delle riunioni vicine'; ///< 'Find Nearby Meetings Quickly'
         /// The fast GPS lookup links.
         $this->local_GPS_banner = 'Seleziona ricerca veloce'; ///<'Select A Fast Meeting Lookup'
         $this->local_GPS_banner_subtext = 'Aggiungi questi link ai preferiti per ricerche ancora più veloci in futuro.'; ///<'Bookmark these links for even faster searches in the future.'
         $this->local_search_all = 'Cerca tutte le riunioni vicine alla mia attuale località'; ///< 'Search for all meetings near my present location.';
         $this->local_search_today = 'Oggi, più tardi'; ///< 'Later Today'
-        $this->local_search_tomorrow = 'Domani';    
+        $this->local_search_tomorrow = 'Domani';
 
         /// The search for an address form.
         $this->local_list_check = 'Se stai avendo delle difficoltà con la mappa interattiva, o desideri visualizzare i risultati in una lista, spunta questa casella e inserisci un indirizzo'; ///< 'If you are experiencing difficulty with the interactive map, or wish to have the results returned as a list, check this box and enter an address.';
@@ -379,6 +382,5 @@ class BMLT_Localized_BaseClass_it extends BMLT_Localized_BaseClass
         ****************************************************************************************/
         $this->local_quicksearch_select_option_0 = 'Cerca Ovunque';
         $this->local_quicksearch_display_too_large = 'Troppi risultati. Per favore, restringi la tua ricerca.';
-        }
-    };
-?>
+    }
+}
