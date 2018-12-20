@@ -1,2 +1,4 @@
 .idea
 logs/
+vendor/bin/
+vendor/squizlabs/
