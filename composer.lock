@@ -4,24 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d670438b9152c3af670263f282131f9",
+    "content-hash": "fcb917e80e595a6875f103ba3fb44654",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.9.9",
+            "version": "3.9.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14"
+                "reference": "c7db22b26909d01fe71342ac272956f4ed4065a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/8e03ad696fb4f5284142685ae7402dd8182a1a14",
-                "reference": "8e03ad696fb4f5284142685ae7402dd8182a1a14",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/c7db22b26909d01fe71342ac272956f4ed4065a8",
+                "reference": "c7db22b26909d01fe71342ac272956f4ed4065a8",
                 "shasum": ""
             },
             "require": {
                 "bmlt/bmlt-satellite-driver": "1.0.19"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -37,7 +40,7 @@
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2018-12-15T02:35:21+00:00"
+            "time": "2018-12-20T12:35:00+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",

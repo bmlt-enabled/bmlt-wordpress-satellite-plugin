@@ -27,10 +27,13 @@
 ********************************************************************************************/
 
 require_once(dirname(__FILE__) . '/BMLT_Localized_BaseClass.class.php');
-
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
+// phpcs:enable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
 {
-    function __construct()
+    public function __construct()
     {
         /************************************************************************************//**
         *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
@@ -382,4 +385,4 @@ class BMLT_Localized_BaseClass_de extends BMLT_Localized_BaseClass
         $this->local_quicksearch_select_option_0 = 'Suche Überall';
         $this->local_quicksearch_display_too_large = 'Too many results. Please narrow your search.';
     }
-};
+}

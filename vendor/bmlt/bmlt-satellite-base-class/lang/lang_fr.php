@@ -26,12 +26,15 @@
 *   along with this code.  If not, see <http://www.gnu.org/licenses/>.                      *
 ********************************************************************************************/
 
-require_once ( dirname ( __FILE__ ) . '/BMLT_Localized_BaseClass.class.php' );
-
+require_once(dirname(__FILE__) . '/BMLT_Localized_BaseClass.class.php');
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 class BMLT_Localized_BaseClass_fr extends BMLT_Localized_BaseClass
+// phpcs:enable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
+{
+    public function __construct()
     {
-    function __construct ()
-        {
         /************************************************************************************//**
         *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
         ****************************************************************************************/
@@ -381,6 +384,5 @@ class BMLT_Localized_BaseClass_fr extends BMLT_Localized_BaseClass
         ****************************************************************************************/
         $this->local_quicksearch_select_option_0 = 'Rechercher Partout';
         $this->local_quicksearch_display_too_large = 'Too many results. Please narrow your search.';
-        }
-    };
-?>
+    }
+}

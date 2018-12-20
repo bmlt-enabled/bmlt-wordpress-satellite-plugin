@@ -25,9 +25,12 @@
 *   You should have received a copy of the GNU General Public License                       *
 *   along with this code.  If not, see <http://www.gnu.org/licenses/>.                      *
 ********************************************************************************************/
-
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
+// phpcs:disable PSR2.Classes.PropertyDeclaration.ScopeMissing
+// phpcs:disable PSR2.Classes.PropertyDeclaration.VarUsed
 abstract class BMLT_Localized_BaseClass
-    {
+{
     /************************************************************************************//**
     *                           STATIC DATA MEMBERS (LOCALIZABLE)                           *
     ****************************************************************************************/
@@ -339,5 +342,8 @@ abstract class BMLT_Localized_BaseClass
     /// This array has the weekdays, spelled out. Since weekdays start at 1 (Sunday), we consider 0 to be an error.
     var $local_weekdays;
     var $local_weekdays_short;
-    };
-?>
+}
+// phpcs:enable PSR1.Classes.ClassDeclaration.MissingNamespace
+// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
+// phpcs:enable PSR2.Classes.PropertyDeclaration.ScopeMissing
+// phpcs:enable PSR2.Classes.PropertyDeclaration.VarUsed
