@@ -5,8 +5,8 @@ Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: MAGSHARE
 Requires at least: 4.0
-Tested up to: 5.0.0
-Stable tag: 3.9.6
+Tested up to: 5.0.2
+Stable tag: 3.9.7
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,11 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.9.7* ** *- UNRELEASED*
+- Fixed an issue where the Enter key would not submit the meeting search form when using Firefox on standard [[BMLT]] shortcode.
+- Fixed an issue with Google Map API being called wrong.
+- Added sorting to map search for service bodies and formats.
 
 ***Version 3.9.6* ** *- November 16, 2018*
 - Fixed dependency issues.

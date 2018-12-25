@@ -236,7 +236,7 @@ function NouveauMapSearch ( in_unique_id,           ///< The UID of the containe
         this.m_display_div.className = 'bmlt_nouveau_div';
         this.m_display_div.id = this.m_uid;
         var id = this.m_uid;
-        this.m_display_div.onkeypress = function () { NouveauMapSearch.prototype.sKeyDown ( id ); };
+        this.m_display_div.onkeypress = function (event) { NouveauMapSearch.prototype.sKeyDown ( id, event ); };
         
         // Next, create the spec/results switch.
         this.buildDOMTree_ResultsSpec_Switch();
@@ -944,7 +944,8 @@ function NouveauMapSearch ( in_unique_id,           ///< The UID of the containe
         inner.className = 'bmlt_nouveau_advanced_formats_content_inner_div';
         
         this.m_advanced_format_checkboxes_array = new Array;
-        
+        this.sortByKey(this.m_format_descriptions, 'key_string');
+
         for ( var c = 0; this.m_format_descriptions && (c < this.m_format_descriptions.length); c++ )
             {
             var format_id = this.m_format_descriptions[c].id;
@@ -1069,6 +1070,7 @@ function NouveauMapSearch ( in_unique_id,           ///< The UID of the containe
                                                             )
         {
         var main_dl = null;
+        this.sortByKey(this.m_service_bodies, 'name');
         
         for ( var c = 0; c < this.m_service_bodies.length; c++ )
             {
@@ -4103,12 +4105,8 @@ NouveauMapSearch.prototype.sGeoCallback = function ( in_geocode_response,	///< T
 	{
     eval ('var context = g_instance_' + in_uid + '_js_handler');
 	context.lookupCompleteHandler ( in_geocode_response );
-	
-	var old_geocoder = context.m_geocoder;
 
     context.m_geocoder = null;
-    
-    google.maps.event.removeListener ( old_geocoder );
 	};
 
 /****************************************************************************************//**
@@ -4503,8 +4501,7 @@ NouveauMapSearch.prototype.sRadiusChanged = function (  in_uid          ///< The
 /****************************************************************************************//**
 *	\brief This just traps the enter key for the text entry.                                *
 ********************************************************************************************/
-NouveauMapSearch.prototype.sKeyDown = function (    in_id       ///< The unique ID of the object (establishes context).
-                                                )
+NouveauMapSearch.prototype.sKeyDown = function ( in_id, event )     ///< The unique ID of the object (establishes context).
     {
     if ( event.keyCode == 13 )
         {
@@ -4842,3 +4839,16 @@ NouveauMapSearch.prototype.sFromLatLngToPixel = function (  in_Latng,
 
     return ret;
     };
+
+/*******************************************************************************************/
+/**
+ \brief Sort By Key
+ */
+/*******************************************************************************************/
+NouveauMapSearch.prototype.sortByKey = function (array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key] === undefined ? '' : a[key].toLowerCase();
+        var y = b[key] === undefined ? '' : b[key].toLowerCase();
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+};

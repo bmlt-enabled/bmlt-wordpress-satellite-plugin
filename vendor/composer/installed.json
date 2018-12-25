@@ -1,17 +1,17 @@
 [
     {
         "name": "bmlt/bmlt-satellite-base-class",
-        "version": "3.9.10",
-        "version_normalized": "3.9.10.0",
+        "version": "3.9.12",
+        "version_normalized": "3.9.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-            "reference": "c7db22b26909d01fe71342ac272956f4ed4065a8"
+            "reference": "ada224cfef10154e5ee3a811e37611414a10ad1a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/c7db22b26909d01fe71342ac272956f4ed4065a8",
-            "reference": "c7db22b26909d01fe71342ac272956f4ed4065a8",
+            "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/ada224cfef10154e5ee3a811e37611414a10ad1a",
+            "reference": "ada224cfef10154e5ee3a811e37611414a10ad1a",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "squizlabs/php_codesniffer": "3.*"
         },
-        "time": "2018-12-20T12:35:00+00:00",
+        "time": "2018-12-25T01:32:44+00:00",
         "type": "library",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
