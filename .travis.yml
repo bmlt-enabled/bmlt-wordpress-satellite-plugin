@@ -4,7 +4,7 @@ php:
 - '7.1'
 env:
   global:
-  - ZIP_FILENAME=bmlt-wordpress-plugin-build${TRAVIS_BUILD_NUMBER}-${TRAVIS_COMMIT}.zip
+  - ZIP_FILENAME=bmlt-wordpress-build${TRAVIS_BUILD_NUMBER}-${TRAVIS_COMMIT}.zip
   - S3_BUCKET=archives.bmlt.app
   - S3_KEY=bmlt-wordpress
 jobs:
