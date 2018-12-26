@@ -21,7 +21,7 @@ jobs:
     - BUILD_DIR=build
     - DIST_DIR_S3=dist/s3
     - DIST_DIR_GITHUB=dist/github
-    - GITHUB_RELEASE_FILENAME=bmlt-wordpress-satellite-plugin.${TRAVIS_TAG}.zip
+    - GITHUB_RELEASE_FILENAME=bmlt-wordpress-satellite-plugin.zip
     install:
     - composer install --no-dev --no-autoloader
     script:
