@@ -2,7 +2,11 @@ language: php
 
 php:
 - '7.1'
-
+env:
+  global:
+  - ZIP_FILENAME=bmlt-wordpress-satellite-plugin-build${TRAVIS_BUILD_NUMBER}-${TRAVIS_COMMIT}.zip
+  - S3_BUCKET=archives.bmlt.app
+  - S3_KEY=bmlt-wordpress
 jobs:
   include:
 
@@ -12,3 +16,43 @@ jobs:
     script:
     - find . -name "*.php" ! -path '*/vendor/*' -print0 | xargs -0 -n1 -P8 php -l
     - vendor/squizlabs/php_codesniffer/bin/phpcs --warning-severity=6 --standard=PSR2 --ignore=vendor --extensions=php --report=summary ./
+  - stage: zip file
+    env:
+    - BUILD_DIR=build
+    - DIST_DIR_S3=dist/s3
+    - DIST_DIR_GITHUB=dist/github
+    - GITHUB_RELEASE_FILENAME=bmlt-wordpress-satellite-plugin.zip
+    install:
+    - composer install --no-dev --no-autoloader
+    script:
+    - find ./ -type d | xargs chmod 755
+    - find ./ -name '*.php' | xargs chmod 644
+    - zip -r $ZIP_FILENAME ./ -x "*.git*" -x "*.editorconfig*" -x "*.travis.yml*" -x "*assets*" -x "*vendor/squizlabs*" -x "*.gitattributes" && mkdir $BUILD_DIR && mv $ZIP_FILENAME $BUILD_DIR/
+    before_deploy:
+    - mkdir -p $DIST_DIR_S3 && cp $BUILD_DIR/$ZIP_FILENAME $DIST_DIR_S3/$ZIP_FILENAME
+    - mkdir -p $DIST_DIR_GITHUB && cp $BUILD_DIR/$ZIP_FILENAME $DIST_DIR_GITHUB/$GITHUB_RELEASE_FILENAME
+    deploy:
+    - provider: s3
+      access_key_id: AKIAI7JHYFA6DI3WYP5A
+      secret_access_key:
+        secure: jPIMG/fQorcYtPV2C416JFilD8RpcfhuG0yR6Xl6s7KgMwSfymn9ZfA08SqvJEteTga+vHGQECsTqeLjDXoHFBHQdJlaApa8C+EetjItoISGiD9m3UI5I+5FEu/54DOInSehHepJROLYbLReynum6tUiiyywusx4CNtIeYbS3S/I7auS/NgPBLVA5If6ZgpFWbqZbsB29es8l7w99shSG5g9EKdevb/TQbx7x4dwvn5WWrChsH49k55cn7QUuZ8u4YW80CdNsksRZXGDERP/Smj/3zj2FaQCqQWi9Xr5L7YvlwuXn8rVtSNZwfuL/bvChlvOYL4enV97CcDHWha0kC1U6s4158R9y6eoY8b50PW8dLjuIAes+YlpUAG7ETsgLEURgapzGkoOfvu0yUsIdfjyOHzyOuJEcENhKsVK/gKmifnTxXNWLLmf0Dbbvb0fos3S9p9QOwEzm59MJeqdh5j4J9HoUflS0/uQi3yqvWzbuVG9zuqRL3Y/I0T0m/L6yJTuZmDRqW5OoXYxwp0OxSy/1LLFtP+QHpYXcilgtr4x7nzpe+lWvBj+kONyQfmWGv80JBITKk4Upmpi5jqKy/vHBeJK50pRQxXqFk4zdfpRNgtq4r3aJrKlZpQjFB9Y1eKODmkHxejW1a1fko4EKV7C2Xx9+QaE6Dx64OC5qgc=
+      bucket: "$S3_BUCKET"
+      local_dir: "$DIST_DIR_S3"
+      upload-dir: "$S3_KEY"
+      skip_cleanup: true
+      on:
+        all_branches: true
+    - provider: releases
+      api_key:
+        secure: ghHpyV5ixjEYQAeu4JqLIPk9/WRvpu1qT+EMABpm0siHMbBYYIeDfOXJOdPGodLnCq97jCrqam69Fr63A1iLcFPKrcvWa210mBwNAl+VO6ECnCM9YnoHgqsd6te3RxOqzaIIC7RuXI6gXnrl0tzqI5pNkg1iNcn345EYfvSFGFfWN90MuWJ2spJ22LDFUiMKkjNL2BSo0e27SpFsfeGgEGvmgMA+1disTG0U2vrGlTlXnC+T4MlmByXnYF6Yq2sBIy/xqXNF8fCysX2+TotMQpiBbxNHfm90D0QhBWdH408O0Yjdn/PsBmnYuaFXAnjtbOJpDVFNZicj7Vi8nwKha8Z4Mvy/1hKRu/DrZjDiE7s34auW1xW/JUpU5PE+icSheXWNLekhG0njaVoCg+bXMfI9hUfDkzjE6lEhEWSUPbf3gexmgwmN/wzbJYfSKKO3+nsIJ023S3LJG9rY8f8jqUvct/Hpch7A+J/JY0xES3vGSBIsurhfxg4cVDmXGsFvVxmU7wC6/ObWmCyc+J6zEwlzAbxdSfXJKq91KBke3uTu49rdEx7na23/NTjWswtyigzzJNfwMdfUJzhWO2rWDOhLVAL5HnCyx1T9ricPy6a672hRWMh7ifx7ZfTEYaKUuGDI9PI5HP/lrvb8diLkqJsgca/hFrbmcitN3O6XkCw=
+      file: "$DIST_DIR_GITHUB/$GITHUB_RELEASE_FILENAME"
+      skip_cleanup: true
+      name: "$TRAVIS_TAG"
+      on:
+        tags: true
+notifications:
+  slack:
+    rooms:
+    - secure: bmoIugz9sorNakDw7LnfC3iB7a4CnhuZeZBAVxefSoqipbZAGLoA86pSaDwSK3kNsCRAUXyHJ0pBxxJuCO5jrQKhl9TNBFQQ60KPvn3LQj9OXXTSHp4qoqBytipQGyjeqySu4fJt8Lc0u8FQ0qinxn21qF7K7c54aygVKQd+nxf/+9rVzSOJIY+c6UEBb9FwKfHl9cOJy8nTHYPNl0ZbQaYVS1gvyOV2jzrlurOXb0t2xYs2W9EOAjUd2E4ZVaD8EEyRZ9zcvy8ne41qZGBLMJjHZo6TdN4x0AdEYiITst5fKj+YILNCaVQMyURu5h65RPVXyjZ/eIOUixSt1EOpMTxWcRiDn3H7B2F7eEUIXyo/c5x1AEWEQFLGK+/PEqWx/zaBG0rJJdzVbLaqet2kg5piy+f84EBCZiXm7CZIYPMSjLJo9AJDcY9iSRgvpRnkSagHZAgMILNut53aNPd8i3FoOeycPwux/KDQpSz0uIpn4xu26VY0bzxJ8N27VugUhmNhLCN05Hgw8GoDjEoh4EgPPsdNVzXT4mzpjx2GfhRZOm/78LUSDB/w3oIAEPzRFfhberBAo0l2w9T5+Ynbw9yyquYgNUOW/nMhbwqOPbWqndHa8Xume0DXp2COHEqoSZx4gDIIRRKjKdsrFjjasWB5K7IQXQfBoiGAL7EscNA=
+    on_success: change
+  email: false
