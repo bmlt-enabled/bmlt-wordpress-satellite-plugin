@@ -4,7 +4,7 @@ php:
 - '7.1'
 env:
   global:
-  - ZIP_FILENAME=bmlt-wordpress-build${TRAVIS_BUILD_NUMBER}-${TRAVIS_COMMIT}.zip
+  - ZIP_FILENAME=bmlt-wordpress-satellite-plugin-build${TRAVIS_BUILD_NUMBER}-${TRAVIS_COMMIT}.zip
   - S3_BUCKET=archives.bmlt.app
   - S3_KEY=bmlt-wordpress
 jobs:
@@ -21,7 +21,7 @@ jobs:
     - BUILD_DIR=build
     - DIST_DIR_S3=dist/s3
     - DIST_DIR_GITHUB=dist/github
-    - GITHUB_RELEASE_FILENAME=bmlt-wordpress.zip
+    - GITHUB_RELEASE_FILENAME=bmlt-wordpress-satellite-plugin.${TRAVIS_TAG}.zip
     install:
     - composer install --no-dev --no-autoloader
     script:
