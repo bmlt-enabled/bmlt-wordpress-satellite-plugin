@@ -28,7 +28,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-***Version 3.9.7* ** *- UNRELEASED*
+***Version 3.9.7* ** *- January 14, 2019*
 - Fixed an issue where the Enter key would not submit the meeting search form when using Firefox on standard [[BMLT]] shortcode.
 - Fixed an issue with Google Map API being called wrong.
 - Added sorting to map search for service bodies and formats.
