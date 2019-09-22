@@ -3,10 +3,10 @@
 Contributors: magblogapi, radius314, pjaudiomv, jbraswell
 Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
-Author: MAGSHARE
+Author: bmlt-enabled
 Requires at least: 4.0
-Tested up to: 5.0.2
-Stable tag: 3.9.7
+Tested up to: 5.2.3
+Stable tag: 3.10.0
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,11 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
 
 == Changelist ==
+
+***Version 3.10.0* ** *- September 22, 2019*
+- Added the "Australia" theme.
+- Added location_info field to [[bmlt_table]] and [[bmlt_quicksearch]] shortcodes.
+- Fix for service bodies with multiple children not being selected on [[bmlt]] shortcode.
 
 ***Version 3.9.7* ** *- January 14, 2019*
 - Fixed an issue where the Enter key would not submit the meeting search form when using Firefox on standard [[BMLT]] shortcode.
