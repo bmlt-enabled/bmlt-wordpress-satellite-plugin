@@ -5,7 +5,7 @@ Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: bmlt-enabled
 Requires at least: 4.0
-Tested up to: 5.2.3
+Tested up to: 5.4.0
 Stable tag: 3.10.0
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
