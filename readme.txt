@@ -26,7 +26,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 [Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
 
-== Changelist ==
+= Changelog =
 
 = 3.11.0 =
 * Updated dependencies.
