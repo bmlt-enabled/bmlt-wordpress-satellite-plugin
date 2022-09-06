@@ -9,7 +9,7 @@ Plugin Name: BMLT WordPress Satellite
 Plugin URI: https://bmlt.app
 Author: MAGSHARE
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.10.0
+Version: 3.11.0
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -227,8 +227,7 @@ class BMLTWPPlugin extends BMLTPlugin
     *   \returns a string, containing the "massaged" content.                               *
     ****************************************************************************************/
     // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    public function content_filter( $in_the_content   ///< The content in need of filtering.
-                            )
+    public function content_filter($in_the_content)   ///< The content in need of filtering.
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         if ($this->plugin_is_main) {
@@ -294,8 +293,7 @@ class BMLTWPPlugin extends BMLTPlugin
     *   \brief Echoes any necessary head content.                                           *
     ****************************************************************************************/
     // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    public function standard_head( $from_admin = false    ///< True, if this was called from the admin.
-                        )
+    public function standard_head($from_admin = false)    ///< True, if this was called from the admin.
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         $load_head = false;   // This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.
@@ -487,8 +485,7 @@ class BMLTWPPlugin extends BMLTPlugin
     *   \returns an associative array, with the option settings.                            *
     ****************************************************************************************/
     // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    protected function cms_get_option( $in_option_key    ///< The name of the option
-                                    )
+    protected function cms_get_option($in_option_key)   ///< The name of the option
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         $ret = $this->geDefaultBMLTOptions();
@@ -523,8 +520,7 @@ class BMLTWPPlugin extends BMLTPlugin
     *   \brief Deletes a stored option (allows CMS abstraction).                            *
     ****************************************************************************************/
     // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    protected function cms_delete_option( $in_option_key   ///< The name of the option
-                                        )
+    protected function cms_delete_option($in_option_key)  ///< The name of the option
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         if (function_exists('delete_option')) {
@@ -596,8 +592,7 @@ class BMLTWPPlugin extends BMLTPlugin
     *   \returns a string, processed by WP.                                                 *
     ****************************************************************************************/
     // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    protected function process_text(  $in_string  ///< The string to be processed.
-                                    )
+    protected function process_text($in_string)  ///< The string to be processed.
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         if (function_exists('__')) {

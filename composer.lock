@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a0df7749a54c1c15f38538353bdec3d",
+    "content-hash": "a59817eba3e1325f065aecdc9b18a008",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "1a0c5f922b88f274f5448c5a2f470eb6e8023730"
+                "reference": "837ba5337e12b6757782d73048f300790e8f3597"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/1a0c5f922b88f274f5448c5a2f470eb6e8023730",
-                "reference": "1a0c5f922b88f274f5448c5a2f470eb6e8023730",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/837ba5337e12b6757782d73048f300790e8f3597",
+                "reference": "837ba5337e12b6757782d73048f300790e8f3597",
                 "shasum": ""
             },
             "require": {
-                "bmlt/bmlt-satellite-driver": "1.0.19"
+                "bmlt/bmlt-satellite-driver": "1.1.0"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "3.*"
@@ -37,24 +37,30 @@
                 },
                 {
                     "name": "radius314"
+                },
+                {
+                    "name": "pjaudiomv"
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2019-09-22T14:45:48+00:00"
+            "time": "2022-09-06T20:04:45+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
-            "version": "1.0.19",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver.git",
-                "reference": "92389e83b6f3620fe4cc92538e588e2742826c83"
+                "reference": "80967ce6a35f664dfea063cc7afd8df03d0fbd34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/92389e83b6f3620fe4cc92538e588e2742826c83",
-                "reference": "92389e83b6f3620fe4cc92538e588e2742826c83",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/80967ce6a35f664dfea063cc7afd8df03d0fbd34",
+                "reference": "80967ce6a35f664dfea063cc7afd8df03d0fbd34",
                 "shasum": ""
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -67,25 +73,28 @@
                 },
                 {
                     "name": "radius314"
+                },
+                {
+                    "name": "pjaudiomv"
                 }
             ],
             "description": "Provides low-level communication to the BMLT Root Server.",
-            "time": "2018-11-16T04:23:53+00:00"
+            "time": "2022-09-06T19:30:26+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.2",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1359e176e9307e906dc3d890bcc9603ff6d90619",
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619",
                 "shasum": ""
             },
             "require": {
@@ -123,7 +132,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T23:49:02+00:00"
+            "time": "2022-06-18T07:21:10+00:00"
         }
     ],
     "aliases": [],
