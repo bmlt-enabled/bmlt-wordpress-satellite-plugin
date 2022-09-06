@@ -28,10 +28,11 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 == Changelist ==
 
-= 3.11.0 = September 6, 2022*
+= 3.11.0 =
 * Updated dependencies.
 
-= 3.10.0 = September 22, 2019*
+= 3.10.0 =
+* September 22, 2019
 * Added the "Australia" theme.
 * Added location_info field to [[bmlt_table]] and [[bmlt_quicksearch]] shortcodes.
 * Fix for service bodies with multiple children not being selected on [[bmlt]] shortcode.
