@@ -1,5 +1,3 @@
 .idea
 logs/
-vendor/bin/
-vendor/squizlabs/
-vendor/bmlt/bmlt-satellite-base-class/.travis.yml
+vendor/

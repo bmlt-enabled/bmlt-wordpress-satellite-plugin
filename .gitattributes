@@ -6,3 +6,4 @@ readme.txt export-ignore
 docker-compose.yml export-ignore
 Dockerfile export-ignore
 /doc export-ignore
+/.github export-ignore
