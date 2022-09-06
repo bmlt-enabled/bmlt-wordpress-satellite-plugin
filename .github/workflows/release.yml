@@ -110,3 +110,9 @@ jobs:
           asset_path: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_PATH }}
           asset_name: ${{ steps.prepare_artifact_metadata.outputs.ARTIFACT_NAME }}
           asset_content_type: application/zip
+
+      - name: Publish Release to WP
+        if: "!contains(github.ref, 'beta')"
+        id: publish-release-wp
+        run: |
+          ./deploy-wordpress.sh
