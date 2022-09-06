@@ -29,7 +29,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 = Changelog =
 
 = 3.11.0 =
-* Updated dependencies.
+* Updated dependencies, PHP8 compatibility.
 
 = 3.10.0 =
 * September 22, 2019
