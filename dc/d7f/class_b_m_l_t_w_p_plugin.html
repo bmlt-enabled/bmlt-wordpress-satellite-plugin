@@ -730,7 +730,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">return</span> $links;</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00595">process_text()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00596">process_text()</a>.</p>
 
 </div>
 </div>
@@ -853,7 +853,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="keywordflow">return</span> $url;</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00448">admin_head()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00296">standard_head()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00448">admin_head()</a>, <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00564">set_callbacks()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00296">standard_head()</a>.</p>
 
 </div>
 </div>
@@ -933,17 +933,17 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00595">595</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    {</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;__&#39;</span>)) {</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            $in_string = htmlspecialchars(__($in_string, <span class="stringliteral">&#39;BMLTPlugin&#39;</span>));</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin Warning (process_text): __() does not exist! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        }</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <span class="keywordflow">return</span> $in_string;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00596">596</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    {</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;__&#39;</span>)) {</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            $in_string = htmlspecialchars(__($in_string, <span class="stringliteral">&#39;BMLTPlugin&#39;</span>));</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin Warning (process_text): __() does not exist! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        }</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            </div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        <span class="keywordflow">return</span> $in_string;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00260">filter_plugin_actions()</a>.</p>
 
@@ -991,11 +991,14 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            add_action(<span class="stringliteral">&#39;admin_init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_ajax_handler&#39;</span> ));</div>
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            add_action(<span class="stringliteral">&#39;admin_menu&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;option_menu&#39;</span> ));</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            add_action(<span class="stringliteral">&#39;init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;filter_init&#39;</span> ));</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        }</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            wp_enqueue_script(<span class="stringliteral">&quot;leaflet&quot;</span>, $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&quot;table_display.js&quot;</span>, <span class="keyword">false</span>, filemtime($this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&quot;table_display.js&quot;</span>), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        }</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    }</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00539">get_plugin_path()</a>.</p>
+
 </div>
 </div>
 <a id="a84c99e937163298bd0f8cb31498eb326"></a>
@@ -1212,7 +1215,7 @@ Protected Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_abe3f52febadbe47247ce4359ecd93cc6"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#abe3f52febadbe47247ce4359ecd93cc6">BMLTWPPlugin\get_admin_form_uri</a></div><div class="ttdeci">get_admin_form_uri()</div><div class="ttdoc">Return an HTTP path to the basic admin form submit (action) URI * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00093">bmlt-wordpress-satellite-plugin.php:93</a></div></div>
 <div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8db0c24061975b73b2eccba1c6e9f63d"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">BMLTWPPlugin\cms_get_page_settings_id</a></div><div class="ttdeci">cms_get_page_settings_id( $in_content, $in_check_mobile=false)</div><div class="ttdoc">This function fetches the settings ID for a page (if there is one). *If $in_check_mobile is set to tr...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00130">bmlt-wordpress-satellite-plugin.php:130</a></div></div>
 <div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_ad79906e4f490a3129d02ed12ecf3056b"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">BMLTWPPlugin\get_plugin_path</a></div><div class="ttdeci">get_plugin_path()</div><div class="ttdoc">Return an HTTP path to the plugin directory. * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00539">bmlt-wordpress-satellite-plugin.php:539</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8e5667bef5bdf4e308a6f9ebaa9aa2df"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">BMLTWPPlugin\process_text</a></div><div class="ttdeci">process_text($in_string)</div><div class="ttdoc">This uses the WordPress text processor (__) to process the given string. *This allows easier translat...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00595">bmlt-wordpress-satellite-plugin.php:595</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8e5667bef5bdf4e308a6f9ebaa9aa2df"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">BMLTWPPlugin\process_text</a></div><div class="ttdeci">process_text($in_string)</div><div class="ttdoc">This uses the WordPress text processor (__) to process the given string. *This allows easier translat...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00596">bmlt-wordpress-satellite-plugin.php:596</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
