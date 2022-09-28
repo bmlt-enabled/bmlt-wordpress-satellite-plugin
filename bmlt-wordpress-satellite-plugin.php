@@ -7,9 +7,9 @@
 *   These need to be without the asterisks, as WP parses them.                              *
 Plugin Name: BMLT WordPress Satellite
 Plugin URI: https://bmlt.app
-Author: MAGSHARE
+Author: bmlt-enabled
 Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.11.2
+Version: 3.11.3
 Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
 ********************************************************************************************/
 
@@ -139,7 +139,8 @@ class BMLTWPPlugin extends BMLTPlugin
         if (!$in_check_mobile && isset($this->my_http_vars['bmlt_settings_id']) && is_array($this->getBMLTOptions($this->my_http_vars['bmlt_settings_id']))) {
             $my_option_id = $this->my_http_vars['bmlt_settings_id'];
         } else {
-            $support_mobile = preg_replace('/\D/', '', trim($this->cms_get_post_meta($page->ID, 'bmlt_mobile')));
+            $cms_post_meta_mobile = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_mobile') : null;
+            $support_mobile = preg_replace('/\D/', '', trim($cms_post_meta_mobile));
             
             if (!$support_mobile && $in_check_mobile) {
                 $support_mobile = self::get_shortcode($in_content, 'bmlt_mobile');
@@ -153,13 +154,13 @@ class BMLTWPPlugin extends BMLTPlugin
             if ($in_check_mobile && $support_mobile && !isset($this->my_http_vars['BMLTPlugin_mobile']) && (self::mobile_sniff_ua($this->my_http_vars) != 'xhtml')) {
                 $my_option_id = $support_mobile;
             } elseif (!$in_check_mobile) {
-                $my_option_id = intval(preg_replace('/\D/', '', trim($this->cms_get_post_meta($page->ID, 'bmlt_settings_id'))));
+                $cms_post_meta_settings = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_settings_id') : null;
+                $my_option_id = intval(preg_replace('/\D/', '', trim($cms_post_meta_settings)));
                 if (isset($this->my_http_vars['bmlt_settings_id']) && intval($this->my_http_vars['bmlt_settings_id'])) {
                     $my_option_id = intval($this->my_http_vars['bmlt_settings_id']);
-                } elseif ($in_content = $in_content ? $in_content : $page->post_content) {
+                } elseif ($in_content = isset($in_content) ? $in_content : (isset($page->post_content) ? $page->post_content : null)) {
                     $my_option_id_content = parent::cms_get_page_settings_id($in_content, $in_check_mobile);
-                    
-                    $my_option_id = $my_option_id_content ? $my_option_id_content : $my_option_id;
+                    $my_option_id = $my_option_id_content ?: $my_option_id;
                 }
                 
                 if (!$my_option_id) {   // If nothing else gives, we go for the default (first) settings.
@@ -307,15 +308,15 @@ class BMLTWPPlugin extends BMLTPlugin
         $page_id = null;
         $page = get_page($page_id);
         
-        $support_mobile = $this->cms_get_page_settings_id($page->post_content, true);
+        $support_mobile = isset($page->post_content) && !empty($page->post_content) ? $this->cms_get_page_settings_id($page->post_content, true) : null;
         
         if ($support_mobile) {
             $mobile_options = $this->getBMLTOptions_by_id($support_mobile);
         } else {
             $support_mobile = null;
         }
-        
-        $options = $this->getBMLTOptions_by_id($this->cms_get_page_settings_id($page->post_content));
+        $options_standard = isset($page->post_content) && !empty($page->post_content) ? $page->post_content : null;
+        $options = $this->getBMLTOptions_by_id($this->cms_get_page_settings_id($options_standard));
 
         if ($support_mobile && is_array($mobile_options) && count($mobile_options)) {
             $mobile_url = $_SERVER['PHP_SELF'].'?BMLTPlugin_mobile&bmlt_settings_id='.$support_mobile;
@@ -343,9 +344,11 @@ class BMLTWPPlugin extends BMLTPlugin
             ||  $this->get_shortcode($page->post_content, 'simple_search_list')
             ) {
             $head_content = "<!-- Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
-            if (!$this->get_shortcode($page->post_content, 'bmlt')) {
+            ## TODO: Is this right?
+            if (isset($page->post_content) && !$this->get_shortcode($page->post_content, 'bmlt')) {
                 $load_head = false;
             }
+
         
             $this->my_http_vars['start_view'] = $options['bmlt_initial_view'];
         
@@ -417,15 +420,15 @@ class BMLTWPPlugin extends BMLTPlugin
         
             $head_content .= self::stripFile('javascript.js');
 
-            if ($this->get_shortcode($page->post_content, 'bmlt_quicksearch')) {
+            if (isset($page->post_content) && !empty($page->post_content) && $this->get_shortcode($page->post_content, 'bmlt_quicksearch')) {
                 $head_content .= self::stripFile('quicksearch.js') . (defined('_DEBUG_MODE_') ? "\n" : '');
             }
         
-            if ($this->get_shortcode($page->post_content, 'bmlt_map')) {
+            if (isset($page->post_content) && !empty($page->post_content) && $this->get_shortcode($page->post_content, 'bmlt_map')) {
                 $head_content .= self::stripFile('map_search.js');
             }
         
-            if ($this->get_shortcode($page->post_content, 'bmlt_mobile')) {
+            if (isset($page->post_content) && !empty($page->post_content) && $this->get_shortcode($page->post_content, 'bmlt_mobile')) {
                 $head_content .= self::stripFile('fast_mobile_lookup.js');
             }
     
@@ -578,7 +581,7 @@ class BMLTWPPlugin extends BMLTPlugin
             add_action('admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ));
             add_action('admin_menu', array ( self::get_plugin_object(), 'option_menu' ));
             add_action('init', array ( self::get_plugin_object(), 'filter_init' ));
-            wp_enqueue_script("leaflet", $this->get_plugin_path() . "table_display.js", false, filemtime($this->get_plugin_path() . "table_display.js"), false);
+            wp_enqueue_script("table_display", $this->get_plugin_path() . "table_display.js", false, filemtime(plugin_dir_path(__FILE__) . "vendor/bmlt/bmlt-satellite-base-class/table_display.js"), false);
         } else {
             echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! -->";
         }
