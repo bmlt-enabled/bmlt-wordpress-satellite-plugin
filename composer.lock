@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbbe976edefab7a59d2d3dca484b8a8e",
+    "content-hash": "555c62f479c6f29c4e4b9a205263c39e",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.11.1",
+            "version": "3.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "1ad8d6d2b6e94fbeba22eeba9e3c2c181bb4a0d5"
+                "reference": "a8116dee50cc6469c448aef70a08d028a984da66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/1ad8d6d2b6e94fbeba22eeba9e3c2c181bb4a0d5",
-                "reference": "1ad8d6d2b6e94fbeba22eeba9e3c2c181bb4a0d5",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/a8116dee50cc6469c448aef70a08d028a984da66",
+                "reference": "a8116dee50cc6469c448aef70a08d028a984da66",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,11 @@
                 }
             ],
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
-            "time": "2022-09-06T21:54:30+00:00"
+            "support": {
+                "issues": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/issues",
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.2"
+            },
+            "time": "2022-09-28T14:50:14+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
@@ -79,6 +83,10 @@
                 }
             ],
             "description": "Provides low-level communication to the BMLT Root Server.",
+            "support": {
+                "issues": "https://github.com/bmlt-enabled/bmlt-satellite-driver/issues",
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-driver/tree/1.1.0"
+            },
             "time": "2022-09-06T19:30:26+00:00"
         }
     ],
@@ -132,6 +140,11 @@
                 "phpcs",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
             "time": "2022-06-18T07:21:10+00:00"
         }
     ],
@@ -141,5 +154,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
