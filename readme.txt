@@ -6,7 +6,7 @@ Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
 Author: bmlt-enabled
 Requires at least: 4.0
 Tested up to: 6.0.2
-Stable tag: 3.11.2
+Stable tag: 3.11.3
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
@@ -27,6 +27,9 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
 
 = Changelog =
+
+= 3.11.3 =
+* Fixes a bunch of PHP warnings.
 
 = 3.11.2 =
 * Fix for fast table display not displaying properly.

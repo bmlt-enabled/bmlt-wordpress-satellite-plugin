@@ -6,15 +6,13 @@
   "authors": [{
     "name": "littlegreenviper"
   },{
-    "name": "radius314"
-  },{
     "name": "pjaudiomv"
   }],
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*"
   },
   "require": {
-    "bmlt/bmlt-satellite-base-class": "^3.11.3",
+    "bmlt/bmlt-satellite-base-class": "^3.11.4",
     "bmlt/bmlt-satellite-driver": "1.1"
   }
 }
