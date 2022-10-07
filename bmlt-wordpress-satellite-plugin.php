@@ -69,11 +69,11 @@ class BMLTWPPlugin extends BMLTPlugin
     ****************************************************************************************/
     public function __construct()
     {
-        add_action( 'wp_enqueue_scripts', 'frontend_enqueue_script' );
+        add_action( 'wp_enqueue_scripts', 'enqueueFrontendFilesBmlt' );
         parent::__construct();
     }
 
-    public function enqueueFrontendFiles()
+    public function enqueueFrontendFilesBmlt()
     {
         wp_enqueue_script("table_display", $this->get_plugin_path() . "table_display.js", false, filemtime(plugin_dir_path(__FILE__) . "vendor/bmlt/bmlt-satellite-base-class/table_display.js"), false);
     }
