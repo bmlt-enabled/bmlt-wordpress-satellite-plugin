@@ -69,7 +69,13 @@ class BMLTWPPlugin extends BMLTPlugin
     ****************************************************************************************/
     public function __construct()
     {
+        add_action( 'wp_enqueue_scripts', 'frontend_enqueue_script' );
         parent::__construct();
+    }
+
+    public function enqueueFrontendFiles()
+    {
+        wp_enqueue_script("table_display", $this->get_plugin_path() . "table_display.js", false, filemtime(plugin_dir_path(__FILE__) . "vendor/bmlt/bmlt-satellite-base-class/table_display.js"), false);
     }
     
     /************************************************************************************//**
@@ -575,17 +581,17 @@ class BMLTWPPlugin extends BMLTPlugin
         } else {
             echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_filter()! -->";
         }
-        
+
         if (function_exists('add_action')) {
             add_action('pre_get_posts', array ( self::get_plugin_object(), 'stop_filter_if_not_main' ));
             add_action('admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ));
             add_action('admin_menu', array ( self::get_plugin_object(), 'option_menu' ));
             add_action('init', array ( self::get_plugin_object(), 'filter_init' ));
-            wp_enqueue_script("table_display", $this->get_plugin_path() . "table_display.js", false, filemtime(plugin_dir_path(__FILE__) . "vendor/bmlt/bmlt-satellite-base-class/table_display.js"), false);
         } else {
             echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! -->";
         }
     }
+
 
     /************************************************************************************//**
     *   \brief This uses the WordPress text processor (__) to process the given string.     *
