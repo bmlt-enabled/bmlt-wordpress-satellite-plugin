@@ -139,7 +139,7 @@ class BMLTWPPlugin extends BMLTPlugin
         if (!$in_check_mobile && isset($this->my_http_vars['bmlt_settings_id']) && is_array($this->getBMLTOptions($this->my_http_vars['bmlt_settings_id']))) {
             $my_option_id = $this->my_http_vars['bmlt_settings_id'];
         } else {
-            $cms_post_meta_mobile = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_mobile') : null;
+            $cms_post_meta_mobile = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_mobile') : '';
             $support_mobile = preg_replace('/\D/', '', trim($cms_post_meta_mobile));
             
             if (!$support_mobile && $in_check_mobile) {
@@ -154,7 +154,7 @@ class BMLTWPPlugin extends BMLTPlugin
             if ($in_check_mobile && $support_mobile && !isset($this->my_http_vars['BMLTPlugin_mobile']) && (self::mobile_sniff_ua($this->my_http_vars) != 'xhtml')) {
                 $my_option_id = $support_mobile;
             } elseif (!$in_check_mobile) {
-                $cms_post_meta_settings = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_settings_id') : null;
+                $cms_post_meta_settings = isset($page->ID) && !empty($page->ID) ? $this->cms_get_post_meta($page->ID, 'bmlt_settings_id') : '';
                 $my_option_id = intval(preg_replace('/\D/', '', trim($cms_post_meta_settings)));
                 if (isset($this->my_http_vars['bmlt_settings_id']) && intval($this->my_http_vars['bmlt_settings_id'])) {
                     $my_option_id = intval($this->my_http_vars['bmlt_settings_id']);
