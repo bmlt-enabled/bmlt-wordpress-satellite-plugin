@@ -89,6 +89,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">__construct</a> ()</td></tr>
 <tr class="memdesc:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. *.  <a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">More...</a><br /></td></tr>
 <tr class="separator:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad64f0229f09d4d5d2efb01363ed53a8b"><td class="memItemLeft" align="right" valign="top"><a id="ad64f0229f09d4d5d2efb01363ed53a8b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>enqueueFrontendFiles</b> ()</td></tr>
+<tr class="separator:ad64f0229f09d4d5d2efb01363ed53a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#aff14d9adb4250cd0e0d41b00eaa1c375">stop_filter_if_not_main</a> ()</td></tr>
 <tr class="memdesc:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the flag if this is a singular post or page. Otherwise, we don't show. *.  <a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#aff14d9adb4250cd0e0d41b00eaa1c375">More...</a><br /></td></tr>
 <tr class="separator:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,8 +215,9 @@ Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00070">70</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        parent::__construct();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        add_action( <span class="stringliteral">&#39;wp_enqueue_scripts&#39;</span>, <span class="stringliteral">&#39;frontend_enqueue_script&#39;</span> );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        parent::__construct();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -235,41 +239,41 @@ Protected Member Functions</h2></td></tr>
 
 <p>Echoes any necessary head content for the admin. *. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00451">451</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        $head_content = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a84c99e937163298bd0f8cb31498eb326">standard_head</a>(<span class="keyword">true</span>).<span class="stringliteral">&quot;\n&quot;</span>;   <span class="comment">// We start with the standard stuff.</span></div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        </div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        $head_content .= <span class="stringliteral">&quot;&lt;!-- Also Added by the BMLT plugin 3.X. --&gt;\n&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=EmulateIE7\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Style-Type\&quot; content=\&quot;text/css\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Script-Type\&quot; content=\&quot;text/javascript\&quot; /&gt;\n&quot;</span>;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        $options = $this-&gt;getBMLTOptions(1);    <span class="comment">// All options contain the admin key.</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        $key = $options[<span class="stringliteral">&#39;google_api_key&#39;</span>];</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        </div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="comment">// Include the Google Maps API V3 files.</span></div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.google.com/maps/api/js?key=&#39;</span>.$key.<span class="stringliteral">&#39;&quot;&gt;&lt;/script&gt;&#39;</span>;  <span class="comment">// Load the Google Maps stuff for our map.</span></div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>)) {</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#39;</span>;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            </div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            $url = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>();</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            </div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            $head_content .= htmlspecialchars($url);</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            </div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            $head_content .= <span class="stringliteral">&#39;admin_styles.css&quot; /&gt;&#39;</span>;</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00457">457</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        $head_content = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a84c99e937163298bd0f8cb31498eb326">standard_head</a>(<span class="keyword">true</span>).<span class="stringliteral">&quot;\n&quot;</span>;   <span class="comment">// We start with the standard stuff.</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        $head_content .= <span class="stringliteral">&quot;&lt;!-- Also Added by the BMLT plugin 3.X. --&gt;\n&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=EmulateIE7\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Style-Type\&quot; content=\&quot;text/css\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Script-Type\&quot; content=\&quot;text/javascript\&quot; /&gt;\n&quot;</span>;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        $options = $this-&gt;getBMLTOptions(1);    <span class="comment">// All options contain the admin key.</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        $key = $options[<span class="stringliteral">&#39;google_api_key&#39;</span>];</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        </div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <span class="comment">// Include the Google Maps API V3 files.</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.google.com/maps/api/js?key=&#39;</span>.$key.<span class="stringliteral">&#39;&quot;&gt;&lt;/script&gt;&#39;</span>;  <span class="comment">// Load the Google Maps stuff for our map.</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        </div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>)) {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#39;</span>;</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot; src=&quot;&#39;</span>;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            $url = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>();</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            </div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            $head_content .= htmlspecialchars($url);</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            $head_content .= <span class="stringliteral">&#39;admin_javascript.js&quot;&gt;&lt;/script&gt;&#39;</span>;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (head)! No plugins_url()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        }</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            </div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        $head_content .= <span class="stringliteral">&quot;\n&lt;!-- End Also Added by the BMLT plugin 3.X. --&gt;\n&quot;</span>;</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        echo $head_content;</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    }</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            $head_content .= <span class="stringliteral">&#39;admin_styles.css&quot; /&gt;&#39;</span>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot; src=&quot;&#39;</span>;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            </div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            $head_content .= htmlspecialchars($url);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            $head_content .= <span class="stringliteral">&#39;admin_javascript.js&quot;&gt;&lt;/script&gt;&#39;</span>;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (head)! No plugins_url()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            </div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        $head_content .= <span class="stringliteral">&quot;\n&lt;!-- End Also Added by the BMLT plugin 3.X. --&gt;\n&quot;</span>;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        echo $head_content;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00542">get_plugin_path()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00297">standard_head()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00548">get_plugin_path()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00303">standard_head()</a>.</p>
 
 </div>
 </div>
@@ -290,11 +294,11 @@ Protected Member Functions</h2></td></tr>
 
 <p>Presents the admin page. *. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00194">194</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        echo $this-&gt;return_admin_page();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00200">200</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        echo $this-&gt;return_admin_page();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -330,15 +334,15 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00526">526</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    {</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;delete_option&#39;</span>)) {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            $ret = delete_option($in_option_key);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_delete_option)! No delete_option()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        }</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00532">532</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;delete_option&#39;</span>)) {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            $ret = delete_option($in_option_key);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_delete_option)! No delete_option()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        }</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -375,19 +379,19 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00491">491</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    {</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        $ret = $this-&gt;geDefaultBMLTOptions();</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        </div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;get_option&#39;</span>)) {</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            $ret = get_option($in_option_key);</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_get_option)! No get_option()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00497">497</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        $ret = $this-&gt;geDefaultBMLTOptions();</div>
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        </div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">return</span> $ret;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;get_option&#39;</span>)) {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            $ret = get_option($in_option_key);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_get_option)! No get_option()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        }</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        </div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        <span class="keywordflow">return</span> $ret;</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -438,53 +442,53 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00130">130</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        $my_option_id = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        $page_id = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        $page = get_page($page_id);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">if</span> (!$in_check_mobile &amp;&amp; isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]) &amp;&amp; is_array($this-&gt;getBMLTOptions($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]))) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            $my_option_id = $this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>];</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            $cms_post_meta_mobile = isset($page-&gt;ID) &amp;&amp; !empty($page-&gt;ID) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>($page-&gt;ID, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>) : <span class="stringliteral">&#39;&#39;</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            $support_mobile = preg_replace(<span class="stringliteral">&#39;/\D/&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, trim($cms_post_meta_mobile));</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (!$support_mobile &amp;&amp; $in_check_mobile) {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                $support_mobile = self::get_shortcode($in_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordflow">if</span> ($support_mobile === <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    $options = $this-&gt;getBMLTOptions(1);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    $support_mobile = strval($options[<span class="stringliteral">&#39;id&#39;</span>]);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">if</span> ($in_check_mobile &amp;&amp; $support_mobile &amp;&amp; !isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;BMLTPlugin_mobile&#39;</span>]) &amp;&amp; (self::mobile_sniff_ua($this-&gt;my_http_vars) != <span class="stringliteral">&#39;xhtml&#39;</span>)) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                $my_option_id = $support_mobile;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            } elseif (!$in_check_mobile) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                $cms_post_meta_settings = isset($page-&gt;ID) &amp;&amp; !empty($page-&gt;ID) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>($page-&gt;ID, <span class="stringliteral">&#39;bmlt_settings_id&#39;</span>) : <span class="stringliteral">&#39;&#39;</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                $my_option_id = intval(preg_replace(<span class="stringliteral">&#39;/\D/&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, trim($cms_post_meta_settings)));</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]) &amp;&amp; intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>])) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    $my_option_id = intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                } elseif ($in_content = isset($in_content) ? $in_content : (isset($page-&gt;post_content) ? $page-&gt;post_content : <span class="keyword">null</span>)) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    $my_option_id_content = parent::cms_get_page_settings_id($in_content, $in_check_mobile);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    $my_option_id = $my_option_id_content ?: $my_option_id;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">if</span> (!$my_option_id) {   <span class="comment">// If nothing else gives, we go for the default (first) settings.</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    $options = $this-&gt;getBMLTOptions(1);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    $my_option_id = $options[<span class="stringliteral">&#39;id&#39;</span>];</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> $my_option_id;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00136">136</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        $my_option_id = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        $page_id = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        $page = get_page($page_id);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> (!$in_check_mobile &amp;&amp; isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]) &amp;&amp; is_array($this-&gt;getBMLTOptions($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]))) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            $my_option_id = $this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>];</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            $cms_post_meta_mobile = isset($page-&gt;ID) &amp;&amp; !empty($page-&gt;ID) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>($page-&gt;ID, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>) : <span class="stringliteral">&#39;&#39;</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            $support_mobile = preg_replace(<span class="stringliteral">&#39;/\D/&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, trim($cms_post_meta_mobile));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">if</span> (!$support_mobile &amp;&amp; $in_check_mobile) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                $support_mobile = self::get_shortcode($in_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">if</span> ($support_mobile === <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    $options = $this-&gt;getBMLTOptions(1);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    $support_mobile = strval($options[<span class="stringliteral">&#39;id&#39;</span>]);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">if</span> ($in_check_mobile &amp;&amp; $support_mobile &amp;&amp; !isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;BMLTPlugin_mobile&#39;</span>]) &amp;&amp; (self::mobile_sniff_ua($this-&gt;my_http_vars) != <span class="stringliteral">&#39;xhtml&#39;</span>)) {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                $my_option_id = $support_mobile;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            } elseif (!$in_check_mobile) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                $cms_post_meta_settings = isset($page-&gt;ID) &amp;&amp; !empty($page-&gt;ID) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>($page-&gt;ID, <span class="stringliteral">&#39;bmlt_settings_id&#39;</span>) : <span class="stringliteral">&#39;&#39;</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                $my_option_id = intval(preg_replace(<span class="stringliteral">&#39;/\D/&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, trim($cms_post_meta_settings)));</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]) &amp;&amp; intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>])) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    $my_option_id = intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;bmlt_settings_id&#39;</span>]);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                } elseif ($in_content = isset($in_content) ? $in_content : (isset($page-&gt;post_content) ? $page-&gt;post_content : <span class="keyword">null</span>)) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    $my_option_id_content = parent::cms_get_page_settings_id($in_content, $in_check_mobile);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    $my_option_id = $my_option_id_content ?: $my_option_id;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">if</span> (!$my_option_id) {   <span class="comment">// If nothing else gives, we go for the default (first) settings.</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    $options = $this-&gt;getBMLTOptions(1);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    $my_option_id = $options[<span class="stringliteral">&#39;id&#39;</span>];</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">return</span> $my_option_id;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00105">cms_get_post_meta()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00111">cms_get_post_meta()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00297">standard_head()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00303">standard_head()</a>.</p>
 
 </div>
 </div>
@@ -532,21 +536,21 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00105">105</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        $ret = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;get_post_meta&#39;</span>)) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            $ret = get_post_meta($in_page_id, $in_settings_id, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_get_post_meta)! No get_post_meta()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00111">111</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        $ret = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> $ret;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;get_post_meta&#39;</span>)) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            $ret = get_post_meta($in_page_id, $in_settings_id, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_get_post_meta)! No get_post_meta()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> $ret;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00130">cms_get_page_settings_id()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00231">content_filter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00136">cms_get_page_settings_id()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00237">content_filter()</a>.</p>
 
 </div>
 </div>
@@ -593,16 +597,16 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00509">509</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;      {</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="comment">// Added a test, to prevent the creation of multiple empty settings by low-rank users trying SQL injections.</span></div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;update_option&#39;</span>) &amp;&amp; is_array($in_option_value) &amp;&amp; count($in_option_value)) {</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            $ret = update_option($in_option_key, $in_option_value);</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        } elseif (is_array($in_option_value) &amp;&amp; count($in_option_value)) {</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_set_option)! No update_option()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        }</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00515">515</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;      {</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="comment">// Added a test, to prevent the creation of multiple empty settings by low-rank users trying SQL injections.</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;update_option&#39;</span>) &amp;&amp; is_array($in_option_value) &amp;&amp; count($in_option_value)) {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            $ret = update_option($in_option_key, $in_option_value);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        } elseif (is_array($in_option_value) &amp;&amp; count($in_option_value)) {</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (cms_set_option)! No update_option()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -631,31 +635,31 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00231">231</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;plugin_is_main) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="comment">// Simple searches can be mixed in with other content.</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            $in_the_content = parent::content_filter($in_the_content);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            $count = 0;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            $in_the_content = $this-&gt;display_popup_search($in_the_content, $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>(get_the_ID(), <span class="stringliteral">&#39;bmlt_simple_searches&#39;</span>), $count);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        } <span class="keywordflow">else</span> <span class="comment">// If we are not in a page in the main display, we remove the shortcodes.</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;simple_search_list&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_simple&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_changes&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_table&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">return</span> $in_the_content;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00237">237</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;plugin_is_main) {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="comment">// Simple searches can be mixed in with other content.</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            $in_the_content = parent::content_filter($in_the_content);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            $count = 0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            $in_the_content = $this-&gt;display_popup_search($in_the_content, $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">cms_get_post_meta</a>(get_the_ID(), <span class="stringliteral">&#39;bmlt_simple_searches&#39;</span>), $count);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        } <span class="keywordflow">else</span> <span class="comment">// If we are not in a page in the main display, we remove the shortcodes.</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;simple_search_list&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_simple&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_changes&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            $in_the_content = self::replace_shortcode($in_the_content, <span class="stringliteral">&#39;bmlt_table&#39;</span>, <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">return</span> $in_the_content;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00105">cms_get_post_meta()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00111">cms_get_post_meta()</a>.</p>
 
 </div>
 </div>
@@ -676,12 +680,12 @@ Protected Member Functions</h2></td></tr>
 
 <p>This is called before anything else. *. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00282">282</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        ob_start(); <span class="comment">// This prevents themes and plugins from screwing us over.</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        $this-&gt;ajax_router();</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00288">288</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        ob_start(); <span class="comment">// This prevents themes and plugins from screwing us over.</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        $this-&gt;ajax_router();</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -716,22 +720,22 @@ Protected Member Functions</h2></td></tr>
 </ul>
 </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00261">261</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keyword">static</span> $this_plugin;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">if</span> (!$this_plugin &amp;&amp; function_exists(<span class="stringliteral">&#39;plugin_basename&#39;</span>)) {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> ($file == plugin_basename(__FILE__)) {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                $settings_link = <span class="stringliteral">&#39;&lt;a href=&quot;options-general.php?page=&#39;</span> . basename(__FILE__) . <span class="stringliteral">&#39;&quot;&gt;&#39;</span> . $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">process_text</a>($this-&gt;plugin_settings_name) . <span class="stringliteral">&#39;&lt;/a&gt;&#39;</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                array_unshift($links, $settings_link);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">return</span> $links;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00267">267</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keyword">static</span> $this_plugin;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (!$this_plugin &amp;&amp; function_exists(<span class="stringliteral">&#39;plugin_basename&#39;</span>)) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">if</span> ($file == plugin_basename(__FILE__)) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                $settings_link = <span class="stringliteral">&#39;&lt;a href=&quot;options-general.php?page=&#39;</span> . basename(__FILE__) . <span class="stringliteral">&#39;&quot;&gt;&#39;</span> . $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">process_text</a>($this-&gt;plugin_settings_name) . <span class="stringliteral">&#39;&lt;/a&gt;&#39;</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                array_unshift($links, $settings_link);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">return</span> $links;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00599">process_text()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00605">process_text()</a>.</p>
 
 </div>
 </div>
@@ -761,13 +765,13 @@ Protected Member Functions</h2></td></tr>
 <p>Return an HTTP path to the AJAX callback target. * *. </p>
 <dl class="section return"><dt>Returns</dt><dd>a string, containing the path. * </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00081">81</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#abe3f52febadbe47247ce4359ecd93cc6">get_admin_form_uri</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00087">87</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#abe3f52febadbe47247ce4359ecd93cc6">get_admin_form_uri</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00093">get_admin_form_uri()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00099">get_admin_form_uri()</a>.</p>
 
 </div>
 </div>
@@ -797,13 +801,13 @@ Protected Member Functions</h2></td></tr>
 <p>Return an HTTP path to the basic admin form submit (action) URI * *. </p>
 <dl class="section return"><dt>Returns</dt><dd>a string, containing the path. * </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00093">93</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> $_SERVER[<span class="stringliteral">&#39;PHP_SELF&#39;</span>].<span class="stringliteral">&#39;?page=bmlt-wordpress-satellite-plugin.php&#39;</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00099">99</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> $_SERVER[<span class="stringliteral">&#39;PHP_SELF&#39;</span>].<span class="stringliteral">&#39;?page=bmlt-wordpress-satellite-plugin.php&#39;</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00081">get_admin_ajax_base_uri()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00087">get_admin_ajax_base_uri()</a>.</p>
 
 </div>
 </div>
@@ -833,28 +837,28 @@ Protected Member Functions</h2></td></tr>
 <p>Return an HTTP path to the plugin directory. * *. </p>
 <dl class="section return"><dt>Returns</dt><dd>a string, containing the path. * </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00542">542</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    {</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        $url = <span class="stringliteral">&#39;&#39;</span>;</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>)) {</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            <span class="keywordflow">if</span> (plugins_url()) {</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                $url = plugins_url().<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            } elseif (defined(<span class="stringliteral">&#39;WP_PLUGIN_URL&#39;</span>)) {</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                $url = WP_PLUGIN_URL.<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (get_plugin_path)! Empty plugins_url() and no WP_PLUGIN_URL! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            }</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        } elseif (!function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>) &amp;&amp; defined(<span class="stringliteral">&#39;WP_PLUGIN_URL&#39;</span>)) {</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            $url = WP_PLUGIN_URL.<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (get_plugin_path)! No plugins_url() and no WP_PLUGIN_URL! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        }</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <span class="keywordflow">return</span> $url;</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00548">548</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        $url = <span class="stringliteral">&#39;&#39;</span>;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>)) {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            <span class="keywordflow">if</span> (plugins_url()) {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                $url = plugins_url().<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            } elseif (defined(<span class="stringliteral">&#39;WP_PLUGIN_URL&#39;</span>)) {</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                $url = WP_PLUGIN_URL.<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (get_plugin_path)! Empty plugins_url() and no WP_PLUGIN_URL! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            }</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        } elseif (!function_exists(<span class="stringliteral">&#39;plugins_url&#39;</span>) &amp;&amp; defined(<span class="stringliteral">&#39;WP_PLUGIN_URL&#39;</span>)) {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            $url = WP_PLUGIN_URL.<span class="stringliteral">&quot;/bmlt-wordpress-satellite-plugin/vendor/bmlt/bmlt-satellite-base-class/&quot;</span>;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (get_plugin_path)! No plugins_url() and no WP_PLUGIN_URL! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keywordflow">return</span> $url;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00451">admin_head()</a>, <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00567">set_callbacks()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00297">standard_head()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00457">admin_head()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00303">standard_head()</a>.</p>
 
 </div>
 </div>
@@ -878,23 +882,23 @@ Protected Member Functions</h2></td></tr>
 </ul>
 </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00207">207</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        global $bmlt_localization;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        $this-&gt;adapt_to_lang($bmlt_localization);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_options_page&#39;</span>) &amp;&amp; (self::get_plugin_object() instanceof BMLTPlugin)) {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            $options_title = $this-&gt;my_current_language-&gt;local_options_title;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            $menu_string = $this-&gt;my_current_language-&gt;local_menu_string;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            add_options_page($options_title, $menu_string, 9, basename(__FILE__), array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_page&#39;</span> ));</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        } elseif (!function_exists(<span class="stringliteral">&#39;add_options_page&#39;</span>)) {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (option_menu)! No add_options_page()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (option_menu)! No BMLTPlugin Object! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00213">213</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        global $bmlt_localization;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        $this-&gt;adapt_to_lang($bmlt_localization);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_options_page&#39;</span>) &amp;&amp; (self::get_plugin_object() instanceof BMLTPlugin)) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            $options_title = $this-&gt;my_current_language-&gt;local_options_title;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            $menu_string = $this-&gt;my_current_language-&gt;local_menu_string;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            add_options_page($options_title, $menu_string, 9, basename(__FILE__), array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_page&#39;</span> ));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        } elseif (!function_exists(<span class="stringliteral">&#39;add_options_page&#39;</span>)) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (option_menu)! No add_options_page()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (option_menu)! No BMLTPlugin Object! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -934,19 +938,19 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00599">599</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    {</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;__&#39;</span>)) {</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            $in_string = htmlspecialchars(__($in_string, <span class="stringliteral">&#39;BMLTPlugin&#39;</span>));</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin Warning (process_text): __() does not exist! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        }</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            </div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">return</span> $in_string;</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00605">605</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    {</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;__&#39;</span>)) {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            $in_string = htmlspecialchars(__($in_string, <span class="stringliteral">&#39;BMLTPlugin&#39;</span>));</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin Warning (process_text): __() does not exist! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        }</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;            </div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <span class="keywordflow">return</span> $in_string;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00261">filter_plugin_actions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00267">filter_plugin_actions()</a>.</p>
 
 </div>
 </div>
@@ -975,31 +979,28 @@ Protected Member Functions</h2></td></tr>
 
 <p>Sets up the admin and handler callbacks. *. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00567">567</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    {</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_filter&#39;</span>)) {</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            add_filter(<span class="stringliteral">&#39;the_content&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;content_filter&#39;</span>));</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            add_filter(<span class="stringliteral">&#39;wp_head&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;standard_head&#39;</span> ));</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            add_filter(<span class="stringliteral">&#39;admin_head&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_head&#39;</span> ));</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            add_filter(<span class="stringliteral">&#39;plugin_action_links&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;filter_plugin_actions&#39;</span> ), 10, 2);</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_filter()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        }</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        </div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_action&#39;</span>)) {</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            add_action(<span class="stringliteral">&#39;pre_get_posts&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;stop_filter_if_not_main&#39;</span> ));</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            add_action(<span class="stringliteral">&#39;admin_init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_ajax_handler&#39;</span> ));</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            add_action(<span class="stringliteral">&#39;admin_menu&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;option_menu&#39;</span> ));</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            add_action(<span class="stringliteral">&#39;init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;filter_init&#39;</span> ));</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            wp_enqueue_script(<span class="stringliteral">&quot;table_display&quot;</span>, $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&quot;table_display.js&quot;</span>, <span class="keyword">false</span>, filemtime(plugin_dir_path(__FILE__) . <span class="stringliteral">&quot;vendor/bmlt/bmlt-satellite-base-class/table_display.js&quot;</span>), <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! --&gt;&quot;</span>;</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        }</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00573">573</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    {</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_filter&#39;</span>)) {</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            add_filter(<span class="stringliteral">&#39;the_content&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;content_filter&#39;</span>));</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            add_filter(<span class="stringliteral">&#39;wp_head&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;standard_head&#39;</span> ));</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            add_filter(<span class="stringliteral">&#39;admin_head&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_head&#39;</span> ));</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            add_filter(<span class="stringliteral">&#39;plugin_action_links&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;filter_plugin_actions&#39;</span> ), 10, 2);</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_filter()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        }</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&#39;add_action&#39;</span>)) {</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            add_action(<span class="stringliteral">&#39;pre_get_posts&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;stop_filter_if_not_main&#39;</span> ));</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            add_action(<span class="stringliteral">&#39;admin_init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;admin_ajax_handler&#39;</span> ));</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            add_action(<span class="stringliteral">&#39;admin_menu&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;option_menu&#39;</span> ));</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            add_action(<span class="stringliteral">&#39;init&#39;</span>, array ( self::get_plugin_object(), <span class="stringliteral">&#39;filter_init&#39;</span> ));</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            echo <span class="stringliteral">&quot;&lt;!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! --&gt;&quot;</span>;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00542">get_plugin_path()</a>.</p>
-
 </div>
 </div>
 <a id="a84c99e937163298bd0f8cb31498eb326"></a>
@@ -1027,159 +1028,159 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00297">297</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        $load_head = <span class="keyword">false</span>;   <span class="comment">// This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        $head_content = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        $load_head = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        $additional_css = <span class="stringliteral">&#39;&#39;</span>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="comment">// If you specify the bmlt_mobile custom field in this page (not post), then it can force the browser to redirect to a mobile handler.</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// The value of bmlt_mobile must be the settings ID of the server you want to handle the mobile content.</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="comment">// Post redirectors are also handled, but at this point, only the page will be checked.</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        $page_id = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        $page = get_page($page_id);</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00303">303</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        $load_head = <span class="keyword">false</span>;   <span class="comment">// This is a throwback. It prevents the GM JS from being loaded if there is no directly specified settings ID.</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        $head_content = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        $load_head = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        $additional_css = <span class="stringliteral">&#39;&#39;</span>;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        $support_mobile = isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">cms_get_page_settings_id</a>($page-&gt;post_content, <span class="keyword">true</span>) : null;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">if</span> ($support_mobile) {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            $mobile_options = $this-&gt;getBMLTOptions_by_id($support_mobile);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            $support_mobile = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        $options_standard = isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) ? $page-&gt;post_content : <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        $options = $this-&gt;getBMLTOptions_by_id($this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">cms_get_page_settings_id</a>($options_standard));</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">if</span> ($support_mobile &amp;&amp; is_array($mobile_options) &amp;&amp; count($mobile_options)) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            $mobile_url = $_SERVER[<span class="stringliteral">&#39;PHP_SELF&#39;</span>].<span class="stringliteral">&#39;?BMLTPlugin_mobile&amp;bmlt_settings_id=&#39;</span>.$support_mobile;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;WML&#39;</span>])) {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                $mobile_url .= <span class="stringliteral">&#39;&amp;WML=&#39;</span>.intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;WML&#39;</span>]);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;simulate_smartphone&#39;</span>])) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                $mobile_url .= <span class="stringliteral">&#39;&amp;simulate_smartphone&#39;</span>;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            ob_end_clean();</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            header(<span class="stringliteral">&quot;location: $mobile_url&quot;</span>);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            die();</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keywordflow">if</span> ($from_admin</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            ||  !$page</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            ||  $support_mobile</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt&#39;</span>)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>)</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>)</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_table&#39;</span>)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>)</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_simple&#39;</span>)</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_changes&#39;</span>)</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;simple_search_list&#39;</span>)</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            ) {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            $head_content = <span class="stringliteral">&quot;&lt;!-- Added by the BMLT plugin 3.X. --&gt;\n&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=EmulateIE7\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Style-Type\&quot; content=\&quot;text/css\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Script-Type\&quot; content=\&quot;text/javascript\&quot; /&gt;\n&quot;</span>;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">            ## TODO: Is this right?</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !$this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt&#39;</span>)) {</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                $load_head = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            }</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            $this-&gt;my_http_vars[<span class="stringliteral">&#39;start_view&#39;</span>] = $options[<span class="stringliteral">&#39;bmlt_initial_view&#39;</span>];</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            $this-&gt;load_params();</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            $root_server_root = $options[<span class="stringliteral">&#39;root_server&#39;</span>];</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="comment">// If you specify the bmlt_mobile custom field in this page (not post), then it can force the browser to redirect to a mobile handler.</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="comment">// The value of bmlt_mobile must be the settings ID of the server you want to handle the mobile content.</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="comment">// Post redirectors are also handled, but at this point, only the page will be checked.</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        $page_id = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        $page = get_page($page_id);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        $support_mobile = isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) ? $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">cms_get_page_settings_id</a>($page-&gt;post_content, <span class="keyword">true</span>) : null;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">if</span> ($support_mobile) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            $mobile_options = $this-&gt;getBMLTOptions_by_id($support_mobile);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            $support_mobile = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        $options_standard = isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) ? $page-&gt;post_content : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        $options = $this-&gt;getBMLTOptions_by_id($this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">cms_get_page_settings_id</a>($options_standard));</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">if</span> ($support_mobile &amp;&amp; is_array($mobile_options) &amp;&amp; count($mobile_options)) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            $mobile_url = $_SERVER[<span class="stringliteral">&#39;PHP_SELF&#39;</span>].<span class="stringliteral">&#39;?BMLTPlugin_mobile&amp;bmlt_settings_id=&#39;</span>.$support_mobile;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;WML&#39;</span>])) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                $mobile_url .= <span class="stringliteral">&#39;&amp;WML=&#39;</span>.intval($this-&gt;my_http_vars[<span class="stringliteral">&#39;WML&#39;</span>]);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordflow">if</span> (isset($this-&gt;my_http_vars[<span class="stringliteral">&#39;simulate_smartphone&#39;</span>])) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                $mobile_url .= <span class="stringliteral">&#39;&amp;simulate_smartphone&#39;</span>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            ob_end_clean();</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            header(<span class="stringliteral">&quot;location: $mobile_url&quot;</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            die();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">if</span> ($from_admin</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            ||  !$page</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            ||  $support_mobile</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt&#39;</span>)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_table&#39;</span>)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_simple&#39;</span>)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_changes&#39;</span>)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            ||  $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;simple_search_list&#39;</span>)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            ) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            $head_content = <span class="stringliteral">&quot;&lt;!-- Added by the BMLT plugin 3.X. --&gt;\n&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=EmulateIE7\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Style-Type\&quot; content=\&quot;text/css\&quot; /&gt;\n&lt;meta http-equiv=\&quot;Content-Script-Type\&quot; content=\&quot;text/javascript\&quot; /&gt;\n&quot;</span>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">            ## TODO: Is this right?</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !$this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt&#39;</span>)) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                $load_head = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;meta name=&quot;BMLT-Root-URI&quot; content=&quot;&#39;</span>.htmlspecialchars($root_server_root).<span class="stringliteral">&#39;&quot; /&gt;&#39;</span>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            $this-&gt;my_http_vars[<span class="stringliteral">&#39;start_view&#39;</span>] = $options[<span class="stringliteral">&#39;bmlt_initial_view&#39;</span>];</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&quot;</span>.<span class="stringliteral">&#39;&lt;style type=&quot;text/css&quot;&gt;&#39;</span>.<span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            $temp = self::stripFile(<span class="stringliteral">&#39;styles.css&#39;</span>, $options[<span class="stringliteral">&#39;theme&#39;</span>]);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordflow">if</span> ($temp) {</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                $image_dir_path = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&#39;/themes/&#39;</span> . $options[<span class="stringliteral">&#39;theme&#39;</span>] . <span class="stringliteral">&#39;/images/&#39;</span>;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                $temp = str_replace(<span class="stringliteral">&#39;##-IMAGEDIR-##&#39;</span>, $image_dir_path, $temp);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            }</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            $temp = self::stripFile(<span class="stringliteral">&#39;nouveau_map_styles.css&#39;</span>, $options[<span class="stringliteral">&#39;theme&#39;</span>]);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            $this-&gt;load_params();</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            $root_server_root = $options[<span class="stringliteral">&#39;root_server&#39;</span>];</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;meta name=&quot;BMLT-Root-URI&quot; content=&quot;&#39;</span>.htmlspecialchars($root_server_root).<span class="stringliteral">&#39;&quot; /&gt;&#39;</span>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&quot;</span>.<span class="stringliteral">&#39;&lt;style type=&quot;text/css&quot;&gt;&#39;</span>.<span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            $temp = self::stripFile(<span class="stringliteral">&#39;styles.css&#39;</span>, $options[<span class="stringliteral">&#39;theme&#39;</span>]);</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">if</span> ($temp) {</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                $image_dir_path = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&#39;/themes/&#39;</span> . $options[<span class="stringliteral">&#39;theme&#39;</span>] . <span class="stringliteral">&#39;/images/&#39;</span>;</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                $temp = str_replace(<span class="stringliteral">&#39;##-IMAGEDIR-##&#39;</span>, $image_dir_path, $temp);</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;table_styles.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;quicksearch.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            $dirname = dirname(__FILE__) . <span class="stringliteral">&#39;/vendor/bmlt/bmlt-satellite-base-class/themes&#39;</span>;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            $dir = <span class="keyword">new</span> DirectoryIterator($dirname);</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            <span class="keywordflow">foreach</span> ($dir as $fileinfo) {</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                <span class="keywordflow">if</span> (!$fileinfo-&gt;isDot()) {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    $fName = $fileinfo-&gt;getFilename();</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    $temp = self::stripFile(<span class="stringliteral">&quot;table_styles.css&quot;</span>, $fName);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    <span class="keywordflow">if</span> ($temp) {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        $image_dir_path = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&#39;/themes/&#39;</span> . $fName . <span class="stringliteral">&#39;/images/&#39;</span>;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                        $temp = str_replace(<span class="stringliteral">&#39;##-IMAGEDIR-##&#39;</span>, $image_dir_path, $temp);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                        $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    $temp = self::stripFile(<span class="stringliteral">&quot;quicksearch.css&quot;</span>, $fName);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    <span class="keywordflow">if</span> ($temp) {</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            }</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        </div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            $additional_css = <span class="stringliteral">&#39;#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }&#39;</span>;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }&#39;</span>;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } &#39;</span>;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } &#39;</span>;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            $additional_css .= self::stripFile(<span class="stringliteral">&#39;responsiveness.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <span class="keywordflow">if</span> ($root_server_root) {</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                $additional_css .= <span class="stringliteral">&#39;.bmlt_container * {margin:0;padding:0;text-align:center }&#39;</span>;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                <span class="keywordflow">if</span> ($options[<span class="stringliteral">&#39;additional_css&#39;</span>]) {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    $additional_css .= $options[<span class="stringliteral">&#39;additional_css&#39;</span>];</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                }</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                <span class="keywordflow">if</span> ($additional_css) {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    $head_content .= $additional_css;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            }</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&lt;/style&gt;\n&quot;</span>;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot;&gt;&#39;</span>;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;javascript.js&#39;</span>);</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>)) {</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;quicksearch.js&#39;</span>) . (defined(<span class="stringliteral">&#39;_DEBUG_MODE_&#39;</span>) ? <span class="stringliteral">&quot;\n&quot;</span> : <span class="stringliteral">&#39;&#39;</span>);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            $temp = self::stripFile(<span class="stringliteral">&#39;nouveau_map_styles.css&#39;</span>, $options[<span class="stringliteral">&#39;theme&#39;</span>]);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">if</span> ($temp) {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                $image_dir_path = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&#39;/themes/&#39;</span> . $options[<span class="stringliteral">&#39;theme&#39;</span>] . <span class="stringliteral">&#39;/images/&#39;</span>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                $temp = str_replace(<span class="stringliteral">&#39;##-IMAGEDIR-##&#39;</span>, $image_dir_path, $temp);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;table_styles.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;quicksearch.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            $dirname = dirname(__FILE__) . <span class="stringliteral">&#39;/vendor/bmlt/bmlt-satellite-base-class/themes&#39;</span>;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            $dir = <span class="keyword">new</span> DirectoryIterator($dirname);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">foreach</span> ($dir as $fileinfo) {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordflow">if</span> (!$fileinfo-&gt;isDot()) {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    $fName = $fileinfo-&gt;getFilename();</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    $temp = self::stripFile(<span class="stringliteral">&quot;table_styles.css&quot;</span>, $fName);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">if</span> ($temp) {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                        $image_dir_path = $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&#39;/themes/&#39;</span> . $fName . <span class="stringliteral">&#39;/images/&#39;</span>;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        $temp = str_replace(<span class="stringliteral">&#39;##-IMAGEDIR-##&#39;</span>, $image_dir_path, $temp);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                        $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    $temp = self::stripFile(<span class="stringliteral">&quot;quicksearch.css&quot;</span>, $fName);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    <span class="keywordflow">if</span> ($temp) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        $head_content .= <span class="stringliteral">&quot;\t$temp\n&quot;</span>;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            $additional_css = <span class="stringliteral">&#39;#content div.bmlt_table_display_div ul.bmlt_table_data_ul { width:100%; }&#39;</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list,#content div.bmlt_table_display_div ul.bmlt_table_header_weekday_list li,#content div.bmlt_table_display_div div.bmlt_table_div ul,#content div.bmlt_table_display_div div.bmlt_table_div ul li { list-style-type:none;list-style-position:outside; }&#39;</span>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul,#content div.bmlt_table_display_div div.bmlt_table_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li { margin:0;padding:0; } &#39;</span>;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            $additional_css .= <span class="stringliteral">&#39; #content div.bmlt_table_display_div ul.bmlt_table_data_ul li.bmlt_table_data_ul_li ul { margin:0;padding:0; } &#39;</span>;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            $additional_css .= self::stripFile(<span class="stringliteral">&#39;responsiveness.css&#39;</span>) . <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">if</span> ($root_server_root) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                $additional_css .= <span class="stringliteral">&#39;.bmlt_container * {margin:0;padding:0;text-align:center }&#39;</span>;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                <span class="keywordflow">if</span> ($options[<span class="stringliteral">&#39;additional_css&#39;</span>]) {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                    $additional_css .= $options[<span class="stringliteral">&#39;additional_css&#39;</span>];</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                <span class="keywordflow">if</span> ($additional_css) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                    $head_content .= $additional_css;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&lt;/style&gt;\n&quot;</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;script type=&quot;text/javascript&quot;&gt;&#39;</span>;</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>)) {</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;map_search.js&#39;</span>);</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            }</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>)) {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;fast_mobile_lookup.js&#39;</span>);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;/script&gt;&#39;</span>;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            $head_content .= self::stripFile(<span class="stringliteral">&#39;javascript.js&#39;</span>);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_quicksearch&#39;</span>)) {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;quicksearch.js&#39;</span>) . (defined(<span class="stringliteral">&#39;_DEBUG_MODE_&#39;</span>) ? <span class="stringliteral">&quot;\n&quot;</span> : <span class="stringliteral">&#39;&#39;</span>);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_map&#39;</span>)) {</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;map_search.js&#39;</span>);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            }</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&lt;!-- End Added by the BMLT plugin 3.X. --&gt;\n&quot;</span>;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <span class="keywordflow">if</span> (!$from_admin) {</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                echo $head_content;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                <span class="keywordflow">return</span> $head_content;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">if</span> (isset($page-&gt;post_content) &amp;&amp; !empty($page-&gt;post_content) &amp;&amp; $this-&gt;get_shortcode($page-&gt;post_content, <span class="stringliteral">&#39;bmlt_mobile&#39;</span>)) {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                $head_content .= self::stripFile(<span class="stringliteral">&#39;fast_mobile_lookup.js&#39;</span>);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            $head_content .= <span class="stringliteral">&#39;&lt;/script&gt;&#39;</span>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            $head_content .= <span class="stringliteral">&quot;\n&lt;!-- End Added by the BMLT plugin 3.X. --&gt;\n&quot;</span>;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordflow">if</span> (!$from_admin) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                echo $head_content;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                <span class="keywordflow">return</span> $head_content;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00130">cms_get_page_settings_id()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00542">get_plugin_path()</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00136">cms_get_page_settings_id()</a>, and <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00548">get_plugin_path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00451">admin_head()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00457">admin_head()</a>.</p>
 
 </div>
 </div>
@@ -1201,11 +1202,11 @@ Protected Member Functions</h2></td></tr>
 <p>Sets the flag if this is a singular post or page. Otherwise, we don't show. *. </p>
 <p>THE WORDPRESS CALLBACKS * </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00184">184</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
-<div class="fragment"><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        $this-&gt;plugin_is_main = is_singular();</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00190">190</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
+<div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">// phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        $this-&gt;plugin_is_main = is_singular();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1213,12 +1214,12 @@ Protected Member Functions</h2></td></tr>
 <li>/home/runner/work/bmlt-wordpress-satellite-plugin/bmlt-wordpress-satellite-plugin/<a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a86b06cb46390b6f67693c85518975a6e"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">BMLTWPPlugin\cms_get_post_meta</a></div><div class="ttdeci">cms_get_post_meta( $in_page_id, $in_settings_id)</div><div class="ttdoc">This gets the page meta for the given page. (allows CMS abstraction). * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00105">bmlt-wordpress-satellite-plugin.php:105</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a84c99e937163298bd0f8cb31498eb326"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a84c99e937163298bd0f8cb31498eb326">BMLTWPPlugin\standard_head</a></div><div class="ttdeci">standard_head($from_admin=false)</div><div class="ttdoc">Echoes any necessary head content. *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00297">bmlt-wordpress-satellite-plugin.php:297</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_abe3f52febadbe47247ce4359ecd93cc6"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#abe3f52febadbe47247ce4359ecd93cc6">BMLTWPPlugin\get_admin_form_uri</a></div><div class="ttdeci">get_admin_form_uri()</div><div class="ttdoc">Return an HTTP path to the basic admin form submit (action) URI * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00093">bmlt-wordpress-satellite-plugin.php:93</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8db0c24061975b73b2eccba1c6e9f63d"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">BMLTWPPlugin\cms_get_page_settings_id</a></div><div class="ttdeci">cms_get_page_settings_id( $in_content, $in_check_mobile=false)</div><div class="ttdoc">This function fetches the settings ID for a page (if there is one). *If $in_check_mobile is set to tr...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00130">bmlt-wordpress-satellite-plugin.php:130</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_ad79906e4f490a3129d02ed12ecf3056b"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">BMLTWPPlugin\get_plugin_path</a></div><div class="ttdeci">get_plugin_path()</div><div class="ttdoc">Return an HTTP path to the plugin directory. * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00542">bmlt-wordpress-satellite-plugin.php:542</a></div></div>
-<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8e5667bef5bdf4e308a6f9ebaa9aa2df"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">BMLTWPPlugin\process_text</a></div><div class="ttdeci">process_text($in_string)</div><div class="ttdoc">This uses the WordPress text processor (__) to process the given string. *This allows easier translat...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00599">bmlt-wordpress-satellite-plugin.php:599</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a86b06cb46390b6f67693c85518975a6e"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a86b06cb46390b6f67693c85518975a6e">BMLTWPPlugin\cms_get_post_meta</a></div><div class="ttdeci">cms_get_post_meta( $in_page_id, $in_settings_id)</div><div class="ttdoc">This gets the page meta for the given page. (allows CMS abstraction). * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00111">bmlt-wordpress-satellite-plugin.php:111</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a84c99e937163298bd0f8cb31498eb326"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a84c99e937163298bd0f8cb31498eb326">BMLTWPPlugin\standard_head</a></div><div class="ttdeci">standard_head($from_admin=false)</div><div class="ttdoc">Echoes any necessary head content. *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00303">bmlt-wordpress-satellite-plugin.php:303</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_abe3f52febadbe47247ce4359ecd93cc6"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#abe3f52febadbe47247ce4359ecd93cc6">BMLTWPPlugin\get_admin_form_uri</a></div><div class="ttdeci">get_admin_form_uri()</div><div class="ttdoc">Return an HTTP path to the basic admin form submit (action) URI * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00099">bmlt-wordpress-satellite-plugin.php:99</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8db0c24061975b73b2eccba1c6e9f63d"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8db0c24061975b73b2eccba1c6e9f63d">BMLTWPPlugin\cms_get_page_settings_id</a></div><div class="ttdeci">cms_get_page_settings_id( $in_content, $in_check_mobile=false)</div><div class="ttdoc">This function fetches the settings ID for a page (if there is one). *If $in_check_mobile is set to tr...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00136">bmlt-wordpress-satellite-plugin.php:136</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_ad79906e4f490a3129d02ed12ecf3056b"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">BMLTWPPlugin\get_plugin_path</a></div><div class="ttdeci">get_plugin_path()</div><div class="ttdoc">Return an HTTP path to the plugin directory. * *.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00548">bmlt-wordpress-satellite-plugin.php:548</a></div></div>
+<div class="ttc" id="aclass_b_m_l_t_w_p_plugin_html_a8e5667bef5bdf4e308a6f9ebaa9aa2df"><div class="ttname"><a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#a8e5667bef5bdf4e308a6f9ebaa9aa2df">BMLTWPPlugin\process_text</a></div><div class="ttdeci">process_text($in_string)</div><div class="ttdoc">This uses the WordPress text processor (__) to process the given string. *This allows easier translat...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00605">bmlt-wordpress-satellite-plugin.php:605</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
