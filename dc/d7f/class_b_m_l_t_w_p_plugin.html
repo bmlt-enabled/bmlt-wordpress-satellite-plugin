@@ -89,9 +89,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">__construct</a> ()</td></tr>
 <tr class="memdesc:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. *.  <a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">More...</a><br /></td></tr>
 <tr class="separator:addb2b96f4f9db0d2ba60c7ac0f632d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad64f0229f09d4d5d2efb01363ed53a8b"><td class="memItemLeft" align="right" valign="top"><a id="ad64f0229f09d4d5d2efb01363ed53a8b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>enqueueFrontendFiles</b> ()</td></tr>
-<tr class="separator:ad64f0229f09d4d5d2efb01363ed53a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8e283f4c455427defcdfaf260d61e8"><td class="memItemLeft" align="right" valign="top"><a id="a8c8e283f4c455427defcdfaf260d61e8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>enqueueFrontendFilesBmlt</b> ()</td></tr>
+<tr class="separator:a8c8e283f4c455427defcdfaf260d61e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#aff14d9adb4250cd0e0d41b00eaa1c375">stop_filter_if_not_main</a> ()</td></tr>
 <tr class="memdesc:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the flag if this is a singular post or page. Otherwise, we don't show. *.  <a href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#aff14d9adb4250cd0e0d41b00eaa1c375">More...</a><br /></td></tr>
 <tr class="separator:aff14d9adb4250cd0e0d41b00eaa1c375"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,7 +215,7 @@ Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html#l00070">70</a> of file <a class="el" href="../../db/dd9/bmlt-wordpress-satellite-plugin_8php_source.html">bmlt-wordpress-satellite-plugin.php</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        add_action( <span class="stringliteral">&#39;wp_enqueue_scripts&#39;</span>, <span class="stringliteral">&#39;frontend_enqueue_script&#39;</span> );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        add_action( <span class="stringliteral">&#39;wp_enqueue_scripts&#39;</span>, <span class="stringliteral">&#39;enqueueFrontendFilesBmlt&#39;</span> );</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        parent::__construct();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
 </div><!-- fragment -->

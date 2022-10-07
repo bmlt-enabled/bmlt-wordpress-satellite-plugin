@@ -137,11 +137,11 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">    ****************************************************************************************/</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">   70</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#addb2b96f4f9db0d2ba60c7ac0f632d5a">__construct</a>()</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        add_action( <span class="stringliteral">&#39;wp_enqueue_scripts&#39;</span>, <span class="stringliteral">&#39;frontend_enqueue_script&#39;</span> );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        add_action( <span class="stringliteral">&#39;wp_enqueue_scripts&#39;</span>, <span class="stringliteral">&#39;enqueueFrontendFilesBmlt&#39;</span> );</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        parent::__construct();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> enqueueFrontendFiles()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">public</span> <span class="keyword">function</span> enqueueFrontendFilesBmlt()</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        wp_enqueue_script(<span class="stringliteral">&quot;table_display&quot;</span>, $this-&gt;<a class="code" href="../../dc/d7f/class_b_m_l_t_w_p_plugin.html#ad79906e4f490a3129d02ed12ecf3056b">get_plugin_path</a>() . <span class="stringliteral">&quot;table_display.js&quot;</span>, <span class="keyword">false</span>, filemtime(plugin_dir_path(__FILE__) . <span class="stringliteral">&quot;vendor/bmlt/bmlt-satellite-base-class/table_display.js&quot;</span>), <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
