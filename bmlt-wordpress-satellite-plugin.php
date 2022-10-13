@@ -69,7 +69,7 @@ class BMLTWPPlugin extends BMLTPlugin
     ****************************************************************************************/
     public function __construct()
     {
-        add_action( 'wp_enqueue_scripts', array(&$this, "enqueueFrontendFilesBmlt"));
+        add_action('wp_enqueue_scripts', array(&$this, "enqueueFrontendFilesBmlt"));
         parent::__construct();
     }
 
