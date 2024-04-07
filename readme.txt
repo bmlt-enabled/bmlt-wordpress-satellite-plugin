@@ -2,31 +2,35 @@
 
 Contributors: magblogapi, radius314, pjaudiomv, jbraswell
 Plugin URI: https://bmlt.app
-Tags: na, meeting list, meeting finder, maps, recovery, addiction, webservant
-Author: bmlt-enabled
-Requires at least: 4.0
-Tested up to: 6.2.2
-Stable tag: 3.11.3
+Tags: na, meeting list, meeting finder, bmlt, recovery
+Author: bmltenabled
+Tested up to: 6.5.4
+Stable tag: 3.11.4
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This is a "satellite" plugin for the Basic Meeting List Toolbox (BMLT).
 
 == Description ==
 
 The [Basic Meeting List Toolbox (BMLT)](https://bmlt.app) is a powerful client/server system for locating NA meetings.
-The "root server" is a standalone Web site, but "satellite servers" are set up to point to the "root." This is a "satellite," set up as a WordPress plugin.
-It is very easy to install and use. It has an administration panel that lets you choose a map center, designate the root, set up the map zoom, and whether or not older browsers are supported.
+The "root server" is a standalone Website, but "satellite servers" are set up to point to the "root." This is a "satellite," set up as a WordPress plugin.
+It is very easy to install and use. It has an administration panel that lets you choose a map center, designate the root, set up the map zoom, and whether older browsers are supported.
 
 == Installation ==
 
 This is a standard WordPress plugin. Either use the in-dashboard installer, or move the main directory into the wp-content/plugins/ directory and activate it.
 
-[More information can be found here.](https://bmlt.app/satellites/cms-plugins/wordpress/)
+[More information can be found here.](https://old.bmlt.app/satellites/cms-plugins/wordpress/)
 
-[Administration instructions can be found here.](https://bmlt.app/satellites/cms-plugins/cms-plugin-administration/)
+[Administration instructions can be found here.](https://old.bmlt.app/satellites/cms-plugins/cms-plugin-administration/)
 
-[Usage instructions for the shortcodes can be found here.](https://bmlt.app/satellites/cms-plugins/shortcodes/)
+[Usage instructions for the shortcodes can be found here.](https://old.bmlt.app/satellites/cms-plugins/shortcodes/)
 
 = Changelog =
+
+= 3.11.4 =
+* Fix various PHP warnings by bumping composer dependencies.
 
 = 3.11.3 =
 * Fixes a bunch of PHP warnings.

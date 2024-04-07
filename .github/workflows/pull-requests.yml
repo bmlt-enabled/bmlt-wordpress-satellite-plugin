@@ -8,13 +8,14 @@ jobs:
   lint:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out code 🛒
+        uses: actions/checkout@v4
         id: code-checkout
 
-      - name: Validate composer.json and composer.lock
+      - name: Validate composer.json and composer.lock 🎼
         id: composer-validate
         run: composer validate
 
-      - name: PHPCS checker
+      - name: PHPCS checker 🧹
         id: php-codesniffer
         run: make lint

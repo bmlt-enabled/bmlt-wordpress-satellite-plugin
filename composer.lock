@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c4d3079cc220b50264598482ca76d94",
+    "content-hash": "c31a6919a0d65076e4a485f7e65cd4fa",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.11.4",
+            "version": "3.11.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "b1fb2ed42815bbf9927d792bdbd347f953e960e3"
+                "reference": "11e39b91e6a9e3a3686b74f3204173c83627d3c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/b1fb2ed42815bbf9927d792bdbd347f953e960e3",
-                "reference": "b1fb2ed42815bbf9927d792bdbd347f953e960e3",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/11e39b91e6a9e3a3686b74f3204173c83627d3c9",
+                "reference": "11e39b91e6a9e3a3686b74f3204173c83627d3c9",
                 "shasum": ""
             },
             "require": {
-                "bmlt/bmlt-satellite-driver": "1.1.0"
+                "bmlt/bmlt-satellite-driver": "1.1.1"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "3.*"
@@ -45,22 +45,22 @@
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
             "support": {
                 "issues": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/issues",
-                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.4"
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.12"
             },
-            "time": "2022-09-29T01:30:17+00:00"
+            "time": "2023-11-17T14:13:31+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-driver.git",
-                "reference": "80967ce6a35f664dfea063cc7afd8df03d0fbd34"
+                "reference": "432333ecd0d8eefb71bfd1671c6e1ee9b9fb5e6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/80967ce6a35f664dfea063cc7afd8df03d0fbd34",
-                "reference": "80967ce6a35f664dfea063cc7afd8df03d0fbd34",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-driver/zipball/432333ecd0d8eefb71bfd1671c6e1ee9b9fb5e6b",
+                "reference": "432333ecd0d8eefb71bfd1671c6e1ee9b9fb5e6b",
                 "shasum": ""
             },
             "require-dev": {
@@ -85,24 +85,24 @@
             "description": "Provides low-level communication to the BMLT Root Server.",
             "support": {
                 "issues": "https://github.com/bmlt-enabled/bmlt-satellite-driver/issues",
-                "source": "https://github.com/bmlt-enabled/bmlt-satellite-driver/tree/1.1.0"
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-driver/tree/1.1.1"
             },
-            "time": "2022-09-06T19:30:26+00:00"
+            "time": "2023-11-13T00:29:12+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619"
+                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1359e176e9307e906dc3d890bcc9603ff6d90619",
-                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
+                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "shasum": ""
             },
             "require": {
@@ -138,14 +138,15 @@
             "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
-                "standards"
+                "standards",
+                "static analysis"
             ],
             "support": {
                 "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2022-06-18T07:21:10+00:00"
+            "time": "2023-02-22T23:07:41+00:00"
         }
     ],
     "aliases": [],
@@ -155,5 +156,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
