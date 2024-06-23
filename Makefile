@@ -31,6 +31,18 @@ composer: $(VENDOR_AUTOLOAD) ## Runs composer install
 lint: composer ## PHP Lint
 	vendor/squizlabs/php_codesniffer/bin/phpcs
 
-.PHONY: lint-fix
-lint-fix: composer ## PHP Lint Fix
+.PHONY: fmt
+fmt: composer ## PHP Fmt
 	vendor/squizlabs/php_codesniffer/bin/phpcbf
+
+.PHONY: dev
+dev:  ## Docker up
+	docker-compose up
+
+.PHONY: mysql
+mysql:  ## Runs mysql cli in mysql container
+	docker exec -it $(BASENAME)-db-1 mariadb -u root -psomewordpress wordpress
+
+.PHONY: bash
+bash:  ## Runs bash shell in wordpress container
+	docker exec -it -w /var/www/html $(BASENAME)-wordpress-1 bash

@@ -1,23 +1,23 @@
 <?php
-/****************************************************************************************//**
-*   \file   bmlt-wordpress-satellite-plugin.php                                             *
-*                                                                                           *
-*   \brief  This is a WordPress plugin of a BMLT satellite client.                          *
-*                                                                                           *
-*   These need to be without the asterisks, as WP parses them.                              *
-Plugin Name: BMLT WordPress Satellite
-Plugin URI: https://bmlt.app
-Author: bmlt-enabled
-Description: This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
-Version: 3.11.3
-Install: Drop this directory into the "wp-content/plugins/" directory and activate it.
-********************************************************************************************/
+/**
+ * Plugin Name:       BMLT WordPress Satellite
+ * Plugin URI:        https://bmlt.app
+ * Description:       This is a WordPress plugin satellite of the Basic Meeting List Toolbox.
+ * Install:           Drop this directory into the "wp-content/plugins/" directory and activate it.
+ * Contributors:      pjaudiomv, bmltenabled
+ * Authors:           bmltenabled
+ * Version:           3.11.4
+ * Requires PHP:      8.1
+ * Requires at least: 6.2
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 // define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
 global $bmlt_localization;  ///< Use this to control the localization.
 
-if (isset($_COOKIE) && isset($_COOKIE['bmlt_lang_selector']) && $_COOKIE['bmlt_lang_selector']) {
+if (isset($_COOKIE['bmlt_lang_selector']) && $_COOKIE['bmlt_lang_selector']) {
     $bmlt_localization = $_COOKIE['bmlt_lang_selector'];
 } else {
     if (!isset($bmlt_localization) || !$bmlt_localization) {
@@ -219,8 +219,13 @@ class BMLTWPPlugin extends BMLTPlugin
         if (function_exists('add_options_page') && (self::get_plugin_object() instanceof BMLTPlugin)) {
             $options_title = $this->my_current_language->local_options_title;
             $menu_string = $this->my_current_language->local_menu_string;
-            
-            add_options_page($options_title, $menu_string, 9, basename(__FILE__), array ( self::get_plugin_object(), 'admin_page' ));
+            add_options_page(
+                $options_title,
+                $menu_string,
+                'manage_options',
+                'bmlt-wordpress-satellite-plugin',
+                array(  self::get_plugin_object(), 'admin_page' )
+            );
         } elseif (!function_exists('add_options_page')) {
             echo "<!-- BMLTPlugin ERROR (option_menu)! No add_options_page()! -->";
         } else {
@@ -356,22 +361,22 @@ class BMLTWPPlugin extends BMLTPlugin
             }
 
         
-            $this->my_http_vars['start_view'] = $options['bmlt_initial_view'];
+            $this->my_http_vars['start_view'] = $options['bmlt_initial_view'] ?? '';
         
             $this->load_params();
         
-            $root_server_root = $options['root_server'];
+            $root_server_root = $options['root_server'] ?? '';
         
             $head_content .= '<meta name="BMLT-Root-URI" content="'.htmlspecialchars($root_server_root).'" />';
         
             $head_content .= "\n".'<style type="text/css">'."\n";
-            $temp = self::stripFile('styles.css', $options['theme']);
+            $temp = self::stripFile('styles.css', $options['theme'] ?? '');
             if ($temp) {
                 $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
                 $temp = str_replace('##-IMAGEDIR-##', $image_dir_path, $temp);
                 $head_content .= "\t$temp\n";
             }
-            $temp = self::stripFile('nouveau_map_styles.css', $options['theme']);
+            $temp = self::stripFile('nouveau_map_styles.css', $options['theme'] ?? '');
             if ($temp) {
                 $image_dir_path = $this->get_plugin_path() . '/themes/' . $options['theme'] . '/images/';
                 $temp = str_replace('##-IMAGEDIR-##', $image_dir_path, $temp);
