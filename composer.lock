@@ -4,24 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4172a1ff97af68c0458df2692b6a3be3",
+    "content-hash": "38b3063372cf183e5d5af57f7a710f6d",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.11.13",
+            "version": "3.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "b29e7df4e0d9c74b91001bd7801423bda51f7a3d"
+                "reference": "358d02accc7d21e05624a23a73ae996236f3fdd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/b29e7df4e0d9c74b91001bd7801423bda51f7a3d",
-                "reference": "b29e7df4e0d9c74b91001bd7801423bda51f7a3d",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/358d02accc7d21e05624a23a73ae996236f3fdd1",
+                "reference": "358d02accc7d21e05624a23a73ae996236f3fdd1",
                 "shasum": ""
             },
             "require": {
-                "bmlt/bmlt-satellite-driver": "1.1.1"
+                "bmlt/bmlt-satellite-driver": "1.1.1",
+                "php": ">=8.1"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "3.*"
@@ -45,9 +46,9 @@
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
             "support": {
                 "issues": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/issues",
-                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.13"
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.14"
             },
-            "time": "2026-03-19T20:33:26+00:00"
+            "time": "2026-03-19T21:50:40+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",
@@ -176,7 +177,9 @@
     "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": ">=8.1"
+    },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
 }

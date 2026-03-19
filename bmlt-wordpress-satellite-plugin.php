@@ -202,6 +202,74 @@ class BMLTWPPlugin extends BMLTPlugin
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         echo $this->return_admin_page();
     }
+
+    /************************************************************************************//**
+    *   \brief Verifies the WordPress nonce for admin state-changing requests.              *
+    *                                                                                       *
+    *   Calls wp_die() on failure so execution never returns false.                        *
+    *                                                                                       *
+    *   \returns bool Always true (wp_die halts on failure).                                *
+    ****************************************************************************************/
+    // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+    protected function cms_verify_admin_nonce()
+    {
+        // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+        $nonce = isset($this->my_http_vars['_wpnonce']) ? $this->my_http_vars['_wpnonce'] : '';
+        if (!wp_verify_nonce($nonce, 'bmlt_admin_action')) {
+            wp_die(__('Security check failed. Please reload the page and try again.', 'BMLTPlugin'));
+        }
+        return true;
+    }
+
+    /************************************************************************************//**
+    *   \brief Returns the WordPress nonce hidden input field for admin forms.              *
+    *                                                                                       *
+    *   \returns string HTML hidden input with the nonce value.                             *
+    ****************************************************************************************/
+    // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+    protected function cms_get_admin_nonce_html()
+    {
+        // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+        return wp_nonce_field('bmlt_admin_action', '_wpnonce', true, false);
+    }
+
+    /************************************************************************************//**
+    *   \brief Returns the HTML for the admin page, with JS nonce wrappers injected.        *
+    *                                                                                       *
+    *   \returns a string. The XHTML for the page.                                          *
+    ****************************************************************************************/
+    // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+    public function return_admin_page()
+    {
+        // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+        $html = parent::return_admin_page();
+
+        $nonce_value = esc_js(wp_create_nonce('bmlt_admin_action'));
+        $html .= '<script type="text/javascript">';
+        $html .= 'var c_g_bmlt_nonce="' . $nonce_value . '";';
+        $html .= 'function BMLTPlugin_DeleteOptionSheet(){';
+        $html .= 'if(confirm(c_g_delete_confirm_message)){';
+        $html .= 'var option_index=BMLTPlugin_GetSelectedOptionIndex();';
+        $html .= 'var url=document.getElementById("BMLTPlugin_sheet_form").action+"&BMLTPlugin_delete_option="+option_index+"&_wpnonce="+c_g_bmlt_nonce;';
+        $html .= 'window.location.replace(url);}}';
+        $html .= 'var _orig_BMLTPlugin_SaveOptions=BMLTPlugin_SaveOptions;';
+        $html .= 'BMLTPlugin_SaveOptions=function(){';
+        $html .= 'var _orig_BMLTPlugin_AjaxRequest=BMLTPlugin_AjaxRequest;';
+        $html .= 'BMLTPlugin_AjaxRequest=function(url,cb,method){';
+        $html .= 'return _orig_BMLTPlugin_AjaxRequest(url+"&_wpnonce="+c_g_bmlt_nonce,cb,method);};';
+        $html .= '_orig_BMLTPlugin_SaveOptions();';
+        $html .= 'BMLTPlugin_AjaxRequest=_orig_BMLTPlugin_AjaxRequest;};';
+        $html .= 'var _orig_BMLTPlugin_TestRootUri_call=BMLTPlugin_TestRootUri_call;';
+        $html .= 'BMLTPlugin_TestRootUri_call=function(){';
+        $html .= 'var _orig_BMLTPlugin_AjaxRequest2=BMLTPlugin_AjaxRequest;';
+        $html .= 'BMLTPlugin_AjaxRequest=function(url,cb,method){';
+        $html .= 'return _orig_BMLTPlugin_AjaxRequest2(url+"&_wpnonce="+c_g_bmlt_nonce,cb,method);};';
+        $html .= '_orig_BMLTPlugin_TestRootUri_call();';
+        $html .= 'BMLTPlugin_AjaxRequest=_orig_BMLTPlugin_AjaxRequest2;};';
+        $html .= '</script>';
+
+        return $html;
+    }
        
     /************************************************************************************//**
     *   \brief Presents the admin menu options.                                             *
