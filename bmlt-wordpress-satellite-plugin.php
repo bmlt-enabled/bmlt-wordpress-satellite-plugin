@@ -13,18 +13,23 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 // define ( '_DEBUG_MODE_', 1 ); //Uncomment for easier JavaScript debugging.
 
 global $bmlt_localization;  ///< Use this to control the localization.
 
-if (isset($_COOKIE['bmlt_lang_selector']) && $_COOKIE['bmlt_lang_selector']) {
-    $bmlt_localization = $_COOKIE['bmlt_lang_selector'];
+$bmlt_lang_cookie = isset($_COOKIE['bmlt_lang_selector']) ? sanitize_text_field(wp_unslash($_COOKIE['bmlt_lang_selector'])) : '';
+if ($bmlt_lang_cookie) {
+    $bmlt_localization = $bmlt_lang_cookie;
 } else {
     if (!isset($bmlt_localization) || !$bmlt_localization) {
-        $language = get_locale();
-    
-        if ($language) {
-            $bmlt_localization = substr($language, 0, 2);
+        $bmlt_language = get_locale();
+
+        if ($bmlt_language) {
+            $bmlt_localization = substr($bmlt_language, 0, 2);
         }
     } elseif (function_exists('get_option')) {
         $bmlt_localization = get_option('BMLT_lang_base');
@@ -77,6 +82,19 @@ class BMLTWPPlugin extends BMLTPlugin
     {
         wp_enqueue_script("table_display", $this->get_plugin_path() . "table_display.js", false, filemtime(plugin_dir_path(__FILE__) . "vendor/bmlt/bmlt-satellite-base-class/table_display.js"), false);
     }
+
+    public function enqueueAdminFilesBmlt()
+    {
+        $options = $this->getBMLTOptions(1);
+        $key = $options['google_api_key'];
+        wp_enqueue_script('bmlt-google-maps', 'https://maps.google.com/maps/api/js?key=' . $key, [], null, false); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+
+        if (function_exists('plugins_url')) {
+            $url = $this->get_plugin_path();
+            wp_enqueue_style('bmlt-admin-styles', $url . 'admin_styles.css', [], null); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+            wp_enqueue_script('bmlt-admin-js', $url . 'admin_javascript.js', [], null, false); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+        }
+    }
     
     /************************************************************************************//**
     *   \brief Return an HTTP path to the AJAX callback target.                             *
@@ -99,7 +117,8 @@ class BMLTWPPlugin extends BMLTPlugin
     protected function get_admin_form_uri()
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-        return $_SERVER['PHP_SELF'].'?page=bmlt-wordpress-satellite-plugin.php';
+        $php_self = isset($_SERVER['PHP_SELF']) ? sanitize_text_field(wp_unslash($_SERVER['PHP_SELF'])) : '';
+        return $php_self.'?page=bmlt-wordpress-satellite-plugin.php';
     }
 
     /************************************************************************************//**
@@ -200,7 +219,7 @@ class BMLTWPPlugin extends BMLTPlugin
     public function admin_page()
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-        echo $this->return_admin_page();
+        echo $this->return_admin_page(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 
     /************************************************************************************//**
@@ -216,7 +235,7 @@ class BMLTWPPlugin extends BMLTPlugin
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         $nonce = isset($this->my_http_vars['_wpnonce']) ? $this->my_http_vars['_wpnonce'] : '';
         if (!wp_verify_nonce($nonce, 'bmlt_admin_action')) {
-            wp_die(__('Security check failed. Please reload the page and try again.', 'BMLTPlugin'));
+            wp_die(esc_html__('Security check failed. Please reload the page and try again.', 'bmlt-wordpress-satellite-plugin'));
         }
         return true;
     }
@@ -398,7 +417,8 @@ class BMLTWPPlugin extends BMLTPlugin
         $options = $this->getBMLTOptions_by_id($this->cms_get_page_settings_id($options_standard));
 
         if ($support_mobile && is_array($mobile_options) && count($mobile_options)) {
-            $mobile_url = $_SERVER['PHP_SELF'].'?BMLTPlugin_mobile&bmlt_settings_id='.$support_mobile;
+            $php_self = isset($_SERVER['PHP_SELF']) ? sanitize_text_field(wp_unslash($_SERVER['PHP_SELF'])) : '';
+            $mobile_url = $php_self.'?BMLTPlugin_mobile&bmlt_settings_id='.$support_mobile;
             if (isset($this->my_http_vars['WML'])) {
                 $mobile_url .= '&WML='.intval($this->my_http_vars['WML']);
             }
@@ -516,7 +536,7 @@ class BMLTWPPlugin extends BMLTPlugin
             $head_content .= "\n<!-- End Added by the BMLT plugin 3.X. -->\n";
             
             if (!$from_admin) {
-                echo $head_content;
+                echo $head_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             } else {
                 return $head_content;
             }
@@ -533,34 +553,10 @@ class BMLTWPPlugin extends BMLTPlugin
         $head_content = $this->standard_head(true)."\n";   // We start with the standard stuff.
         
         $head_content .= "<!-- Also Added by the BMLT plugin 3.X. -->\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\" />\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\" />\n";
-        $options = $this->getBMLTOptions(1);    // All options contain the admin key.
-        $key = $options['google_api_key'];
-        
-        // Include the Google Maps API V3 files.
-        $head_content .= '<script type="text/javascript" src="https://maps.google.com/maps/api/js?key='.$key.'"></script>';  // Load the Google Maps stuff for our map.
-        
-        if (function_exists('plugins_url')) {
-            $head_content .= '<link rel="stylesheet" type="text/css" href="';
-            
-            $url = $this->get_plugin_path();
-            
-            $head_content .= htmlspecialchars($url);
-            
-            $head_content .= 'admin_styles.css" />';
-            
-            $head_content .= '<script type="text/javascript" src="';
-            
-            $head_content .= htmlspecialchars($url);
-            
-            $head_content .= 'admin_javascript.js"></script>';
-        } else {
-            echo "<!-- BMLTPlugin ERROR (head)! No plugins_url()! -->";
-        }
-            
         $head_content .= "\n<!-- End Also Added by the BMLT plugin 3.X. -->\n";
-        echo $head_content;
+        echo $head_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
-    
+
     /************************************************************************************//**
     *   \brief This gets the admin options from the database (allows CMS abstraction).      *
     *                                                                                       *
@@ -659,6 +655,7 @@ class BMLTWPPlugin extends BMLTPlugin
             add_action('pre_get_posts', array ( self::get_plugin_object(), 'stop_filter_if_not_main' ));
             add_action('admin_init', array ( self::get_plugin_object(), 'admin_ajax_handler' ));
             add_action('admin_menu', array ( self::get_plugin_object(), 'option_menu' ));
+            add_action('admin_enqueue_scripts', array( self::get_plugin_object(), 'enqueueAdminFilesBmlt' ));
             add_action('init', array ( self::get_plugin_object(), 'filter_init' ));
         } else {
             echo "<!-- BMLTPlugin ERROR (set_callbacks)! No add_action()! -->";
@@ -679,7 +676,7 @@ class BMLTWPPlugin extends BMLTPlugin
     {
         // phpcs:enable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
         if (function_exists('__')) {
-            $in_string = htmlspecialchars(__($in_string, 'BMLTPlugin'));
+            $in_string = htmlspecialchars(__($in_string, 'bmlt-wordpress-satellite-plugin')); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
         } else {
             echo "<!-- BMLTPlugin Warning (process_text): __() does not exist! -->";
         }

@@ -1,4 +1,4 @@
-=== BMLT WordPress Plugin ===
+=== BMLT WordPress Satellite ===
 
 Contributors: magblogapi, radius314, pjaudiomv, jbraswell
 Plugin URI: https://bmlt.app
@@ -27,7 +27,7 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 [Usage instructions for the shortcodes can be found here.](https://old.bmlt.app/satellites/cms-plugins/shortcodes/)
 
-= Changelog =
+== Changelog ==
 
 = 3.11.5 =
 * Update base class.
@@ -623,6 +623,3 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 
 * Made the inter-server communications use POST, which makes it a bit more robust.
 
-== Installing and Administering the Plugin ==
-
-You need to <a href="https://bmlt.app/blog/bmlt-administration/">go to this Web page to get very detailed instructions on installing and configuring the plugin.</a>
