@@ -6,7 +6,7 @@
  * Install:           Drop this directory into the "wp-content/plugins/" directory and activate it.
  * Contributors:      pjaudiomv, bmltenabled
  * Authors:           bmltenabled
- * Version:           3.11.5
+ * Version:           3.11.6
  * Requires PHP:      8.1
  * Requires at least: 6.2
  * License:           GPL v2 or later

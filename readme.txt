@@ -5,7 +5,7 @@ Plugin URI: https://bmlt.app
 Tags: na, meeting list, meeting finder, bmlt, recovery
 Author: bmltenabled
 Tested up to: 6.9
-Stable tag: 3.11.5
+Stable tag: 3.11.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ This is a standard WordPress plugin. Either use the in-dashboard installer, or m
 [Usage instructions for the shortcodes can be found here.](https://old.bmlt.app/satellites/cms-plugins/shortcodes/)
 
 == Changelog ==
+
+= 3.11.6 =
+* Fix PHP warning.
 
 = 3.11.5 =
 * Update base class.

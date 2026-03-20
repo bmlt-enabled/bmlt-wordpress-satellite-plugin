@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38b3063372cf183e5d5af57f7a710f6d",
+    "content-hash": "98b5596757ca7bcddba5cebb999f89df",
     "packages": [
         {
             "name": "bmlt/bmlt-satellite-base-class",
-            "version": "3.11.14",
+            "version": "3.11.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bmlt-enabled/bmlt-satellite-base-class.git",
-                "reference": "358d02accc7d21e05624a23a73ae996236f3fdd1"
+                "reference": "04e0edd6031a116bb32baa320c1dee0c35436dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/358d02accc7d21e05624a23a73ae996236f3fdd1",
-                "reference": "358d02accc7d21e05624a23a73ae996236f3fdd1",
+                "url": "https://api.github.com/repos/bmlt-enabled/bmlt-satellite-base-class/zipball/04e0edd6031a116bb32baa320c1dee0c35436dab",
+                "reference": "04e0edd6031a116bb32baa320c1dee0c35436dab",
                 "shasum": ""
             },
             "require": {
@@ -46,9 +46,9 @@
             "description": "This is a generic CMS plugin class for a BMLT satellite client.",
             "support": {
                 "issues": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/issues",
-                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.14"
+                "source": "https://github.com/bmlt-enabled/bmlt-satellite-base-class/tree/3.11.15"
             },
-            "time": "2026-03-19T21:50:40+00:00"
+            "time": "2026-03-20T19:18:08+00:00"
         },
         {
             "name": "bmlt/bmlt-satellite-driver",

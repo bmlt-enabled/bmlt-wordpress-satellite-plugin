@@ -13,7 +13,7 @@
   },
   "require": {
     "php": ">=8.1",
-    "bmlt/bmlt-satellite-base-class": "^3.11.14",
+    "bmlt/bmlt-satellite-base-class": "^3.11.15",
     "bmlt/bmlt-satellite-driver": "^1.1"
   }
 }
